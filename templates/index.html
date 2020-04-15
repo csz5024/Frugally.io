@@ -16,10 +16,12 @@
 		<script src="static/js/skel.min.js"></script>
 		<script src="static/js/skel-layers.min.js"></script>
 		<script src="static/js/init.js"></script>
-		<link rel="stylesheet" href="static/css/skel.css" />
-		<link rel="stylesheet" href="static/css/style.css" />
-		<link rel="stylesheet" href="static/css/style-wide.css" />
-		<!--		noscript tag-->
+		<noscript>
+			<link rel="stylesheet" href="static/css/skel.css" />
+			<link rel="stylesheet" href="static/css/style.css" />
+			<link rel="stylesheet" href="static/css/style-wide.css" />
+		</noscript>
+			<!--		noscript tag-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
@@ -54,40 +56,17 @@
 				<!-- Extra -->
 					<div id="extra">
 						<div class="container">
+							{% for i in objects %}
 							<div class="row no-collapse-1">
-								<section class="4u"> <a href="#" class="image featured"><img src="static/images/pic01.jpg" alt=""></a>
+								{% for j in objects %}
+								<section class="4u"> <a href="#" class="image featured"><img src={{ j.img }} alt=""></a>
 									<div class="box">
 										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
 										<a href="#" class="button">Read More</a> </div>
 								</section>
-								<section class="4u"> <a href="#" class="image featured"><img src="static/images/pic02.jpg" alt=""></a>
-									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> </div>
-								</section>
-								<section class="4u"> <a href="#" class="image featured"><img src="static/images/pic03.jpg" alt=""></a>
-									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> </div>
-								</section>
+								{% endfor %}
 							</div>
-							<div class="row no-collapse-1">
-								<section class="4u"> <a href="#" class="image featured"><img src="static/images/pic01.jpg" alt=""></a>
-									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> </div>
-								</section>
-								<section class="4u"> <a href="#" class="image featured"><img src="static/images/pic02.jpg" alt=""></a>
-									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> </div>
-								</section>
-								<section class="4u"> <a href="#" class="image featured"><img src="static/images/pic03.jpg" alt=""></a>
-									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> </div>
-								</section>
-							</div>
+							{% endfor %}
 						</div>
 					</div>
 
