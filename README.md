@@ -1,2 +1,2 @@
-# Deals
-Deals.com
+# Frugally.io
+Frugally.io
