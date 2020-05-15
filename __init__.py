@@ -4,7 +4,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    objects = [one, two, three]
+    objects = [None, None, None]
+    objects[0] = listing(None, None, None, None)
+    objects[1] = listing(None, None, None, None)
+    objects[2] = listing(None, None, None, None)
+    objects[0].setImg('static/images/pic01.jpg')
+    objects[1].setImg('static/images/pic02.jpg')
+    objects[2].setImg('static/images/pic03.jpg')
     return render_template('index.html', objects=objects)
 
 class listing:
@@ -19,10 +25,4 @@ class listing:
 
 
 if __name__ == '__main__':
-    one = listing(None, None, None, None)
-    two = listing(None, None, None, None)
-    three = listing(None, None, None, None)
-    one.setImg('static/images/pic01.jpg')
-    two.setImg('static/images/pic02.jpg')
-    three.setImg('static/images/pic03.jpg')
     app.run(debug=True)
