@@ -4,7 +4,7 @@ Frugally.io
 #####################################################
 
 frugally.wsgi
-
+'''
 #!/usr/bin/python3
 import sys
 import logging
@@ -12,11 +12,11 @@ logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0,"/var/www/Frugally/")
 
 from Frugally import app as application
-
+'''
 ######################################################
 
 /etc/apache2/sites-available/Frugally.conf
-
+'''
 <VirtualHost *:80>
   ServerName 192.168.1.xxx
   ServerAdmin caseyzduniak@gmail.com
@@ -37,5 +37,5 @@ from Frugally import app as application
     Require all granted
   </Directory>
 </VirtualHost>
-
+'''
 ######################################################
