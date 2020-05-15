@@ -1,7 +1,7 @@
 # Frugally.io
 Frugally.io
 
-#####################################################
+
 
 frugally.wsgi
 ```
@@ -13,7 +13,7 @@ sys.path.insert(0,"/var/www/Frugally/")
 
 from Frugally import app as application
 ```
-######################################################
+
 
 /etc/apache2/sites-available/Frugally.conf
 ```
@@ -38,4 +38,4 @@ from Frugally import app as application
   </Directory>
 </VirtualHost>
 ```
-######################################################
+
