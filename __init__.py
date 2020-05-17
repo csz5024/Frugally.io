@@ -17,13 +17,22 @@ def login():
 
 # Populates product listings
 def getContent(objects):
-    Directory = os.getcwd() + "/"
-    for count, filename in enumerate(os.listdir(Directory)):
+    # os library is not working for some reason
+    
+    #os.getcwd()
+    #os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    #os.chdir("static")
+    #os.chdir("images")
+    #os.chdir("dump")
+
+    # the absolute path on the server. 
+    dir = "/var/www/Frugally/Frugally/static/images/dump"
+    for count, filename in enumerate(os.listdir(dir)):
         objects.append(listing(None, None, None, None))
         objects[count].setImg('static/images/dump/' + filename)
-    objects[0].setName("Air Force 1s")
+    objects[0].setName("Commes Des Garcons")
     objects[0].setPrice("$100.00")
-    objects[0].setDiscount("(20% off MSRP)")
+    objects[0].setDiscount("(33% off MSRP)")
     return objects
 
 # Product listing object
@@ -47,9 +56,4 @@ class listing:
         self.discount = discount
 
 if __name__ == '__main__':
-    # changes working directory to dump so that the product listings can be pushed
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    os.chdir("static")
-    os.chdir("images")
-    os.chdir("dump")
-    app.run(debug=True)
+    app.run()
