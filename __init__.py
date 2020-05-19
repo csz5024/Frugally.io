@@ -22,10 +22,10 @@ def login():
 # Populates product listings
 def getContent(objects):
     
-    os.getcwd()
-    os.chdir("scraping")
+    #os.getcwd()
+    #os.chdir("scraping")
 
-    with open(str(os.getcwd()) + '\\NordstromRack.json') as f:
+    with open('/var/www/Frugally/Frugally/scraping/NordstromRack.json') as f:
         data = json.load(f)
 
     for count, item in enumerate(data):

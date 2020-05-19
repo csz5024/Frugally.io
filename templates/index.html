@@ -57,8 +57,8 @@
 								{% if (itemsinrow*i+j) < items %}
 								<section class="4u"> <a href="#" class="image featured"><img src={{ objects[i*itemsinrow+j].img }} alt=""></a>
 									<div class="box">
-										<p>{{ objects[i*itemsinrow+j].name }}</p>
-										<p style="color:red">{{ objects[i*itemsinrow+j].discount }}</p>
+										<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</p>
+										<p style="color:red">{{objects[i*itemsinrow+j].original}} ({{ objects[i*itemsinrow+j].discount }})</p>
 										<a href="#" class="button">{{ objects[i*itemsinrow+j].price }}</a> </div>
 								</section>
 								{% endif %}
