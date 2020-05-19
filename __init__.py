@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from PIL import Image
 import requests
 import json
@@ -9,23 +9,54 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+
     objects = []
     itemsinrow = 3
     objects = getContent(objects)
     items = len(objects)
+
     return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+
+
+
+@app.route('/', methods=['POST'])
+def feedback():
+
+    # from the suggestions box in footer
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+    data = {}
+    data['name'] = name
+    data['email'] = email
+    data['message'] = message
+
+    # setup email redirect later
+    # appends suggestions to json file
+    with open('Suggestions.json') as jfile:
+        old = json.load(jfile)
+        tmp = old
+        tmp.append(data)
+
+    with open('Suggestions.json', 'w') as outfile:
+        json.dump(tmp, outfile, indent=4)
+
+    return redirect("http://frugally.io", code=302)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 
+
+
 # Populates product listings
 def getContent(objects):
-    
-    os.getcwd()
-    os.chdir("scraping")
 
-    with open(str(os.getcwd()) + '\\NordstromRack.json') as f:
+    #os.getcwd()
+    #os.chdir("scraping")
+
+    with open(str(os.getcwd()) + '\\scraping\\NordstromRack.json') as f:
         data = json.load(f)
 
     for count, item in enumerate(data):
