@@ -23,6 +23,14 @@
 
 		<!-- Wrapper -->
 			<div class="wrapper style1">
+				<!-- Banner -->
+					<div id="banner" class="container">
+						<section>
+							<p>This is <strong>Frugally</strong>, a smarter shopping experience. Follow us on <a href="http://twitter.com/">Twitter</a>.</p>
+							<a href="#" class="button medium">Read More</a>
+						</section>
+					</div>
+
 
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
@@ -51,7 +59,10 @@
 									<div class="box">
 										<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</p>
 										<p style="color:red">{{objects[i*itemsinrow+j].original}} ({{ objects[i*itemsinrow+j].discount }})</p>
-										<a href="#" class="button">{{ objects[i*itemsinrow+j].price }}</a> </div>
+<!--										<form method="post" action="#">-->
+										<a href="https://{{ objects[i*itemsinrow+j].link }}" class="button">{{ objects[i*itemsinrow+j].price }}</a>
+<!--										</form>-->
+									</div>
 								</section>
 								{% endif %}
 								{% endfor %}
@@ -60,17 +71,6 @@
 						</div>
 					</div>
 
-				<!-- Banner -->
-					<div id="banner" class="container">
-						<section>
-							<p>
-
-
-							</p>
-							<p>This is <strong>Frugally</strong>, a smarter shopping experience. Follow us on <a href="http://twitter.com/">Twitter</a>.</p>
-							<a href="#" class="button medium">Read More</a>
-						</section>
-					</div>
 
 				<!-- Main -->
 					<!--
