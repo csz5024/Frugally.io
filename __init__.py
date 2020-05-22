@@ -33,12 +33,12 @@ def feedback():
 
     # setup email redirect later
     # appends suggestions to json file
-    with open('Suggestions.json') as jfile:
+    with open('/var/www/Frugally/Frugally/Suggestions.json') as jfile:
         old = json.load(jfile)
         tmp = old
         tmp.append(data)
 
-    with open('Suggestions.json', 'w') as outfile:
+    with open('/var/www/Frugally/Frugally/Suggestions.json', 'w') as outfile:
         json.dump(tmp, outfile, indent=4)
 
     return redirect("http://frugally.io", code=302)
@@ -56,7 +56,7 @@ def getContent(objects):
     #os.getcwd()
     #os.chdir("scraping")
 
-    with open(str(os.getcwd()) + '\\scraping\\NordstromRack.json') as f:
+    with open('/var/www/Frugally/Frugally/scraping/NordstromRack.json') as f:
         data = json.load(f)
 
     for count, item in enumerate(data):
