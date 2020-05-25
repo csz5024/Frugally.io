@@ -6,7 +6,7 @@ options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument('window-size=1200x600')
 
-driver = webdriver.Chrome(executable_path="C:\\valuables\\chromedriver.exe", chrome_options=options)
+driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver.exe", chrome_options=options)
 
 # body = driver.page_source
 # return HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=request)
@@ -17,8 +17,8 @@ driver.get("https://www.nordstromrack.com/shop/Men/Clothing")
 
 class NordstromRackSpider(scrapy.Spider):
     name = "NordstromRack"
-    start_urls = "https://www.nordstromrack.com/shop/Men/Clothing"
-    driver.get(start_urls)
+    start_urls = ["https://www.nordstromrack.com/shop/Men/Clothing"]
+    driver.get(start_urls[0])
 
     def parse(self, response):
         numitems = 0

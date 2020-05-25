@@ -4,6 +4,9 @@ import requests
 import json
 from io import BytesIO
 import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 app = Flask(__name__)
 
@@ -23,16 +26,23 @@ def index():
 def feedback():
 
     # from the suggestions box in footer
+
     name = request.form['name']
     email = request.form['email']
     message = request.form['message']
+
     data = {}
     data['name'] = name
     data['email'] = email
     data['message'] = message
 
-    # setup email redirect later
+    # sends to gmail
+    sendMail(email, name, message)
+    #status = sendMail(email, name, message)
+    #data['status'] = status
+
     # appends suggestions to json file
+    '''
     with open('/var/www/Frugally/Frugally/Suggestions.json') as jfile:
         old = json.load(jfile)
         tmp = old
@@ -40,14 +50,36 @@ def feedback():
 
     with open('/var/www/Frugally/Frugally/Suggestions.json', 'w') as outfile:
         json.dump(tmp, outfile, indent=4)
-
+    '''
     return redirect("http://frugally.io", code=302)
 
 
+#login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 
+
+# Sends email from burner gmail to frugally gmail
+def sendMail(customer, name, message):
+    user = 'frugallyserver@gmail.com'
+    pw = 'z4M<c2=3W:n;Fg@^'
+    recv = 'frugallyio@gmail.com'
+
+    msg = MIMEMultipart()
+    msg['From'] = user
+    msg['To'] = recv
+    msg['Subject'] = 'Website Feedback'
+    body = '%s at %s\n\n%s\n\nSent from Frugally Application Server' % (name, customer, message)
+    msg.attach(MIMEText(body))
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    #server.ehlo()
+    server.login(user, pw)
+    server.sendmail(user, recv, msg.as_string())
+    server.quit()
+    return 'success'
 
 
 # Populates product listings
@@ -78,6 +110,10 @@ def grabImage(link):
     response = requests.get(link)
     img = Image.open(BytesIO(response.content))
     return img
+
+#def updateContent():
+#    os.system("scrapy crawl NordstromRack -o NordstromRack.json")
+
 
 # Product listing object
 class listing:
