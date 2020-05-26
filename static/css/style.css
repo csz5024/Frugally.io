@@ -17,7 +17,7 @@
 	}
 
 	a {
-		color: #d84780;
+		color: #777776;
 		text-decoration: underline;
 	}
 
@@ -147,7 +147,7 @@
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		textarea:focus {
-			border-color: #d84780;
+			border-color: #777776;
 		}
 
 	textarea {
@@ -426,7 +426,7 @@
 		-o-transition: background-color 0.35s ease-in-out;
 		-ms-transition: background-color 0.35s ease-in-out;
 		transition: background-color 0.35s ease-in-out;
-		background: #d84780;
+		background: #777776;
 		border-radius: 6px;
 		border: 0;
 		color: white;
@@ -493,7 +493,7 @@
 
 	.wrapper.style2 {
 		padding: 6em 0;
-		background: #d84780;
+		background: #777776;
 		color: white;
 	}
 
