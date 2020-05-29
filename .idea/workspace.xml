@@ -1,13 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="" />
+    <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/NordstromRack.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/NordstromRackSales.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/Pipfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/Pipfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/scrapy.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/testabnb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Deals.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Deals.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/UrbanOutfitters.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/spiders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/spiders/nordstromrack_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nordstromracksales/spiders/urbanoutfitters_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/urbanoutfitters_spider.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="scraping" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bpellY6NnljNS0gZ5Z0ZuQd6Vz" />
@@ -18,7 +72,36 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="scraping" type="PythonConfigurationType" factoryName="Python">
+      <module name="Deals" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.var/app/com.jetbrains.PyCharm-Community/data/virtualenvs/nordstromracksales-n3j4jcVq/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -31,6 +114,40 @@
       <option name="presentableId" value="Default" />
       <updated>1589333615437</updated>
     </task>
+    <task id="LOCAL-00001" summary="Alo&#10;Adding scraping">
+      <created>1589334475865</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589334475865</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Alo&#10;Adding scraping" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alo&#10;Adding scraping" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590712717803">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590712717803" />
+    <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2" timestamp="1589334475727">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589334475727" />
+    <state x="633" y="298" width="424" height="479" key="FileChooserDialogImpl" timestamp="1590712612716">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="633" y="298" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590712612716" />
+    <state x="384" y="175" key="SettingsEditor" timestamp="1590712724378">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="384" y="175" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590712724378" />
+    <state x="475" y="276" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1589334686458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="475" y="276" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589334686458" />
   </component>
 </project>
