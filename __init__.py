@@ -7,6 +7,7 @@ import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import base64
 
 app = Flask(__name__)
 
@@ -101,15 +102,15 @@ def getContent(objects):
         objects[count].setLink("nordstromrack.com"+item["link"])
 
         #images and links are not right in json
-        #objects[count].setImg(grabImage(item["image-link"]))
+        objects[count].setImg(item["image-link"])
 
     return objects
 
 # grabs image from url
 def grabImage(link):
-    response = requests.get(link)
-    img = Image.open(BytesIO(response.content))
-    return img
+    #response = requests.get(link)
+    #img = Image.open(BytesIO(response.content))
+    pass
 
 #def updateContent():
 #    os.system("scrapy crawl NordstromRack -o NordstromRack.json")
