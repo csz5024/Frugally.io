@@ -8,13 +8,20 @@
 from scrapy import signals
 from scrapy.http import HtmlResponse
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument('window-size=1200x600')
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+#driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
 
 class NordstromracksalesSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -90,6 +97,9 @@ class NordstromracksalesDownloaderMiddleware(object):
             return None
 
         driver.get(request.url)
+
+
+        WebDriverWait(driver, 10)
 
         body = driver.page_source
         return HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=request)
