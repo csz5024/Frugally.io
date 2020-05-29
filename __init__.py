@@ -8,6 +8,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import base64
+from datetime import datetime, timedelta
+from threading import Timer
 
 app = Flask(__name__)
 
@@ -106,14 +108,22 @@ def getContent(objects):
 
     return objects
 
-# grabs image from url
-def grabImage(link):
-    #response = requests.get(link)
-    #img = Image.open(BytesIO(response.content))
-    pass
+# updates the product listing daily at 3am
+def globalTimer():
+    x = datetime.today()
+    y = x.replace(day=x.day, hour=3, minute=0, second=0, microsecond=0) + timedelta(days=1)
+    delta_t=y-x
 
-#def updateContent():
-#    os.system("scrapy crawl NordstromRack -o NordstromRack.json")
+    secs = delta_t.total_seconds()
+
+    def updateContent():
+        os.system("cd /var/www/Frugally/Frugally/scraping")
+        os.system("sudo rm NordstromRack.json")
+        os.system("sudo scrapy crawl NordstromRack -o NordstromRack.json")
+        return "success"
+
+    t = Timer(secs, updateContent)
+    t.start()
 
 
 # Product listing object
@@ -151,4 +161,5 @@ class listing:
 
 
 if __name__ == '__main__':
+    globalTimer()
     app.run(debug=True)
