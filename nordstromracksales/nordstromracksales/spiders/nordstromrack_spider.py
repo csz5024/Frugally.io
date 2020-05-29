@@ -21,7 +21,7 @@ class NordstromRackSpider(scrapy.Spider):
                 'image-link': article.css('.product-grid-item__catalog-image img::attr(src)').get(),
                 'link': 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
             }
-        next_page = response.css('a.pagination__link::attr(href)').get()
+        next_page = response.css('a.pagination__link::attr(href)')[-1].get()
         print('here')
         print(next_page)
         if next_page is not None:
