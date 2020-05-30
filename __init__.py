@@ -91,7 +91,7 @@ def getContent(objects):
     #os.getcwd()
     #os.chdir("scraping")
 
-    with open('/var/www/Frugally/Frugally/scraping/NordstromRack.json') as f:
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
         data = json.load(f)
 
     for count, item in enumerate(data):
@@ -101,7 +101,7 @@ def getContent(objects):
         objects[count].setDiscount(item["discount"])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setLink(item["link"])
 
         #images and links are not right in json
         objects[count].setImg(item["image-link"])
@@ -117,7 +117,7 @@ def globalTimer():
     secs = delta_t.total_seconds()
 
     def updateContent():
-        os.system("cd /var/www/Frugally/Frugally/scraping")
+        os.system("cd /var/www/Frugally/Frugally/nordstromracksales")
         os.system("sudo rm NordstromRack.json")
         os.system("sudo scrapy crawl NordstromRack -o NordstromRack.json")
         return "success"

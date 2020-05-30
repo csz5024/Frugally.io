@@ -22,7 +22,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
 #driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
-driver = webdriver.Chrome("/var/www/Frugally/Frugally/chromedriver.exe")
+driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
 class NordstromracksalesSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
