@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" afterDir="false" />
-    </list>
+    <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,6 +128,18 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Alo&#10;Adding scraping" />
