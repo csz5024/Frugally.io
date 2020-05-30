@@ -101,7 +101,7 @@ def getContent(objects):
         objects[count].setDiscount(item["discount"])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink(item["link"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
 
         #images and links are not right in json
         objects[count].setImg(item["image-link"])
