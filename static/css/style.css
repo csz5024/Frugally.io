@@ -1,3 +1,4 @@
+
 @import url("font-awesome.min.css");
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,500,600,700,800,900");
 
@@ -625,5 +626,32 @@
 		padding: 3em 2em;
 		background: #FFF;
 		text-align: center;
+		/*border: 1px solid #777776;*/
 		border-radius: 0px 0px 6px 6px;
+		box-shadow: 10px 10px 5px #aaaaaa;
 	}
+	boxp {
+		line-height: 2em;
+		min-height:600px;
+	}
+
+/* Pagination */
+	.center {
+		text-align: center;
+	}
+	.pagination {
+		display: inline-block;
+	}
+
+	.pagination a {
+		color: black;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		transition: background-color .3s;
+	}
+	.pagination a.active {
+		background-color: #777776;
+		color: white;
+	}
+	.pagination a:hover:not(.active) {background-color: #ddd;}
