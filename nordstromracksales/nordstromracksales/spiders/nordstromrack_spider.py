@@ -27,7 +27,7 @@ class NordstromRackSpider(scrapy.Spider):
                 'price': article.css('.product-grid-item__sale-price ::text').get(),
                 'discount': article.css('.product-grid-item__sale-price-discount ::text').get(),
                 'image-link': article.css('.product-grid-item__catalog-image img::attr(src)').get(),
-                'link': 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
+                'link': article.css('.product-grid-item a::attr(href)').get()
             }
         next_page = response.css('a.pagination__link::attr(href)')[-1].get()
         print('here')
