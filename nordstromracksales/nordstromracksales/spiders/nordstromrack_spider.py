@@ -1,6 +1,12 @@
 
 
 import scrapy
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class NordstromRackSpider(scrapy.Spider):
@@ -10,6 +16,8 @@ class NordstromRackSpider(scrapy.Spider):
 
     def parse(self, response):
         numitems = 0
+
+
         for article in response.css('div.product-grid-item'):
             numitems = numitems + 1
             yield{
@@ -24,7 +32,7 @@ class NordstromRackSpider(scrapy.Spider):
         next_page = response.css('a.pagination__link::attr(href)')[-1].get()
         print('here')
         print(next_page)
-        if next_page is not None:
-            next_page = response.urljoin(next_page)
-            yield scrapy.Request(next_page, callback=self.parse)
+        #if next_page is not None:
+        #    next_page = response.urljoin(next_page)
+        #    yield scrapy.Request(next_page, callback=self.parse)
         print(numitems)
