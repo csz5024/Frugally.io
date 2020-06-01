@@ -16,7 +16,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
-options.add_argument('window-size=1200x900')
+options.add_argument('window-size=1200x600')
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
@@ -100,13 +100,6 @@ class NordstromracksalesDownloaderMiddleware(object):
         driver.get(request.url)
 
         WebDriverWait(driver, 2)
-        #action = ActionChains(driver)
-        #next_page_button = driver.find_element_by_xpath('//*[@id="bundle"]/div[3]/div[3]/div[2]/div[2]/div[3]/ul/li[8]/a')
-          #  response.css('a.pagination__link::attr(href)')[-1]
-        #print(next_page_button)
-        #action.move_to_element(next_page_button)
-        #WebDriverWait(driver, 2)
-
 
         body = driver.page_source
         return HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=request)
