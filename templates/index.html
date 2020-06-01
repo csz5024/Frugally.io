@@ -1,12 +1,7 @@
 <!DOCTYPE HTML>
-<!--
-	Phase Shift by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 	<head>
-		<title>Deals.com</title>
+		<title>Frugally</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -28,54 +23,69 @@
 
 		<!-- Wrapper -->
 			<div class="wrapper style1">
+				<!-- Banner -->
+					<div id="banner" class="container">
+						<section>
+							<p style="color:0f1116"><strong>Frugally</strong>, a smarter shopping experience.</p>
+							<!-- <a href="#" class="button medium">Read More</a>-->
+						</section>
+					</div>
+
 
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
-							<h1><a href="index.html">Deals.com</a></h1>
-							<span class="tag">by Clown College</span>
+							<h1><a href="/"><em>Frugally</em></a></h1>
+							<span class="tag"></span>
 						</div>
 						<nav id="nav">
 							<ul>
-								<li class="active"><a href="index.html">Homepage</a></li>
-<!--								<li><a href="left-sidebar.html">Left Sidebar</a></li>-->
+								<li class="active"><a href="/">Homepage</a></li>
+<!--								<li><a href="login.html">Left Sidebar</a></li>-->
 <!--								<li><a href="right-sidebar.html">Right Sidebar</a></li>-->
-								<li><a href="no-sidebar.html">Login</a></li>
+								<li><a href="/login">Login</a></li>
 							</ul>
 						</nav>
-					</div>
-
-				<!-- Banner -->
-					<div id="banner" class="container">
-						<section>
-							<p>This is <strong>Deals.com</strong>, a smarter shopping experience. Follow us on <a href="http://twitter.com/">Twitter</a>.</p>
-							<a href="#" class="button medium">Read More</a>
-						</section>
 					</div>
 
 				<!-- Extra -->
 					<div id="extra">
 						<div class="container">
-							{% for i in objects %}
+							{% for i in range(items//itemsinrow + 1) %}
 							<div class="row no-collapse-1">
-								{% for j in objects %}
-								<section class="4u"> <a href="#" class="image featured"><img src={{ j.img }} alt=""></a>
+								{% for j in range(itemsinrow) %}
+								{% if (itemsinrow*i+j) < items %}
+								<section class="4u"> <a href="#" class="image featured"><img src={{ objects[i*itemsinrow+j].img }} alt=""></a>
 									<div class="box">
-										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
-										<a href="#" class="button">Read More</a> </div>
+										<boxp>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</boxp>
+										<p style="color:red">{{objects[i*itemsinrow+j].original}} ({{ objects[i*itemsinrow+j].discount }})</p>
+										<a href="https://{{ objects[i*itemsinrow+j].link }}" class="button">{{ objects[i*itemsinrow+j].price }}</a>
+									</div>
 								</section>
+								{% endif %}
 								{% endfor %}
 							</div>
 							{% endfor %}
 						</div>
+						<div class="center">
+							<div class="pagination">
+								<a href="#">&laquo;</a>
+								<a href="#" class="active">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">&raquo;</a>
+							</div>
+						</div>
 					</div>
 
+
 				<!-- Main -->
+					<!--
 					<div id="main">
 						<div class="container">
-							<div class="row"> 
-								
-								<!-- Content -->
+							<div class="row">
+
+
 								<div class="6u">
 									<section>
 										<ul class="style">
@@ -103,6 +113,7 @@
 							</div>
 						</div>
 					</div>
+					-->
 
 	</div>
 
@@ -111,8 +122,8 @@
 			<div class="container">
 				<section>
 					<header class="major">
-						<h2>Mauris vulputate dolor</h2>
-						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+						<h2>Contact Us</h2>
+						<!--<span class="byline">Feel free to reach out with any issues or suggestions!</span>-->
 					</header>
 					<form method="post" action="#">
 						<div class="row half">
@@ -148,7 +159,6 @@
 		<div id="copyright">
 			<div class="container">
 				<div class="copyright">
-					<p>Design: <a href="http://google.com">Clown College</a> Images: <a href="http://Google.com">Google</a> (<a href="http://unsplash.com/cc0">CC0</a>)</p>
 					<ul class="icons">
 						<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
 						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>

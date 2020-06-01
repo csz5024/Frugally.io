@@ -27,6 +27,7 @@ class NordstromRackSpider(scrapy.Spider):
 
     def parse(self, response):
 
+
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('window-size=1200x900')
@@ -92,4 +93,4 @@ class NordstromRackSpider(scrapy.Spider):
             if element is None:
                 print('now')
                 break
-            print(numitems)
+
