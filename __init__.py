@@ -106,6 +106,48 @@ def getDiscount(objects):
 
     return objects
 
+def getHighPrice(objects):
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
+        data = json.load(f)
+
+    for count, item in enumerate(data):
+        objects.append(listing())
+        objects[count].setName(item["title"])
+        price = int(item["price"][1:])
+        objects[count].setPrice(price)
+        objects[count].setDiscount(item["discount"])
+        objects[count].setBrand(item["brand"])
+        objects[count].setOriginal(item["retail-price"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setImg(item["image-link"])
+
+    objects.sort(key=operator.attrgetter('price'), reverse=True)
+    for i in objects:
+        i.setPrice("$"+str(i.price))
+
+    return objects
+
+def getLowPrice(objects):
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
+        data = json.load(f)
+
+    for count, item in enumerate(data):
+        objects.append(listing())
+        objects[count].setName(item["title"])
+        price = int(item["price"][1:])
+        objects[count].setPrice(price)
+        objects[count].setDiscount(item["discount"])
+        objects[count].setBrand(item["brand"])
+        objects[count].setOriginal(item["retail-price"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setImg(item["image-link"])
+
+    objects.sort(key=operator.attrgetter('price'))
+    for i in objects:
+        i.setPrice("$"+str(i.price))
+
+    return objects
+
 
 # Sends email from burner gmail to frugally gmail
 def sendMail(customer, name, message):
