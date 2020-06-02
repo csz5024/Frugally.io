@@ -11,6 +11,7 @@ import base64
 from datetime import datetime, timedelta
 from threading import Timer
 import operator
+import locale
 
 app = Flask(__name__)
 
@@ -113,7 +114,7 @@ def getHighPrice(objects):
     for count, item in enumerate(data):
         objects.append(listing())
         objects[count].setName(item["title"])
-        price = int(item["price"][1:])
+        price = float(item["price"][1:])
         objects[count].setPrice(price)
         objects[count].setDiscount(item["discount"])
         objects[count].setBrand(item["brand"])
@@ -134,7 +135,13 @@ def getLowPrice(objects):
     for count, item in enumerate(data):
         objects.append(listing())
         objects[count].setName(item["title"])
-        price = int(item["price"][1:])
+        if(item["price"] != None):
+            if(len(item["price"][1:]) > 6):
+                price = float(item["price"][1:].replace(',',''))
+            else:
+                price = float(item["price"][1:])
+        else:
+            price = 0
         objects[count].setPrice(price)
         objects[count].setDiscount(item["discount"])
         objects[count].setBrand(item["brand"])
@@ -144,7 +151,10 @@ def getLowPrice(objects):
 
     objects.sort(key=operator.attrgetter('price'))
     for i in objects:
-        i.setPrice("$"+str(i.price))
+        if(i.price == 0):
+            i.setPrice("See Price in Cart")
+        else:
+            i.setPrice("$"+str(i.price))
 
     return objects
 
