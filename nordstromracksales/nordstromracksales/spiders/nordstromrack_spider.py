@@ -17,7 +17,7 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
+driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
 
 class NordstromRackSpider(scrapy.Spider):
@@ -35,7 +35,7 @@ class NordstromRackSpider(scrapy.Spider):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
 
-        self.driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
+        self.driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
         iter = 1
 
@@ -85,7 +85,7 @@ class NordstromRackSpider(scrapy.Spider):
                     'price': article.css('.product-grid-item__sale-price ::text').get(),
                     'discount': article.css('.product-grid-item__sale-price-discount ::text').get(),
                     'image-link': image, #article.css('.product-grid-item__catalog-image img::attr(src)').get(),
-                    'link': 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
+                    'link': article.css('.product-grid-item a::attr(href)').get()
                 }
             iter += 1
             print(iter)

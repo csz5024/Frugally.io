@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 import base64
 from datetime import datetime, timedelta
 from threading import Timer
+import operator
 
 app = Flask(__name__)
 
@@ -41,26 +42,69 @@ def feedback():
 
     # sends to gmail
     sendMail(email, name, message)
-    #status = sendMail(email, name, message)
-    #data['status'] = status
 
-    # appends suggestions to json file
-    '''
-    with open('/var/www/Frugally/Frugally/Suggestions.json') as jfile:
-        old = json.load(jfile)
-        tmp = old
-        tmp.append(data)
-
-    with open('/var/www/Frugally/Frugally/Suggestions.json', 'w') as outfile:
-        json.dump(tmp, outfile, indent=4)
-    '''
     return redirect("http://frugally.io", code=302)
 
+@app.route('/low')
+def sortLow():
+
+    objects = []
+    itemsinrow = 3
+    objects = getLowPrice(objects)
+    items = len(objects)
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+
+@app.route('/high')
+def sortHigh():
+
+    objects = []
+    itemsinrow = 3
+    objects = getHighPrice(objects)
+    items = len(objects)
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+
+@app.route('/discount')
+def sortDiscount():
+
+    objects = []
+    itemsinrow = 3
+    objects = getDiscount(objects)
+    items = len(objects)
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
 
 #login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+
+#Filters
+def getDiscount(objects):
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
+        data = json.load(f)
+
+    for count, item in enumerate(data):
+        objects.append(listing())
+        objects[count].setName(item["title"])
+        objects[count].setPrice(item["price"])
+        if(item["discount"] != None):
+            dis = item["discount"].split("%")
+            dis = int(dis[0])
+        else:
+            dis = 0
+        objects[count].setDiscount(dis)
+        objects[count].setBrand(item["brand"])
+        objects[count].setOriginal(item["retail-price"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setImg(item["image-link"])
+
+    objects.sort(key=operator.attrgetter('discount'), reverse=True)
+    for i in objects:
+        i.setDiscount(str(i.discount) + "% off")
+
+    return objects
 
 
 # Sends email from burner gmail to frugally gmail

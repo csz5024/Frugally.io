@@ -447,7 +447,7 @@
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		.button:hover {
-			background: #e1719d;
+			background: #0f1116;
 		}
 
 		input[type="submit"].alt,
@@ -470,6 +470,9 @@
 		input[type="button"].small,
 		.button.small {
 			font-size: 0.8em;
+			display: inline-block;
+			margin-left: 10px;
+			margin-right: 10px;
 		}
 
 		input[type="submit"].medium,
@@ -479,6 +482,10 @@
 			padding: 0.80em 2em;
 			font-size: 1.6em;
 		}
+	.btnContainer {
+		text-align: center;
+		margin-bottom: 20px;
+	}
 
 /* Wrapper */
 
@@ -630,9 +637,27 @@
 		border-radius: 0px 0px 6px 6px;
 		/*box-shadow: 10px 10px 5px #aaaaaa;*/
 	}
-	boxp {
-		line-height: 2em;
-		min-height:600px;
+	.boxp {
+		/*line-height: 2em;*/
+		min-height:125px;
+	}
+	.img-top-left {
+		position: absolute;
+		top: 8px;
+		left: 16px;
+		background-color: black;
+		color: white;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.img-top-right {
+		position: absolute;
+		top: 8px;
+		right: 16px;
+		background-color: black;
+		color: white;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 
 /* Pagination */
@@ -655,3 +680,4 @@
 		color: white;
 	}
 	.pagination a:hover:not(.active) {background-color: #ddd;}
+

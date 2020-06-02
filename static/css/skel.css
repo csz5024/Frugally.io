@@ -24,6 +24,14 @@
 		/* width: (containers) */
 		width: 1200px;
 	}
+	.cardcontainer {
+		position: relative;
+		width: 300px;
+		/*display: inline-block;*/
+	}
+	.cardcontainer img {
+		width: 100%;
+	}
 
 	/* Modifiers */
 	
