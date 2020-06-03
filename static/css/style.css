@@ -556,8 +556,70 @@
 		text-decoration: none;
 	}
 
-	#nav ul li a:hover {
+	#nav ul li a:hover, .dropdown:hover .dropbtn{
 		color: #fff;
+	}
+	.dropdown {
+		float: left;
+		overflow: hidden;	
+	}
+	.dropdown .dropbtn {
+		position: relative;
+		left: 120px;
+		font-size: 12px;
+		border: none;
+		outline: none;
+		color: #777776;
+		padding: 0px 0px;
+		background-color: inherit;
+		font: inherit;
+		margin: 0;
+	}
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		width: 100%;
+		left: 0;
+		box-shadown: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
+	.dropdown-content .headerD {
+		background: #0f1116;
+		padding: 16px;
+		color: white;
+	}
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+	.columnD {
+		float: left;
+		width: 33.33%;
+		padding: 10px;
+		background-color: #fff;
+		height: 250px;
+	}
+	.columnD a {
+		float: none;
+		color: black;
+		padding: 16px;
+		text-decoration: none;
+		display: block;
+		text-align: left;
+	}
+	.column a:hover {
+		background-color: #fff;
+	}
+	.rowD:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	@media screen and (max-width: 600px) {
+		.columnD {
+			width: 100%;
+			height: auto;
+		}
 	}
 
 /* Banner */

@@ -22,8 +22,11 @@ def index():
     itemsinrow = 3
     objects = getContent(objects)
     items = len(objects)
+    itemsperpage = 48
+    page = 'get this number from pagenation start at zero'
+    brands = getBrands(objects)
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, itemsperpage=itemsperpage, page=page)
 
 
 
@@ -82,6 +85,16 @@ def login():
     return render_template('login.html')
 
 #Filters
+
+#IMPORTANT must be used after one of the other filters (objects should already be populated)
+def getBrands(objects):
+    brands = []
+    for i in objects:
+        if(i.brand not in brands):
+            brands.append(i.brand)
+    brands.sort()
+    return brands
+
 def getDiscount(objects):
     with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
         data = json.load(f)

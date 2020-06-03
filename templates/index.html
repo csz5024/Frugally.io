@@ -38,6 +38,26 @@
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
 							<h1><a href="/"><em>Frugally</em></a></h1>
+							<!--<span class="tag">-->
+							<div class="dropdown">
+								<button class="dropbtn" onclick="myFunction()">Filter <i class="fa fa-caret-down"></i></button>
+								<div class="dropdown-content" id="myDropdown">
+								<div class="headerD">
+										<h1>Filters</h1>
+									</div>
+									<div class="rowD">
+										<div class="columnD">
+											<h2>Sort</h2>
+											<!--jinja stuff-->
+										</div>
+										<div class="columnD">
+											<h2>Brands</h2>
+											<!--jinja stuff-->
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--</span>-->
 						</div>
 						<nav id="nav">
 							<ul>
@@ -55,15 +75,16 @@
 								<a href="/low" class="button small">Lowest Price</a>
 								<a href="/discount" class="button small">Best Discount</a>
 							</div>
-							{% for i in range(items//itemsinrow + 1) %}
+							{% for i in range(itemsperpage*page, items//itemsinrow + 1) %}
+							{% if (itemsinrow*i) <= itemsperpage*page + itemsperpage %}
 							<div class="row no-collapse-1">
 								{% for j in range(itemsinrow) %}
 								{% if (itemsinrow*i+j) < items %}
 								<section class="4u">
 									<div class="cardcontainer">
 										<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j].img }} alt=""></a>
-										<div class="img-top-left">Nordstrom</div>
-										<div class="img-top-right">-{{ objects[i*itemsinrow+j].discount }}</div>	
+										<!--<div class="img-top-left">Nordstrom</div>
+										<div class="img-top-right">-{{ objects[i*itemsinrow+j].discount }}</div>-->	
 										<div class="box">
 											<div class="boxp">
 												<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</p>
@@ -76,14 +97,15 @@
 								{% endif %}
 								{% endfor %}
 							</div>
+							{% endif %}
 							{% endfor %}
 						</div>
 						<div class="center">
 							<div class="pagination">
 								<a href="#">&laquo;</a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
+								{% for i in range(items//itemsperpage+1) %}
+								<a href="/page{{i}}">{{i}}</a>
+								{% endfor %}
 								<a href="#">&raquo;</a>
 							</div>
 						</div>
