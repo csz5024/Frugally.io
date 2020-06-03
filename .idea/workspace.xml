@@ -26,8 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/asos_spider.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nike_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,11 +80,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -216,6 +218,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="633" y="298" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590712612716" />
+    <state width="1106" height="263" key="GridCell.Tab.0.bottom" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
+    <state width="1106" height="263" key="GridCell.Tab.0.center" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
+    <state width="1106" height="263" key="GridCell.Tab.0.left" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
+    <state width="1106" height="263" key="GridCell.Tab.0.right" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
     <state x="384" y="175" key="SettingsEditor" timestamp="1590712724378">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -75,16 +75,19 @@ class NordstromRackSpider(scrapy.Spider):
             imlist = data.find_elements_by_tag_name('img')
 
             for i in range(0,len(response.css('div.product-grid-item'))):
-                article = scraplist[i]
-                image = imlist[i*2].get_attribute('src')
-                yield {
-                    'title': article.css('.product-grid-item__title ::text').get(),
-                    'brand': article.css('.product-grid-item__brand ::text').get(),
-                    'retail-price': article.css('.product-grid-item__retail-price del::text').get(),
-                    'price': article.css('.product-grid-item__sale-price ::text').get(),
-                    'discount': article.css('.product-grid-item__sale-price-discount ::text').get(),
-                    'image-link': image, #article.css('.product-grid-item__catalog-image img::attr(src)').get(),
-                    'link': 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
+                discount = article.css('.product-grid-item__sale-price-discount ::text').get()
+                if discount is not None:
+                    article = scraplist[i]
+                    image = imlist[i*2].get_attribute('src')
+                    yield {
+                        'vendor': 'NordstromRack',
+                        'title': article.css('.product-grid-item__title ::text').get(),
+                        'brand': article.css('.product-grid-item__brand ::text').get(),
+                        'retail-price': article.css('.product-grid-item__retail-price del::text').get(),
+                        'price': article.css('.product-grid-item__sale-price ::text').get(),
+                        'discount': discount,
+                        'image-link': image, #article.css('.product-grid-item__catalog-image img::attr(src)').get(),
+                        'link': 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
                 }
             iter += 1
             print(iter)
