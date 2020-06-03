@@ -7,11 +7,12 @@ import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import base64
 from datetime import datetime, timedelta
 from threading import Timer
 import operator
 import locale
+from flask_paginate import Pagination, get_page_parameter
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
@@ -22,15 +23,18 @@ def index():
     itemsinrow = 3
     objects = getContent(objects)
     items = len(objects)
-    itemsperpage = 48
-    page = 'get this number from pagenation start at zero'
+    itemsperpage = 16
+    page = 0
     brands = getBrands(objects)
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, itemsperpage=itemsperpage, page=page)
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
 
 
 
-@app.route('/', methods=['POST'])
+@app.route('/<num>', methods=['POST'])
 def feedback():
 
     # from the suggestions box in footer
@@ -56,8 +60,15 @@ def sortLow():
     itemsinrow = 3
     objects = getLowPrice(objects)
     items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+
 
 @app.route('/high')
 def sortHigh():
@@ -66,8 +77,15 @@ def sortHigh():
     itemsinrow = 3
     objects = getHighPrice(objects)
     items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+
 
 @app.route('/discount')
 def sortDiscount():
@@ -76,8 +94,15 @@ def sortDiscount():
     itemsinrow = 3
     objects = getDiscount(objects)
     items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+
 
 #login page
 @app.route('/login', methods=['GET', 'POST'])

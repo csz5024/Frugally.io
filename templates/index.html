@@ -19,8 +19,6 @@
 		</noscript>
 			<!--		noscript tag-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
-	<style>
-	</style>
 	</head>
 	<body>
 
@@ -39,24 +37,22 @@
 						<div id="logo">
 							<h1><a href="/"><em>Frugally</em></a></h1>
 							<!--<span class="tag">-->
+							<!--
 							<div class="dropdown">
 								<button class="dropbtn" onclick="myFunction()">Filter <i class="fa fa-caret-down"></i></button>
 								<div class="dropdown-content" id="myDropdown">
 								<div class="headerD">
-										<h1>Filters</h1>
-									</div>
+									<h1>Filters</h1>
 									<div class="rowD">
 										<div class="columnD">
 											<h2>Sort</h2>
-											<!--jinja stuff-->
 										</div>
 										<div class="columnD">
 											<h2>Brands</h2>
-											<!--jinja stuff-->
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>-->
 							<!--</span>-->
 						</div>
 						<nav id="nav">
@@ -75,8 +71,7 @@
 								<a href="/low" class="button small">Lowest Price</a>
 								<a href="/discount" class="button small">Best Discount</a>
 							</div>
-							{% for i in range(itemsperpage*page, items//itemsinrow + 1) %}
-							{% if (itemsinrow*i) <= itemsperpage*page + itemsperpage %}
+							{% for i in range(pagination.per_page*(pagination.page-1), pagination.per_page*(pagination.page-1) + pagination.per_page) %}
 							<div class="row no-collapse-1">
 								{% for j in range(itemsinrow) %}
 								{% if (itemsinrow*i+j) < items %}
@@ -97,58 +92,15 @@
 								{% endif %}
 								{% endfor %}
 							</div>
-							{% endif %}
+							
 							{% endfor %}
-						</div>
-						<div class="center">
-							<div class="pagination">
-								<a href="#">&laquo;</a>
-								{% for i in range(items//itemsperpage+1) %}
-								<a href="/page{{i}}">{{i}}</a>
-								{% endfor %}
-								<a href="#">&raquo;</a>
+							<div id="pagination">
+								{{ pagination.links }}
 							</div>
 						</div>
 					</div>
 
-
-				<!-- Main -->
-					<!--
-					<div id="main">
-						<div class="container">
-							<div class="row">
-
-
-								<div class="6u">
-									<section>
-										<ul class="style">
-											<li class="fa fa-wrench">
-												<h3>Integer ultrices</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-											<li class="fa fa-leaf">
-												<h3>Aliquam luctus</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-										</ul>
-									</section>
-								</div>
-								<div class="6u">
-									<section>
-										<ul class="style">
-											<li class="fa fa-cogs">
-												<h3>Integer ultrices</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-											<li class="fa fa-road">
-												<h3>Aliquam luctus</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-										</ul>
-									</section>
-								</div>
-							</div>
-						</div>
-					</div>
-					-->
-
-	</div>
+			</div>
 
 	<!-- Footer -->
 		<div id="footer" class="wrapper style2">
@@ -156,7 +108,6 @@
 				<section>
 					<header class="major">
 						<h2>Contact Us</h2>
-						<!--<span class="byline">Feel free to reach out with any issues or suggestions!</span>-->
 					</header>
 					<form method="post" action="#">
 						<div class="row half">

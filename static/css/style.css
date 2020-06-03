@@ -723,23 +723,28 @@
 	}
 
 /* Pagination */
-	.center {
+
+	div#pagination ul{
 		text-align: center;
 	}
-	.pagination {
+	div#pagination ul li{
 		display: inline-block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		color: #0f1116;
 	}
-
-	.pagination a {
-		color: black;
-		float: left;
+	div#pagination ul li a {
+		font-size: 20px;
+		color: #0f1116;
 		padding: 8px 16px;
 		text-decoration: none;
 		transition: background-color .3s;
 	}
-	.pagination a.active {
-		background-color: #777776;
+	div#pagination ul li a.active {
+		background-color: #FFF;
 		color: white;
 	}
-	.pagination a:hover:not(.active) {background-color: #ddd;}
+	div#pagination ul li a:hover:not(.active) {background-color: #ddd;}
 
+
+	
