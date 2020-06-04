@@ -801,5 +801,110 @@
 	}
 	div#pagination ul li a:hover:not(.active) {background-color: #ddd;}
 
+/* Filter boxes */
 
+	.containerFilter {
+		display: block;
+		position: relative;
+		padding-left: 35px;
+		margin-bottom: 12px;
+		cursor: pointer;
+		font-size: 22px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	.containerFilter inputFilter {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+	.radioCheck {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: #eee;
+		border-radius: 50%;
+	}
+	/* On mouse-over, add a grey background color */
+	.containerFilter:hover inputFilter ~ .radioCheck {
+		background-color: #ccc;
+	}
+
+	/* When the radio button is checked, add a blue background */
+	.containerFilter inputFilter:checked ~ .radioCheck {
+		background-color: #2196F3;
+	}
+
+	/* Create the indicator (the dot/circle - hidden when not checked) */
+	.radioCheck:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+
+	/* Show the indicator (dot/circle) when checked */
+	.containerFilter inputFilter:checked ~ .radioCheck:after {
+		display: block;
+	}
+
+	/* Style the indicator (dot/circle) */
+	.containerFilter .radioCheck:after {
+		top: 9px;
+		left: 9px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: white;
+	}
+
+	/* Create a custom checkbox */
+	.checkBox {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: #eee;
+	}
+
+	/* On mouse-over, add a grey background color */
+	.containerFilter:hover inputFilter ~ .checkBox {
+		background-color: #ccc;
+	}
+
+	/* When the checkbox is checked, add a blue background */
+	.containerFilter inputFilter:checked ~ .checkBox {
+		background-color: #2196F3;
+	}
+
+	/* Create the checkmark/indicator (hidden when not checked) */
+	.checkBox:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+
+	/* Show the checkmark when checked */
+	.containerFilter inputFilter:checked ~ .checkbox:after {
+		display: block;
+	}
+
+	/* Style the checkmark/indicator */
+	.containerFilter .checkbox:after {
+		left: 9px;
+		top: 5px;
+		width: 5px;
+		height: 10px;
+		border: solid white;
+		border-width: 0 3px 3px 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
 	
