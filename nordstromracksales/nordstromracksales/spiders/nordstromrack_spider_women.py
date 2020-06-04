@@ -20,9 +20,9 @@ options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
 
 
-class NordstromRackSpider(scrapy.Spider):
-    name = "NordstromRack"
-    start_urls = ["https://www.nordstromrack.com/shop/Men/Clothing"]
+class NordstromRackWomenSpider(scrapy.Spider):
+    name = "NordstromRackWomen"
+    start_urls = ["https://www.nordstromrack.com/shop/Women/Clothing"]
 
 
     def parse(self, response):
@@ -40,7 +40,7 @@ class NordstromRackSpider(scrapy.Spider):
 
         while True:
 
-            url = "https://www.nordstromrack.com/shop/Men/Clothing?page={0}&sort=most_popular"
+            url = "https://www.nordstromrack.com/shop/Women/Clothing?page={0}&sort=most_popular"
             self.driver.get(url.format(iter))
             numitems = 0\
 
@@ -81,6 +81,7 @@ class NordstromRackSpider(scrapy.Spider):
                     image = imlist[i*2].get_attribute('src')
                     yield {
                         'vendor': 'NordstromRack',
+                        'gender': 'Women',
                         'title': article.css('.product-grid-item__title ::text').get(),
                         'brand': article.css('.product-grid-item__brand ::text').get(),
                         'retail-price': article.css('.product-grid-item__retail-price del::text').get(),

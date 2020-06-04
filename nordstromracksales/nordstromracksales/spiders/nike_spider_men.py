@@ -20,8 +20,8 @@ options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
 
 
-class NikeSpider(scrapy.Spider):
-    name = "Nike"
+class NikeMenSpider(scrapy.Spider):
+    name = "NikeMen"
     start_urls = ["https://www.nike.com/w/mens-sale-3yaepznik1"]
 
 
@@ -68,6 +68,7 @@ class NikeSpider(scrapy.Spider):
                 image = imlist[i].get_attribute('src')
                 yield {
                     'vendor': 'Nike',
+                    'gender': 'Men',
                     'title': article.css('div.product-card__title ::text').get(),
                     'brand': 'Nike',
                     'retail-price': article.css('div.css-31z3ik ::text').get(),

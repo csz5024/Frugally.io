@@ -26,10 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/asos_spider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nike_spider.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/adidas_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +78,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -206,10 +204,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;NordstromRack scraping&quot;&#10;&#10;This reverts commit b7ea26b4" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590712717803">
+    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591152066918">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590712717803" />
+    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591152066918" />
     <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2" timestamp="1590858940049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
