@@ -569,19 +569,28 @@
 	}
 	.dropdown {
 		float: left;
-		overflow: hidden;	
+		overflow: hidden;
+		display: inline-block;	
 	}
 	.dropdown .dropbtn {
 		position: relative;
-		left: 120px;
+		left: 0px;
 		font-size: 12px;
 		border: none;
 		outline: none;
-		color: #777776;
+		color: #fff;
 		padding: 0px 0px;
-		background-color: inherit;
+		background-color: #0f1116;
 		font: inherit;
 		margin: 0;
+	}
+	.dropdown .dropbtn h1 {
+		font-size: 1.2em;
+		display: inline-block;
+		text-transform: uppercase;
+		width: 100%
+		color: white;
+		z-index: 999;
 	}
 	.dropdown-content {
 		display: none;
@@ -606,6 +615,10 @@
 		padding: 10px;
 		background-color: #fff;
 		height: 250px;
+	}
+	.columnD h2 {
+		color: #0f1116;
+		font-size: 12px;
 	}
 	.columnD a {
 		float: none;
@@ -722,7 +735,8 @@
 		width: 100%;
 		text-align: center;
 		text-decoration: none;
-		background-color: #0f1116;
+		background-color: #777776;
+		opacity: 0.75;
 		border-radius: 3px;
 		color: white;
 		padding: 0px 5px 0px;
@@ -747,8 +761,9 @@
 		z-index: 50;
 		top: 0px;
 		right: 0px;
-		border-top: 60px solid red;
+		border-top: 60px solid #c93030;
 		border-left: 60px solid transparent;
+		opacity: 0.75;
 	}
 	div#cardcontainer {
 		position: relative;
