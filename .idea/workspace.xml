@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:scraping" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bbb26ff9-f33f-49ef-9fa1-4f688a939663" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/adidas_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/middlewares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders/nordstromrack_spider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +67,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="1bpellY6NnljNS0gZ5Z0ZuQd6Vz" />
   <component name="ProjectViewState">
@@ -53,11 +77,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/nordstromracksales/nordstromracksales/spiders" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -130,34 +156,93 @@
       <option name="project" value="LOCAL" />
       <updated>1590715227726</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="NordstromRack scraping">
+      <created>1590858843592</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590858843592</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Revert &quot;NordstromRack scraping&quot;&#10;&#10;This reverts commit b7ea26b4">
+      <created>1590858940113</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1590858940113</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="scraping" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Alo&#10;Adding scraping" />
     <MESSAGE value="NordstromRack scraping" />
-    <option name="LAST_COMMIT_MESSAGE" value="NordstromRack scraping" />
+    <MESSAGE value="Revert &quot;NordstromRack scraping&quot;&#10;&#10;This reverts commit b7ea26b4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;NordstromRack scraping&quot;&#10;&#10;This reverts commit b7ea26b4" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590712717803">
+    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591152066918">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590712717803" />
-    <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2" timestamp="1590715227652">
+    <state x="308" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591152066918" />
+    <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2" timestamp="1590858940049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590715227652" />
+    <state x="478" y="121" width="794" height="833" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590858940049" />
     <state x="633" y="298" width="424" height="479" key="FileChooserDialogImpl" timestamp="1590712612716">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="633" y="298" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590712612716" />
+    <state width="1106" height="263" key="GridCell.Tab.0.bottom" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
+    <state width="1106" height="263" key="GridCell.Tab.0.center" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
+    <state width="1106" height="263" key="GridCell.Tab.0.left" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
+    <state width="1106" height="263" key="GridCell.Tab.0.right" timestamp="1591133807354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1106" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591133807354" />
     <state x="384" y="175" key="SettingsEditor" timestamp="1590712724378">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="384" y="175" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590712724378" />
-    <state x="475" y="276" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1590715239667">
+    <state x="475" y="276" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1590859087244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="475" y="276" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590715239667" />
+    <state x="475" y="276" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590859087244" />
+    <state x="523" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590859074970">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="523" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590859074970" />
   </component>
 </project>
