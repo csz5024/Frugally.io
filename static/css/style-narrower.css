@@ -165,7 +165,7 @@
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		.button:hover {
-			background: #c72e6a;
+			background: #0f1116;
 		}
 
 		input[type="submit"].alt,
@@ -295,3 +295,8 @@
 			padding-bottom: 1em;
 			font-size: 1em;
 		}
+
+/*Product Tiles*/
+	div#cardcontainer {
+		text-align: center;
+	}

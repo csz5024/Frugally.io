@@ -36,7 +36,6 @@
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
 							<h1><a href="/"><em>Frugally</em></a></h1>
-							<!--<span class="tag">-->
 							<!--
 							<div class="dropdown">
 								<button class="dropbtn" onclick="myFunction()">Filter <i class="fa fa-caret-down"></i></button>
@@ -53,12 +52,11 @@
 									</div>
 								</div>
 							</div>-->
-							<!--</span>-->
 						</div>
 						<nav id="nav">
 							<ul>
 								<li class="active"><a href="/">Homepage</a></li>
-								<li><a href="/login">Login</a></li>
+								<li><a href="#">Login</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -76,17 +74,18 @@
 								{% for j in range(itemsinrow) %}
 								{% if (itemsinrow*i+j) < items %}
 								<section class="4u">
-									<div class="cardcontainer">
+									<div id="cardcontainer">
+										<div class="img-top-left"><h1>Nordstrom</h1></div>
+										<div id="triangle-topright"></div>
+										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j].discount }}</h1></div>
 										<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j].img }} alt=""></a>
-										<!--<div class="img-top-left">Nordstrom</div>
-										<div class="img-top-right">-{{ objects[i*itemsinrow+j].discount }}</div>-->	
-										<div class="box">
-											<div class="boxp">
-												<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</p>
-											</div>
-											<p style="color:red"><del>{{objects[i*itemsinrow+j].original}}</del> ({{ objects[i*itemsinrow+j].discount }})</p>
-											<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="button">{{ objects[i*itemsinrow+j].price }}</a>
+									</div>
+									<div class="box">
+										<div class="boxp">
+											<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</p>
 										</div>
+										<p style="color:red"><del>{{objects[i*itemsinrow+j].original}}</del></p>
+										<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="button">{{ objects[i*itemsinrow+j].price }}</a>
 									</div>
 								</section>
 								{% endif %}

@@ -141,7 +141,7 @@ def getDiscount(objects):
 
     objects.sort(key=operator.attrgetter('discount'), reverse=True)
     for i in objects:
-        i.setDiscount(str(i.discount) + "% off")
+        i.setDiscount(str(i.discount) + "%")
 
     return objects
 
@@ -160,7 +160,11 @@ def getHighPrice(objects):
         else:
             price = 0
         objects[count].setPrice(price)
-        objects[count].setDiscount(item["discount"])
+        if(item['discount'] != None):
+            disc = item["discount"].split()
+        else:
+            disc = "-0%"
+        objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
         objects[count].setLink("nordstromrack.com"+item["link"])
@@ -190,7 +194,11 @@ def getLowPrice(objects):
         else:
             price = 0
         objects[count].setPrice(price)
-        objects[count].setDiscount(item["discount"])
+        if(item['discount'] != None):
+            disc = item["discount"].split()
+        else:
+            disc = "-0%"
+        objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
         objects[count].setLink("nordstromrack.com"+item["link"])
@@ -241,7 +249,11 @@ def getContent(objects):
         objects.append(listing())
         objects[count].setName(item["title"])
         objects[count].setPrice(item["price"])
-        objects[count].setDiscount(item["discount"])
+        if(item['discount'] != None):
+            disc = item["discount"].split()
+        else:
+            disc = "-0%"
+        objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
         objects[count].setLink("nordstromrack.com"+item["link"])
