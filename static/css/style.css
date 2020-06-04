@@ -815,7 +815,7 @@
 		-ms-user-select: none;
 		user-select: none;
 	}
-	.containerFilter inputFilter {
+	.containerFilter input {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
@@ -832,12 +832,12 @@
 		border-radius: 50%;
 	}
 	/* On mouse-over, add a grey background color */
-	.containerFilter:hover inputFilter ~ .radioCheck {
+	.containerFilter:hover input ~ .radioCheck {
 		background-color: #ccc;
 	}
 
 	/* When the radio button is checked, add a blue background */
-	.containerFilter inputFilter:checked ~ .radioCheck {
+	.containerFilter input:checked ~ .radioCheck {
 		background-color: #2196F3;
 	}
 
@@ -849,7 +849,7 @@
 	}
 
 	/* Show the indicator (dot/circle) when checked */
-	.containerFilter inputFilter:checked ~ .radioCheck:after {
+	.containerFilter input:checked ~ .radioCheck:after {
 		display: block;
 	}
 
@@ -874,12 +874,12 @@
 	}
 
 	/* On mouse-over, add a grey background color */
-	.containerFilter:hover inputFilter ~ .checkBox {
+	.containerFilter:hover input ~ .checkBox {
 		background-color: #ccc;
 	}
 
 	/* When the checkbox is checked, add a blue background */
-	.containerFilter inputFilter:checked ~ .checkBox {
+	.containerFilter input:checked ~ .checkBox {
 		background-color: #2196F3;
 	}
 
@@ -891,12 +891,12 @@
 	}
 
 	/* Show the checkmark when checked */
-	.containerFilter inputFilter:checked ~ .checkbox:after {
+	.containerFilter input:checked ~ .checkBox:after {
 		display: block;
 	}
 
 	/* Style the checkmark/indicator */
-	.containerFilter .checkbox:after {
+	.containerFilter .checkBox:after {
 		left: 9px;
 		top: 5px;
 		width: 5px;
