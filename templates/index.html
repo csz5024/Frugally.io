@@ -38,40 +38,39 @@
 							<div class="dropdown">
 								<button class="dropbtn" onclick="myFunction()"><h1><em>Frugally <i class="fa fa-caret-down"></i></em></h1></button>
 								<div class="dropdown-content" id="myDropdown">
+								<form id="filter" method="post" action="#">
 								<div class="headerD">
 									<h1>Filters</h1>
 									<div class="rowD">
 										<div class="columnD">
 											<h2>Sort</h2>
-											<label class="containerFilter">High
-											  <input type="checkbox" checked="checked">
+											<label class="containerFilter">Highest Price
+											  <input type="radio" name="high">
 											  <span class="radioCheck"></span>
 											</label>
 
-											<label class="containerFilter">Low
-											  <input type="checkbox">
+											<label class="containerFilter">Lowest Price
+											  <input type="radio" name="low">
+											  <span class="radioCheck"></span>
+											</label>
+											<label class="containerFilter">Best Discount
+											  <input type="radio" name="discount">
 											  <span class="radioCheck"></span>
 											</label>
 										</div>
 										<div class="columnD">
 											<h2>Brands</h2>
-											<label class="containerFilter">One
-											  <input type="checkbox" checked="checked">
+											{% for i in brands %}
+											<label class="containerFilter">{{ i }}
+											  <input type="checkbox" name="{{ i }}">
 											  <span class="checkBox"></span>
 											</label>
-
-											<label class="containerFilter">Two
-											  <input type="checkbox">
-											  <span class="checkBox"></span>
-											</label>
-
-											<label class="containerFilter">Three
-											  <input type="checkbox">
-											  <span class="checkBox"></span>
-											</label>
+											{% endfor %}
 										</div>
 									</div>
+									<input type="submit" value="Filter" class="button small" />
 								</div>
+								</form>
 								</div>
 							</div>
 						</div>

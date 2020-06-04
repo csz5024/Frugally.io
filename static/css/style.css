@@ -123,6 +123,10 @@
 		width: 70%;
 		margin: 0em auto;
 	}
+	form#filter {
+		width: 100%;
+		float: left;
+	}
 
 	input[type="text"],
 	input[type="password"],
@@ -570,11 +574,10 @@
 	.dropdown {
 		float: left;
 		overflow: hidden;
-		display: inline-block;	
+		display: inline-block;
+		z-index: 100;	
 	}
 	.dropdown .dropbtn {
-		position: relative;
-		left: 0px;
 		font-size: 12px;
 		border: none;
 		outline: none;
@@ -598,8 +601,8 @@
 		background-color: #fff;
 		width: 100%;
 		left: 0;
-		box-shadown: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		z-index: 1;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 100;
 	}
 	.dropdown-content .headerD {
 		background: #0f1116;
@@ -615,6 +618,7 @@
 		padding: 10px;
 		background-color: #fff;
 		height: 250px;
+		overflow: scroll;
 	}
 	.columnD h2 {
 		color: #0f1116;
@@ -726,7 +730,7 @@
 	}
 	.img-top-left {
 		position: absolute;
-		z-index: 999;
+		z-index: 25;
 		margin: 0 auto;
 		top: 0px;
 		left: 0px;
@@ -743,7 +747,7 @@
 	}
 	.img-top-right {
 		position: absolute;
-		z-index: 999;
+		z-index: 25;
 		top: 0px;
 		right: 0px;
 	}
@@ -758,7 +762,7 @@
 		position: absolute;
 		width: 0px;
 		height: 0px;
-		z-index: 50;
+		z-index: 20;
 		top: 0px;
 		right: 0px;
 		border-top: 60px solid #c93030;
@@ -809,7 +813,8 @@
 		padding-left: 35px;
 		margin-bottom: 12px;
 		cursor: pointer;
-		font-size: 22px;
+		font-size: 12px;
+		color: #0f1116;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
@@ -826,8 +831,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 25px;
-		width: 25px;
+		height: 20px;
+		width: 20px;
 		background-color: #eee;
 		border-radius: 50%;
 	}
@@ -838,25 +843,25 @@
 
 	/* When the radio button is checked, add a blue background */
 	.containerFilter input:checked ~ .radioCheck {
-		background-color: #2196F3;
+		background-color: #0f1116;
 	}
 
-	/* Create the indicator (the dot/circle - hidden when not checked) */
+	/* Create the indicator (the circle - hidden when not checked) */
 	.radioCheck:after {
 		content: "";
 		position: absolute;
 		display: none;
 	}
 
-	/* Show the indicator (dot/circle) when checked */
+	/* Show the indicator (circle) when checked */
 	.containerFilter input:checked ~ .radioCheck:after {
 		display: block;
 	}
 
-	/* Style the indicator (dot/circle) */
+	/* Style the indicator (circle) */
 	.containerFilter .radioCheck:after {
-		top: 9px;
-		left: 9px;
+		top: 6px;
+		left: 6px;
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
@@ -868,8 +873,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 25px;
-		width: 25px;
+		height: 20px;
+		width: 20px;
 		background-color: #eee;
 	}
 
@@ -880,10 +885,10 @@
 
 	/* When the checkbox is checked, add a blue background */
 	.containerFilter input:checked ~ .checkBox {
-		background-color: #2196F3;
+		background-color: #0f1116;
 	}
 
-	/* Create the checkmark/indicator (hidden when not checked) */
+	/* Create the checkmarkindicator (hidden when not checked) */
 	.checkBox:after {
 		content: "";
 		position: absolute;
@@ -895,10 +900,10 @@
 		display: block;
 	}
 
-	/* Style the checkmark/indicator */
+	/* Style the checkmarkindicator */
 	.containerFilter .checkBox:after {
-		left: 9px;
-		top: 5px;
+		left: 8px;
+		top: 4px;
 		width: 5px;
 		height: 10px;
 		border: solid white;
