@@ -146,6 +146,7 @@
 		text-decoration: none;
 		width: 100%;
 		border-radius: 6px;
+		z-index: 200;
 	}
 
 		input[type="text"]:focus,
@@ -163,6 +164,7 @@
 	input[type="password"],
 	input[type="email"] {
 		line-height: 1em;
+		z-index: 200;
 	}
 
 	::-webkit-input-placeholder {
@@ -224,7 +226,7 @@
 		}
 
 			.image.featured img {
-				positon: absolute;
+				position: relative;
 				display: block;
 				max-width: 100%;
 				height: auto;
@@ -541,6 +543,12 @@
 		display: inline-block;
 		text-transform: uppercase;
 	}
+	#logo form {
+		display: inline-flex;
+	}
+	input#filter:hover {
+		background-color: #eee;
+	}
 
 /* Navigation */
 
@@ -591,7 +599,7 @@
 		font-size: 1.2em;
 		display: inline-block;
 		text-transform: uppercase;
-		width: 100%
+		width: 100%;
 		color: white;
 		z-index: 999;
 	}
@@ -717,7 +725,7 @@
 /* Box */
 
 	.box {
-		/*padding: 1em 1em;*/
+		padding: 1em 3em 1em 0em;
 		background: #FFF;
 		text-align: center;
 		/*border: 1px solid #777776;*/
@@ -732,7 +740,7 @@
 		position: absolute;
 		z-index: 25;
 		margin: 0 auto;
-		top: 0px;
+		bottom: 0px;
 		left: 0px;
 	}
 	.img-top-left h1 {
@@ -752,7 +760,7 @@
 		right: 0px;
 	}
 	.img-top-right h1 {
-		width: 100%
+		width: 100%;
 		text-align: center;
 		text-decoration: none;
 		color: white;
@@ -765,12 +773,13 @@
 		z-index: 20;
 		top: 0px;
 		right: 0px;
-		border-top: 60px solid #c93030;
-		border-left: 60px solid transparent;
+		border-top: 70px solid #c93030;
+		border-left: 70px solid transparent;
 		opacity: 0.75;
 	}
 	div#cardcontainer {
 		position: relative;
+		text-align: center;
 		display: inline-block;
 	}
 	div#cardcontainer a {

@@ -26,34 +26,37 @@ def index():
     itemsperpage = 16
     page = 0
     brands = getBrands(objects)
+    vendors = ["Nordstrom", "Nike"]
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
 
-@app.route('/<num>', methods=['POST'])
+@app.route('/', methods=['POST'])
 def feedback():
 
-    # from the suggestions box in footer
+    formid = request.form.get("homepage","")
 
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
+    # Send email (gmail disabled our account for some reason)
+    if(formid == "2"):
 
-    data = {}
-    data['name'] = name
-    data['email'] = email
-    data['message'] = message
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
 
-    # sends to gmail
-    sendMail(email, name, message)
+        # sends to gmail
+        sendMail(email, name, message)
+
+    elif(formid == "1"):
+        radio = request.form['radio']
+        return returnFilter(radio)
 
     return redirect("http://frugally.io", code=302)
 
-@app.route('/low')
+@app.route('/low', methods=["POST"])
 def sortLow():
 
     objects = []
@@ -63,14 +66,15 @@ def sortLow():
     itemsperpage = 16
     page = 0
     brands = getBrands(objects)
+    vendors = ["Nordstrom", "Nike"]
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
-@app.route('/high')
+@app.route('/high', methods=["POST"])
 def sortHigh():
 
     objects = []
@@ -80,14 +84,15 @@ def sortHigh():
     itemsperpage = 16
     page = 0
     brands = getBrands(objects)
+    vendors = ["Nordstrom", "Nike"]
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
-@app.route('/discount')
+@app.route('/discount', methods=["POST"])
 def sortDiscount():
 
     objects = []
@@ -97,11 +102,12 @@ def sortDiscount():
     itemsperpage = 16
     page = 0
     brands = getBrands(objects)
+    vendors = ["Nordstrom", "Nike"]
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
 #login page
@@ -110,6 +116,17 @@ def login():
     return render_template('login.html')
 
 #Filters
+
+def returnFilter(radio):
+    if(radio == "High"):
+        return redirect("http://frugally.io/high", code=302)
+    elif(radio == "Low"):
+        return redirect("http://frugally.io/low", code=302)
+    elif(radio == "Discount"):
+        return redirect("http://frugally.io/discount", code=302)
+    else:
+        return redirect("http://frugally.io", code=302)
+
 
 #IMPORTANT must be used after one of the other filters (objects should already be populated)
 def getBrands(objects):
@@ -136,7 +153,11 @@ def getDiscount(objects):
         objects[count].setDiscount(dis)
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink("nordstromrack.com"+item["link"])
+        if(count>=10542):
+            objects[count].setLink(item["link"])
+        else:
+            objects[count].setLink("nordstromrack.com"+item["link"])
+
         objects[count].setImg(item["image-link"])
 
     objects.sort(key=operator.attrgetter('discount'), reverse=True)
@@ -167,7 +188,11 @@ def getHighPrice(objects):
         objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink("nordstromrack.com"+item["link"])
+        if(count>=10542):
+            objects[count].setLink(item["link"])
+        else:
+            objects[count].setLink("nordstromrack.com"+item["link"])
+
         objects[count].setImg(item["image-link"])
 
     objects.sort(key=operator.attrgetter('price'), reverse=True)
@@ -201,7 +226,11 @@ def getLowPrice(objects):
         objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink("nordstromrack.com"+item["link"])
+        if(count>=10542):
+            objects[count].setLink(item["link"])
+        else:
+            objects[count].setLink("nordstromrack.com"+item["link"])
+
         objects[count].setImg(item["image-link"])
 
     objects.sort(key=operator.attrgetter('price'))
@@ -256,7 +285,10 @@ def getContent(objects):
         objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink("nordstromrack.com"+item["link"])
+        if(count>=10542):
+            objects[count].setLink(item["link"])
+        else:
+            objects[count].setLink("nordstromrack.com"+item["link"])
 
         #images and links are not right in json
         objects[count].setImg(item["image-link"])

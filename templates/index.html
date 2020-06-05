@@ -27,7 +27,7 @@
 				<!-- Banner -->
 					<div id="banner" class="container">
 						<section>
-							<p style="color:0f1116"><strong>Frugally</strong>, a smarter shopping experience.</p>
+							<p><strong>Frugally</strong>, a smarter shopping experience.</p>
 						</section>
 					</div>
 
@@ -35,26 +35,27 @@
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
+							<form method="post" action="#">
+							<input id="filter" value="1" type="hidden" name="homepage" />
 							<div class="dropdown">
 								<button class="dropbtn" onclick="myFunction()"><h1><em>Frugally <i class="fa fa-caret-down"></i></em></h1></button>
 								<div class="dropdown-content" id="myDropdown">
-								<form id="filter" method="post" action="#">
 								<div class="headerD">
 									<h1>Filters</h1>
 									<div class="rowD">
 										<div class="columnD">
 											<h2>Sort</h2>
 											<label class="containerFilter">Highest Price
-											  <input type="radio" name="high">
+											  <input type="radio" name="radio" id="1" value="High">
 											  <span class="radioCheck"></span>
 											</label>
 
 											<label class="containerFilter">Lowest Price
-											  <input type="radio" name="low">
+											  <input type="radio" name="radio" id="2" value="Low">
 											  <span class="radioCheck"></span>
 											</label>
 											<label class="containerFilter">Best Discount
-											  <input type="radio" name="discount">
+											  <input type="radio" name="radio" id="3" value="Discount">
 											  <span class="radioCheck"></span>
 											</label>
 										</div>
@@ -62,17 +63,52 @@
 											<h2>Brands</h2>
 											{% for i in brands %}
 											<label class="containerFilter">{{ i }}
-											  <input type="checkbox" name="{{ i }}">
+											  <input type="checkbox" name="{{ i }}" id=2>
 											  <span class="checkBox"></span>
 											</label>
 											{% endfor %}
 										</div>
+										<div class="columnD">
+											<h2>Vendors</h2>
+											{% for i in vendors %}
+											<label class="containerFilter">{{ i }}
+											  <input type="checkbox" name="{{ i }}" id="2">
+											  <span class="checkBox"></span>
+											</label>
+											{% endfor %}
+										</div>	
+									</div>
+									<h1>More Filters</h1>
+									<div class="rowD">
+										<div class="columnD">
+											<h2>Gender</h2>
+											<label class="containerFilter">Men's
+											  <input type="radio" name="radio2" id="4">
+											  <span class="radioCheck"></span>
+											</label>
+
+											<label class="containerFilter">Women's
+											  <input type="radio" name="radio2" id="5">
+											  <span class="radioCheck"></span>
+											</label>
+											<label class="containerFilter">All
+											  <input type="radio" name="radio2" id="6">
+											  <span class="radioCheck"></span>
+											</label>
+										</div>
+										<div class="columnD">
+											<h2>Price Range</h2>
+											<label class="containerFilter">
+											  <input class="text" type="text" name="rangeLow" id="rangeLow" placeholder="Low" />
+											  <input class="text" type="text" name="rangeHigh" id="rangeHigh" placeholder="High" />
+											</label>		
+										</div>
 									</div>
 									<input type="submit" value="Filter" class="button small" />
 								</div>
-								</form>
 								</div>
 							</div>
+							</form>
 						</div>
 						<nav id="nav">
 							<ul>
@@ -85,11 +121,11 @@
 				<!-- Products -->
 					<div id="extra">
 						<div class="container small">
-							<div class="btnContainer">
+							<!--<div class="btnContainer">
 								<a href="/high" class="button small">Highest Price</a>
 								<a href="/low" class="button small">Lowest Price</a>
 								<a href="/discount" class="button small">Best Discount</a>
-							</div>
+							</div>-->
 							{% for i in range(pagination.per_page*(pagination.page-1), pagination.per_page*(pagination.page-1) + pagination.per_page) %}
 							<div class="row no-collapse-1">
 								{% for j in range(itemsinrow) %}
@@ -130,6 +166,7 @@
 						<h2>Contact Us</h2>
 					</header>
 					<form method="post" action="#">
+						<input value="2" type="hidden" name="homepage">
 						<div class="row half">
 							<div class="12u">
 								<input class="text" type="text" name="name" id="name" placeholder="Name" />

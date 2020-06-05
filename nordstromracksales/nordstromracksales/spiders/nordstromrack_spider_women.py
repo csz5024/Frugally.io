@@ -17,7 +17,7 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
+driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
 
 class NordstromRackWomenSpider(scrapy.Spider):
@@ -34,7 +34,7 @@ class NordstromRackWomenSpider(scrapy.Spider):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
 
-        self.driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
+        self.driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
         iter = 1
 
