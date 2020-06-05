@@ -49,14 +49,16 @@ def feedback():
 
         # sends to gmail
         sendMail(email, name, message)
+        return redirect('http://frugally.io', code=302)
 
     elif(formid == "1"):
-        radio = request.form['radio']
+        radio = request.form.get('radio')
         return returnFilter(radio)
 
-    return redirect("http://frugally.io", code=302)
+    else:
+    	return redirect("http://frugally.io", code=302)
 
-@app.route('/low', methods=["POST"])
+@app.route('/low', methods=["GET", "POST"])
 def sortLow():
 
     #POST
@@ -74,7 +76,7 @@ def sortLow():
             sendMail(email, name, message)
 
         elif(formid == "1"):
-            radio = request.form['radio']
+            radio = request.form.get('radio')
             return returnFilter(radio)
     else:
         objects = []
@@ -92,7 +94,7 @@ def sortLow():
         return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
     return redirect('https://frugally.io', code=302)
 
-@app.route('/high', methods=["POST"])
+@app.route('/high', methods=["GET", "POST"])
 def sortHigh():
 
     #POST
@@ -110,8 +112,8 @@ def sortHigh():
             sendMail(email, name, message)
 
         elif(formid == "1"):
-            radio = request.form['radio']
-            return returnFilter(radio)    
+            radio = request.form.get('radio')
+            return returnFilter(radio)
     else:
         objects = []
         itemsinrow = 3
@@ -128,7 +130,7 @@ def sortHigh():
         return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
     return redirect('https://frugally.io', code=302)
 
-@app.route('/discount', methods=["POST"])
+@app.route('/discount', methods=["GET", "POST"])
 def sortDiscount():
 
     #POST
@@ -146,9 +148,8 @@ def sortDiscount():
             sendMail(email, name, message)
 
         elif(formid == "1"):
-            radio = request.form['radio']
+            radio = request.form.get('radio')
             return returnFilter(radio)
-    
     else:
         objects = []
         itemsinrow = 3
@@ -173,13 +174,10 @@ def login():
 #Filters
 
 def returnFilter(radio):
-    if(radio == "High"):
-        return redirect("http://frugally.io/high", code=302)
-    elif(radio == "Low"):
-        return redirect("http://frugally.io/low", code=302)
-    elif(radio == "Discount"):
-        return redirect("http://frugally.io/discount", code=302)
-    else:
+    try:
+        radio = radio.lower()
+        return redirect("http://frugally.io/"+radio, code=302)
+    except:
         return redirect("http://frugally.io", code=302)
 
 
