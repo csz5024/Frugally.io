@@ -7,9 +7,12 @@ import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import base64
 from datetime import datetime, timedelta
 from threading import Timer
+import operator
+import locale
+from flask_paginate import Pagination, get_page_parameter
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
@@ -20,12 +23,18 @@ def index():
     itemsinrow = 3
     objects = getContent(objects)
     items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items)
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
 
 
 
-@app.route('/', methods=['POST'])
+@app.route('/<num>', methods=['POST'])
 def feedback():
 
     # from the suggestions box in footer
@@ -41,26 +50,168 @@ def feedback():
 
     # sends to gmail
     sendMail(email, name, message)
-    #status = sendMail(email, name, message)
-    #data['status'] = status
 
-    # appends suggestions to json file
-    '''
-    with open('/var/www/Frugally/Frugally/Suggestions.json') as jfile:
-        old = json.load(jfile)
-        tmp = old
-        tmp.append(data)
-
-    with open('/var/www/Frugally/Frugally/Suggestions.json', 'w') as outfile:
-        json.dump(tmp, outfile, indent=4)
-    '''
     return redirect("http://frugally.io", code=302)
+
+@app.route('/low')
+def sortLow():
+
+    objects = []
+    itemsinrow = 3
+    objects = getLowPrice(objects)
+    items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
+
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+
+
+@app.route('/high')
+def sortHigh():
+
+    objects = []
+    itemsinrow = 3
+    objects = getHighPrice(objects)
+    items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
+
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+
+
+@app.route('/discount')
+def sortDiscount():
+
+    objects = []
+    itemsinrow = 3
+    objects = getDiscount(objects)
+    items = len(objects)
+    itemsperpage = 16
+    page = 0
+    brands = getBrands(objects)
+
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
 
 
 #login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+
+#Filters
+
+#IMPORTANT must be used after one of the other filters (objects should already be populated)
+def getBrands(objects):
+    brands = []
+    for i in objects:
+        if(i.brand not in brands):
+            brands.append(i.brand)
+    brands.sort()
+    return brands
+
+def getDiscount(objects):
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
+        data = json.load(f)
+
+    for count, item in enumerate(data):
+        objects.append(listing())
+        objects[count].setName(item["title"])
+        objects[count].setPrice(item["price"])
+        if(item["discount"] != None):
+            dis = item["discount"].split("%")
+            dis = int(dis[0])
+        else:
+            dis = 0
+        objects[count].setDiscount(dis)
+        objects[count].setBrand(item["brand"])
+        objects[count].setOriginal(item["retail-price"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setImg(item["image-link"])
+
+    objects.sort(key=operator.attrgetter('discount'), reverse=True)
+    for i in objects:
+        i.setDiscount(str(i.discount) + "%")
+
+    return objects
+
+def getHighPrice(objects):
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
+        data = json.load(f)
+
+    for count, item in enumerate(data):
+        objects.append(listing())
+        objects[count].setName(item["title"])
+        if(item["price"] != None):
+            if(len(item["price"][1:]) > 6):
+                price = float(item["price"][1:].replace(',',''))
+            else:
+                price = float(item["price"][1:])
+        else:
+            price = 0
+        objects[count].setPrice(price)
+        if(item['discount'] != None):
+            disc = item["discount"].split()
+        else:
+            disc = "-0%"
+        objects[count].setDiscount(disc[0])
+        objects[count].setBrand(item["brand"])
+        objects[count].setOriginal(item["retail-price"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setImg(item["image-link"])
+
+    objects.sort(key=operator.attrgetter('price'), reverse=True)
+    for i in objects:
+        if(i.price == 0):
+            i.setPrice("See Price in Cart")
+        else:
+            i.setPrice("$"+str(i.price))
+
+    return objects
+
+def getLowPrice(objects):
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
+        data = json.load(f)
+
+    for count, item in enumerate(data):
+        objects.append(listing())
+        objects[count].setName(item["title"])
+        if(item["price"] != None):
+            if(len(item["price"][1:]) > 6):
+                price = float(item["price"][1:].replace(',',''))
+            else:
+                price = float(item["price"][1:])
+        else:
+            price = 0
+        objects[count].setPrice(price)
+        if(item['discount'] != None):
+            disc = item["discount"].split()
+        else:
+            disc = "-0%"
+        objects[count].setDiscount(disc[0])
+        objects[count].setBrand(item["brand"])
+        objects[count].setOriginal(item["retail-price"])
+        objects[count].setLink("nordstromrack.com"+item["link"])
+        objects[count].setImg(item["image-link"])
+
+    objects.sort(key=operator.attrgetter('price'))
+    for i in objects:
+        if(i.price == 0):
+            i.setPrice("See Price in Cart")
+        else:
+            i.setPrice("$"+str(i.price))
+
+    return objects
 
 
 # Sends email from burner gmail to frugally gmail
@@ -91,14 +242,18 @@ def getContent(objects):
     #os.getcwd()
     #os.chdir("scraping")
 
-    with open('/var/www/Frugally/Frugally/scraping/NordstromRack.json') as f:
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRack.json') as f:
         data = json.load(f)
 
     for count, item in enumerate(data):
         objects.append(listing())
         objects[count].setName(item["title"])
         objects[count].setPrice(item["price"])
-        objects[count].setDiscount(item["discount"])
+        if(item['discount'] != None):
+            disc = item["discount"].split()
+        else:
+            disc = "-0%"
+        objects[count].setDiscount(disc[0])
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
         objects[count].setLink("nordstromrack.com"+item["link"])
@@ -117,7 +272,7 @@ def globalTimer():
     secs = delta_t.total_seconds()
 
     def updateContent():
-        os.system("cd /var/www/Frugally/Frugally/scraping")
+        os.system("cd /var/www/Frugally/Frugally/nordstromracksales")
         os.system("sudo rm NordstromRack.json")
         os.system("sudo scrapy crawl NordstromRack -o NordstromRack.json")
         return "success"
