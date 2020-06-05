@@ -59,56 +59,111 @@ def feedback():
 @app.route('/low', methods=["POST"])
 def sortLow():
 
-    objects = []
-    itemsinrow = 3
-    objects = getLowPrice(objects)
-    items = len(objects)
-    itemsperpage = 16
-    page = 0
-    brands = getBrands(objects)
-    vendors = ["Nordstrom", "Nike"]
+    #POST
+    if(request.method == 'POST'):
+        formid = request.form.get("homepage","")
 
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+        # Send email (gmail disabled our account for some reason)
+        if(formid == "2"):
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+            name = request.form['name']
+            email = request.form['email']
+            message = request.form['message']
 
+            # sends to gmail
+            sendMail(email, name, message)
+
+        elif(formid == "1"):
+            radio = request.form['radio']
+            return returnFilter(radio)
+    else:
+        objects = []
+        itemsinrow = 3
+        objects = getLowPrice(objects)
+        items = len(objects)
+        itemsperpage = 16
+        page = 0
+        brands = getBrands(objects)
+        vendors = ["Nordstrom", "Nike"]
+
+        page = request.args.get(get_page_parameter(), type=int, default=1)
+        pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+    return redirect('https://frugally.io', code=302)
 
 @app.route('/high', methods=["POST"])
 def sortHigh():
 
-    objects = []
-    itemsinrow = 3
-    objects = getHighPrice(objects)
-    items = len(objects)
-    itemsperpage = 16
-    page = 0
-    brands = getBrands(objects)
-    vendors = ["Nordstrom", "Nike"]
+    #POST
+    if(request.method == 'POST'):
+        formid = request.form.get("homepage","")
 
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+        # Send email (gmail disabled our account for some reason)
+        if(formid == "2"):
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+            name = request.form['name']
+            email = request.form['email']
+            message = request.form['message']
 
+            # sends to gmail
+            sendMail(email, name, message)
+
+        elif(formid == "1"):
+            radio = request.form['radio']
+            return returnFilter(radio)    
+    else:
+        objects = []
+        itemsinrow = 3
+        objects = getHighPrice(objects)
+        items = len(objects)
+        itemsperpage = 16
+        page = 0
+        brands = getBrands(objects)
+        vendors = ["Nordstrom", "Nike"]
+
+        page = request.args.get(get_page_parameter(), type=int, default=1)
+        pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+    return redirect('https://frugally.io', code=302)
 
 @app.route('/discount', methods=["POST"])
 def sortDiscount():
 
-    objects = []
-    itemsinrow = 3
-    objects = getDiscount(objects)
-    items = len(objects)
-    itemsperpage = 16
-    page = 0
-    brands = getBrands(objects)
-    vendors = ["Nordstrom", "Nike"]
+    #POST
+    if(request.method == 'POST'):
+        formid = request.form.get("homepage","")
 
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+        # Send email (gmail disabled our account for some reason)
+        if(formid == "2"):
 
-    return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+            name = request.form['name']
+            email = request.form['email']
+            message = request.form['message']
 
+            # sends to gmail
+            sendMail(email, name, message)
+
+        elif(formid == "1"):
+            radio = request.form['radio']
+            return returnFilter(radio)
+    
+    else:
+        objects = []
+        itemsinrow = 3
+        objects = getDiscount(objects)
+        items = len(objects)
+        itemsperpage = 16
+        page = 0
+        brands = getBrands(objects)
+        vendors = ["Nordstrom", "Nike"]
+
+        page = request.args.get(get_page_parameter(), type=int, default=1)
+        pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
+
+        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+    return redirect('https://frugally.io', code=302)
 
 #login page
 @app.route('/login', methods=['GET', 'POST'])
