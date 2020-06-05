@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
 
 
 options = webdriver.ChromeOptions()
@@ -36,32 +37,46 @@ class PatagoniaMenSpider(scrapy.Spider):
 
         self.driver = webdriver.Chrome(executable_path="/home/roger/chromedriver.exe", chrome_options=options)
 
+        url = "https://www.patagonia.com/on/demandware.store/Sites-patagonia-us-Site/en_US/Search-UpdateGrid?cgid=web-specials-mens&amp;start=64&amp;sz=1000"
+        self.driver.get(url)
+
         iter = 1
 
-        while True:
+        WebDriverWait(self.driver, 2)
 
-            url = "https://www.patagonia.com/shop/web-specials-mens"
-            self.driver.get(url)
+        #last_height = self.driver.execute_script("return document.body.scrollHeight")
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        WebDriverWait(self.driver, 2)
+
+        element = self.driver.find_element_by_xpath('/html/body/div[65]/div[1]/div/button')
+
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        actions = ActionChains(self.driver)
+
+        actions.move_to_element(element).perform()
+
+        WebDriverWait(self.driver, 2)
+
+        actions.click(element).perform()
+        #element.click()
+
+        WebDriverWait(self.driver, 2)
+
+        last_height = self.driver.execute_script("return document.body.scrollHeight")
+
+        while True:
             numitems = 0\
 
             WebDriverWait(self.driver, 2)
-
-
-            last_height = self.driver.execute_script("return document.body.scrollHeight")
-            new_height = 0
-
-            #element = self.driver.find_element_by_class_name('button.btn.btn-lg.btn-dark')
-
-            #actions = ActionChains(self.driver)
-
-            #actions.move_to_element(element).perform()
 
             print('here')
             #print(element)
 
             WebDriverWait(self.driver, 2)
 
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            #self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             WebDriverWait(self.driver, 2)
 
@@ -71,27 +86,29 @@ class PatagoniaMenSpider(scrapy.Spider):
 
             scraplist = scrapy_selector.css('div.product-tile__wrapper')
 
-            data = self.driver.find_element_by_class_name('container.search-results')
-            imlist = data.find_elements_by_tag_name('img')
-
             for i in range(0,len(response.css('div.product-tile__wrapper'))):
                 article = scraplist[i]
-                image = imlist[i].get_attribute('src')
                 yield {
                     'vendor': 'Patagonia',
                     'title': article.css('h4.product-tile__name ::text').get(),
                     'brand': 'Patagonia',
-                    'retail-price': article.css('span.strike-through.list ::text').get(),
-                    'price': article.css('span.sales ::text').get(),
+                    'retail-price': article.css('span.value ::text').getall()[0],
+                    'price': article.css('span.value ::text').getall()[1],
                     'discount': None,
-                    'image-link': article.css('.product-tile__image img::attr(src)').getall(),
+                    'image-link': article.css('.product-tile__image img::attr(data-src)').get(),
                     'link': 'https://patagonia.com' + article.css('.product-tile__image a::attr(href)').get()
                 }
             iter += 1
             print(iter)
-            break
+
+            element.click()
 
             #if element is None:
             #    print('now')
             #    break
+            new_height = self.driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                break
+            last_height = new_height
+
             print(numitems)

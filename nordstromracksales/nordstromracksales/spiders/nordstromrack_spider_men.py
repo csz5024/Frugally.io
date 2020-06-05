@@ -75,9 +75,9 @@ class NordstromRackMenSpider(scrapy.Spider):
             imlist = data.find_elements_by_tag_name('img')
 
             for i in range(0,len(response.css('div.product-grid-item'))):
+                article = scraplist[i]
                 discount = article.css('.product-grid-item__sale-price-discount ::text').get()
                 if discount is not None:
-                    article = scraplist[i]
                     image = imlist[i*2].get_attribute('src')
                     yield {
                         'vendor': 'NordstromRack',
