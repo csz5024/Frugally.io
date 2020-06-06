@@ -1,7 +1,16 @@
 # Frugally.io
 Frugally.io
 
+iptables:
+Need to edit on physical server restart
+```
+iptables-save > iptables.dump
+iptables-restore < iptables.dump
 
+iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
+iptables -D INPUT 5
+iptables -L
+```
 
 frugally.wsgi
 ```
