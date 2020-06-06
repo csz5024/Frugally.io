@@ -72,7 +72,7 @@
 											<h2>Vendors</h2>
 											{% for i in vendors %}
 											<label class="containerFilter">{{ i }}
-											  <input type="checkbox" name="{{ i }}" id="2">
+											  <input type="checkbox" name="vendors" id="2" value="{{ i }}">
 											  <span class="checkBox"></span>
 											</label>
 											{% endfor %}
