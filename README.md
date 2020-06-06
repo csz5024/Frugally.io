@@ -1,6 +1,8 @@
 # Frugally.io
 Frugally.io
 
+Need to update SSL certificates every 60 days
+
 iptables:
 Need to edit on physical server restart
 ```
