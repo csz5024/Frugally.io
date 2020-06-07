@@ -16,6 +16,15 @@ from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
+@app.before_request
+def before_request():
+    if(request.url.startswith('http://')):
+        url = request.url.replace('http://', 'https://', 1)
+        code = 301
+        app.logger.info("HTTPS redirect")
+        return redirect(url,code=code)
+
+
 @app.route('/')
 def index():
 
@@ -167,6 +176,7 @@ def sortDiscount(filters):
             vendorfilter = request.form.getlist('vendors')
             return returnFilter(radio, gender, vendorfilter)
     else:
+        app.logger.info("Discount here")
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
         nike = getNikeContent()
@@ -201,10 +211,12 @@ def returnFilter(radio, gender, vendors):
         return redirect("http://frugally.io", code=302)
 
 def parseFilter(filter):
-    options = filter.split('+')
+    with open('/var/www/Frugally/Frugally/debug.json', 'w') as outfile:
+        json.dump({"filter": str(filter)}, outfile)
+    options = filter.split('%2B')
     values = []
     for i in options:
-        values.append(i.split('='))
+        values.append(i.split('%3D'))
         if(values[-1][0] == 'vendors'):
             vends = values[-1].pop(-1)
             values[-1].append(vends.split('_'))
@@ -653,4 +665,4 @@ class listing:
 
 if __name__ == '__main__':
     globalTimer()
-    app.run(debug=True)
+    app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'), debug=True)
