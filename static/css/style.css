@@ -580,7 +580,7 @@
 		color: #fff;
 	}
 	.dropdown {
-		float: left;
+		/*float: left;*/
 		overflow: hidden;
 		display: inline-block;
 		z-index: 100;	

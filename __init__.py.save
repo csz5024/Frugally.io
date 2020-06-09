@@ -53,7 +53,7 @@ def feedback():
 
     formid = request.form.get("homepage","")
 
-    # Send email
+    # Send email (gmail disabled our account for some reason)
     if(formid == "2"):
 
         name = request.form['name']
@@ -68,9 +68,7 @@ def feedback():
         radio = request.form.get('radio')
         gender = request.form.get('radio2')
         vendorfilter = request.form.getlist('vendorsBox')
-        brands = request.form.getlist('brandsBox')
-        #app.logger.info(brands)
-        return returnFilter(radio, gender, vendorfilter, brands)
+        return returnFilter(radio, gender, vendorfilter)
 
     else:
     	return redirect("http://frugally.io", code=302)
@@ -96,14 +94,14 @@ def sortLow(filters):
         elif(formid == "1"):
             radio = request.form.get('radio')
             gender = request.form.get('radio2')
-            vendorfilter = request.form.getlist('vendorsBox')
+            vendorfilter = request.form.getlist('vendors')
             return returnFilter(radio, gender, vendorfilter)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
         nike = getNikeContent()
         itemsinrow = 3
-        objects = getPrice(nordstrom+nike, options, highlow=False)
+        objects = getLowPrice(nordstrom+nike, options)
         items = len(objects)
         itemsperpage = 16
         page = 0
@@ -135,14 +133,14 @@ def sortHigh(filters):
         elif(formid == "1"):
             radio = request.form.get('radio')
             gender = request.form.get('radio2')
-            vendorfilter = request.form.getlist('vendorsBox')
+            vendorfilter = request.form.getlist('vendors')
             return returnFilter(radio, gender, vendorfilter)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
         nike = getNikeContent()
         itemsinrow = 3
-        objects = getPrice(nordstrom+nike, options, highlow=True)
+        objects = getHighPrice(nordstrom+nike, options)
         items = len(objects)
         itemsperpage = 16
         page = 0
@@ -172,14 +170,15 @@ def sortDiscount(filters):
             # sends to gmail
             sendMail(email, name, message)
 
-        #redirect
         elif(formid == "1"):
             radio = request.form.get('radio')
             gender = request.form.get('radio2')
-            vendorfilter = request.form.getlist('vendorsBox')
+            vendorfilter = request.form.getlist('vendors')
             return returnFilter(radio, gender, vendorfilter)
     else:
+        #app.logger.info("%s" % filters)
         options = parseFilter(filters)
+        #app.logger.info("%s" % options)
         nordstrom = getNordstromContent()
         nike = getNikeContent()
         itemsinrow = 3
@@ -202,20 +201,13 @@ def login():
     return render_template('login.html')
 
 #Filters
-def returnFilter(radio, gender, vendors, brands):
+def returnFilter(radio, gender, vendors):
     try:
         radio = radio.lower()
         filterstring = "gender="+gender+"+vendors="
         for i in vendors:
            filterstring = filterstring+str(i)+"_"
-        if(filterstring[-1] != '='):
-            filterstring = filterstring[:-1]
-        filterstring=filterstring+"+brands="
-        for i in brands:
-           filterstring = filterstring+str(i)+"_"
-        if(filterstring[-1] != "="):
-            filterstring = filterstring[:-1]
-        return redirect(("http://frugally.io/"+radio+"/"+filterstring), code=302)
+        return redirect(("http://frugally.io/"+radio+"/"+filterstring)[:-1], code=302)
     except:
         return redirect("http://frugally.io", code=302)
 
@@ -225,17 +217,8 @@ def parseFilter(filter):
     for i in options:
         values.append(i.split('='))
         if(values[-1][0] == 'vendors'):
-            if(len(values[-1]) == 1):
-                values[-1].append([])
-            else:
-                vends = values[-1].pop(-1)
-                values[-1].append(vends.split('_'))
-        if(values[-1][0] == 'brands'):
-            if(len(values[-1]) == 1):
-                values[-1].append([])
-            else:
-                brands = values[-1].pop(-1)
-                values[-1].append(brands.split('_'))
+            vends = values[-1].pop(-1)
+            values[-1].append(vends.split('_'))
     return values
 
 
@@ -249,31 +232,18 @@ def getBrands(objects):
     brands.sort()
     return brands
 
-#Finished for now
 def getDiscount(products, filters):
     #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]]]
     objects = []
-    app.logger.info("%s" % filters)
     if(filters!=None):
         #app.logger.info("%s" % filters)
-        gender = str(filters[0][1])
-        if(len(filters[1]) == 1):
-            vendors = []
-        else:
-            vendors = filters[1][1]
+        gender = filters[0][1]
+        vendors = filters[1][1]
         filtervendor = "all"
         #otherwise show all products
         if(len(vendors)<2):
             if(len(vendors) == 1):
                 filtervendor = vendors[0]
-        if(len(filters[2]) == 1):
-            brandsfilt = []
-        else:
-            brandsfilt = filters[2][1]
-        if(len(brandsfilt)==0):
-            filterbrands = "all"
-        else:
-            filterbrands = brandsfilt
     else:
         gender = "all"
         filtervendor = "all"
@@ -288,9 +258,7 @@ def getDiscount(products, filters):
         if(gender != "all"):
             if((item["gender"]==None)or(item["gender"].lower()!=gender)):
                 continue
-        if(filterbrands != "all"):
-            if(item["brand"] not in filterbrands):
-                continue
+
         if(item["vendor"] == "Nike"):
             #nike
             objects.append(listing())
@@ -307,7 +275,7 @@ def getDiscount(products, filters):
                 discount = int(round((1-(price/retail))*100))
             else:
                 discount = 0
-            objects[counter].setDiscount(discount)
+            objects[counter].setDiscount(str(discount))
             objects[counter].setBrand(item["brand"])
             objects[counter].setOriginal(item["original"])
             objects[counter].setLink(item["link"])
@@ -339,7 +307,7 @@ def getDiscount(products, filters):
 
     return objects
 
-def getPrice(products, filters, highlow):
+def getHighPrice(products, filters):
     #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]]]
     objects = []
     if(filters!=None):
@@ -350,6 +318,8 @@ def getPrice(products, filters, highlow):
         if(len(vendors)<2):
             if(len(vendors) == 1):
                 filtervendor = vendors[0]
+            else:
+                filtervendor = "all"
     else:
         gender = "all"
         filtervendor = "all"
@@ -357,19 +327,16 @@ def getPrice(products, filters, highlow):
         if(filtervendor.lower() == "nike"):
             products = getNikeContent()
         else:
-            products = getNordstromContent()
-    counter=0
-    for i in range(len(products)):
-        item = products[i].__dict__
+            products = getNordstormContent()
+    for count, item in enumerate(products):
         if(gender != "all"):
-            if((item["gender"]==None)or(item["gender"].lower()!=gender)):
+            if(item["gender"].lower()!=gender):
                 continue
-
+        objects.append(listing())
+        objects[count].setVendor(item["vendor"])
         if(item["vendor"] == "Nike"):
             #nike
-            objects.append(listing())
-            objects[counter].setVendor(item["vendor"])
-            objects[counter].setName(item["name"])
+            objects[count].setName(item["title"])
             if(item["price"]!=None):
                 if(len(item["price"][1:]) > 6):
                     price = float(item["price"][1:].replace(',',''))
@@ -377,25 +344,22 @@ def getPrice(products, filters, highlow):
                     price = float(item["price"][1:])
             else:
                 price = 0
-            objects[counter].setPrice(price)
-            if((item["original"]!=None) and (item["price"]!=None)):
-                retail = float(item["original"][1:])
+            objects[count].setPrice(price)
+            if((item["retail-price"]!=None) and (item["price"]!=None)):
+                retail = float(item["retail-price"][1:])
                 price = float(item["price"][1:])
                 discount = int(round((1-(price/retail))*100))
             else:
                 discount = 0
-            objects[counter].setDiscount(str(discount))
-            objects[counter].setBrand(item["brand"])
-            objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"])
-            objects[counter].setImg(item["img"])
-            objects[counter].setGender(item["gender"])
-            counter+=1
+            objects[count].setDiscount(str(discount))
+            objects[count].setBrand(item["brand"])
+            objects[count].setOriginal(item["retail-price"])
+            objects[count].setLink(item["link"])
+            objects[count].setImg(item["image-link"])
+            objects[count].setGender(item["gender"])
         elif(item["vendor"] == "NordstromRack"):
             #nordstrom
-            objects.append(listing())
-            objects[counter].setVendor(item["vendor"])
-            objects[counter].setName(item["name"])
+            objects[count].setName(item["title"])
             if(item["price"] != None):
                 if(len(item["price"][1:]) > 6):
                     price = float(item["price"][1:].replace(',',''))
@@ -403,20 +367,19 @@ def getPrice(products, filters, highlow):
                     price = float(item["price"][1:])
             else:
                 price = 0
-            objects[counter].setPrice(price)
+            objects[count].setPrice(price)
             if(item['discount'] != None):
-                disc = item["discount"]
+                disc = item["discount"].split()
             else:
                 disc = "-0%"
-            objects[counter].setDiscount(disc)
-            objects[counter].setBrand(item["brand"])
-            objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"])
-            objects[counter].setImg(item["img"])
-            objects[counter].setGender(item["gender"])
-            counter+=1
+            objects[count].setDiscount(disc[0])
+            objects[count].setBrand(item["brand"])
+            objects[count].setOriginal(item["retail-price"])
+            objects[count].setLink("nordstromrack.com"+item["link"])
+            objects[count].setImg(item["image-link"])
+            objects[count].setGender(item["gender"])
 
-    objects.sort(key=operator.attrgetter('price'), reverse=highlow)
+    objects.sort(key=operator.attrgetter('price'), reverse=True)
     for i in objects:
         if(i.price == 0):
             i.setPrice("See Price in Cart")
@@ -425,6 +388,87 @@ def getPrice(products, filters, highlow):
 
     return objects
 
+def getLowPrice(products, filters):
+    #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]]]
+    objects = []
+    if(filters!=None):
+        gender = filters[0][1]
+        vendors = filters[1][1]
+        filtervendor = "all"
+        #otherwise show all products
+        if(len(vendors)<2):
+            if(len(vendors) == 1):
+                filtervendor = vendors[0]
+            else:
+                filtervendor = "all"
+    else:
+        gender = "all"
+        filtervendor = "all"
+    if(filtervendor != "all"):
+        if(filtervendor.lower() == "nike"):
+            products = getNikeContent()
+        else:
+            products = getNordstromContent()
+    for count, item in enumerate(products):
+        if(gender != "all"):
+            if(item["gender"].lower()!=gender):
+                continue
+        objects.append(listing())
+        if(item["vendor"] == "Nike"):
+            #nike
+            objects[count].setName(item["title"])
+            if(item["price"]!=None):
+                if(len(item["price"][1:]) > 6):
+                    price = float(item["price"][1:].replace(',',''))
+                else:
+                    price = float(item["price"][1:])
+            else:
+                price = 0
+            objects[count].setPrice(price)
+            if((item["retail-price"]!=None) and (item["price"]!=None)):
+                retail = float(item["retail-price"][1:])
+                price = float(item["price"][1:])
+                discount = int(round((1-(price/retail))*100))
+            else:
+                discount = 0
+            objects[count].setDiscount(str(discount))
+            objects[count].setBrand(item["brand"])
+            objects[count].setOriginal(item["retail-price"])
+            objects[count].setLink(item["link"])
+            objects[count].setImg(item["image-link"])
+            objects[count].setGender(item["gender"])
+            objects[count].setVendor(item["vendor"])
+        elif(item["vendor"] == "NordstromRack"):
+            #nordstrom
+            objects[count].setName(item["title"])
+            if(item["price"] != None):
+                if(len(item["price"][1:]) > 6):
+                    price = float(item["price"][1:].replace(',',''))
+                else:
+                    price = float(item["price"][1:])
+            else:
+                price = 0
+            objects[count].setPrice(price)
+            if(item['discount'] != None):
+                disc = item["discount"].split()
+            else:
+                disc = "-0%"
+            objects[count].setDiscount(disc[0])
+            objects[count].setBrand(item["brand"])
+            objects[count].setOriginal(item["retail-price"])
+            objects[count].setLink("nordstromrack.com"+item["link"])
+            objects[count].setImg(item["image-link"])
+            objects[count].setGender(item["gender"])
+            objects[count].setVendor(item["vendor"])
+
+    objects.sort(key=operator.attrgetter('price'))
+    for i in objects:
+        if(i.price == 0):
+            i.setPrice("See Price in Cart")
+        else:
+            i.setPrice("$"+str(i.price))
+
+    return objects
 
 # Populates product listings
 def getNordstromContent():

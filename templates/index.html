@@ -7,11 +7,11 @@
 		<meta name="keywords" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--[if lte IE 8]><script src="static/css/ie/html5shiv.js"></script><![endif]-->
-		<script src="static/js/jquery.min.js"></script>
-		<script src="static/js/jquery.dropotron.min.js"></script>
-		<script src="static/js/skel.min.js"></script>
-		<script src="static/js/skel-layers.min.js"></script>
-		<script src="static/js/init.js"></script>
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}"></script>
+           	<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/skel-layers.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/init.js') }}"></script>
 		<noscript>
 			<link rel="stylesheet" href="static/css/skel.css" />
 			<link rel="stylesheet" href="static/css/style.css" />
@@ -63,7 +63,7 @@
 											<h2>Brands</h2>
 											{% for i in brands %}
 											<label class="containerFilter">{{ i }}
-											  <input type="checkbox" name="{{ i }}" id=2>
+											  <input type="checkbox" name="brandsBox" value="{{ i }}">
 											  <span class="checkBox"></span>
 											</label>
 											{% endfor %}
@@ -72,7 +72,7 @@
 											<h2>Vendors</h2>
 											{% for i in vendors %}
 											<label class="containerFilter">{{ i }}
-											  <input type="checkbox" name="{{ i }}" id="2">
+											  <input type="checkbox" name="vendorsBox" value="{{ i }}">
 											  <span class="checkBox"></span>
 											</label>
 											{% endfor %}
@@ -132,7 +132,7 @@
 								{% if (itemsinrow*i+j) < items %}
 								<section class="4u">
 									<div id="cardcontainer">
-										<div class="img-top-left"><h1>Nordstrom</h1></div>
+										<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j].vendor }}</h1></div>
 										<div id="triangle-topright"></div>
 										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j].discount }}</h1></div>
 										<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j].img }} alt=""></a>

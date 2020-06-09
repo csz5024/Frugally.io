@@ -299,4 +299,31 @@
 /*Product Tiles*/
 	div#cardcontainer {
 		text-align: center;
+                margin: auto;
+		width: 100%;
 	}
+        div#cardcontainer a img {
+		display: block;
+		margin-left: auto;
+ 		margin-right: auto;
+		width: 75%;
+	}
+	.box {
+		padding: 0px;
+	}
+
+	div#logo {
+		margin: auto;
+                text-align: center;
+	}
+        .dropdown {
+        	margin: auto;
+                float: none;
+                text-align: center;
+                overflow: hidden;
+                display: inline-block;
+	}
+        .dropdown .dropbtn {
+		margin: auto;
+	}
+	
