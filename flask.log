@@ -17,3 +17,7 @@ Traceback (most recent call last):
 NameError: name 'objectsArray' is not defined
 INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
