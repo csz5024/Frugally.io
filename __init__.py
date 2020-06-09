@@ -16,6 +16,15 @@ from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
+'''
+
+Use app.logger.info() to log information to the flask.log file in the same directory. use like a normal print statement
+
+
+'''
+
+
+# This section upgrades http requests to https
 @app.before_request
 def before_request():
     if(request.url.startswith('http://')):
@@ -24,16 +33,13 @@ def before_request():
         #app.logger.info("HTTPS redirect")
         return redirect(url,code=code)
 
-
+# landing page
 @app.route('/')
 def index():
 
-    obj = objectsArray()
     itemsinrow = 3
-    obj.setNordstrom(getNordstromContent())
-    obj.setNike(getNikeContent())
-    nordstrom = obj.getNordstrom()
-    nike = obj.getNike()
+    nordstrom = getNordstromContent()
+    nike = getNikeContent()
     fullList = nordstrom + nike
     items = len(fullList)
     itemsperpage = 16
@@ -47,7 +53,7 @@ def index():
     return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
-
+# post methods for homepage
 @app.route('/', methods=['POST'])
 def feedback():
 
@@ -76,6 +82,11 @@ def feedback():
     	return redirect("http://frugally.io", code=302)
 
 
+'''
+The following contains three sub directories from the index page that are classified by price sorting.
+
+In the future, I would like to combine these elements into a single dynamic route under def feedback() ^
+'''
 @app.route('/low/<filters>', methods=["GET", "POST"])
 def sortLow(filters):
 
@@ -97,7 +108,8 @@ def sortLow(filters):
             radio = request.form.get('radio')
             gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
-            return returnFilter(radio, gender, vendorfilter)
+            brands = request.form.getlist('brandsBox')
+            return returnFilter(radio, gender, vendorfilter, brands)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
@@ -136,7 +148,8 @@ def sortHigh(filters):
             radio = request.form.get('radio')
             gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
-            return returnFilter(radio, gender, vendorfilter)
+            brands = request.form.getlist('brandsBox')
+            return returnFilter(radio, gender, vendorfilter, brands)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
@@ -177,7 +190,8 @@ def sortDiscount(filters):
             radio = request.form.get('radio')
             gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
-            return returnFilter(radio, gender, vendorfilter)
+            brands = request.form.getlist('brandsBox')
+            return returnFilter(radio, gender, vendorfilter, brands)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
@@ -196,12 +210,13 @@ def sortDiscount(filters):
         return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
     return redirect('https://frugally.io', code=302)
 
-#login page (unused)
+
+#login page (unused at the moment)
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 
-#Filters
+# The packing and unpacking URL filters
 def returnFilter(radio, gender, vendors, brands):
     try:
         radio = radio.lower()
@@ -222,24 +237,26 @@ def returnFilter(radio, gender, vendors, brands):
 def parseFilter(filter):
     options = filter.split('+')
     values = []
+    #app.logger.info(options)
     for i in options:
         values.append(i.split('='))
         if(values[-1][0] == 'vendors'):
-            if(len(values[-1]) == 1):
-                values[-1].append([])
+            if(len(values[-1][1]) <= 1):
+                values[-1][1] = "all"
             else:
                 vends = values[-1].pop(-1)
                 values[-1].append(vends.split('_'))
         if(values[-1][0] == 'brands'):
-            if(len(values[-1]) == 1):
-                values[-1].append([])
+            if(len(values[-1][1]) <= 1):
+                values[-1][1] = "all"
             else:
                 brands = values[-1].pop(-1)
                 values[-1].append(brands.split('_'))
+        #app.logger.info(values)
     return values
 
 
-#IMPORTANT must be used after one of the other filters (objects should already be populated)
+# This just gathers the list of brands to be displayed in the filter menu
 def getBrands(objects):
     brands = []
     for i in objects:
@@ -249,48 +266,35 @@ def getBrands(objects):
     brands.sort()
     return brands
 
-#Finished for now
+# This function ultimatley gets the best discounts with the specified filters
 def getDiscount(products, filters):
-    #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]]]
+    #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, ...]]]
     objects = []
-    app.logger.info("%s" % filters)
     if(filters!=None):
-        #app.logger.info("%s" % filters)
         gender = str(filters[0][1])
-        if(len(filters[1]) == 1):
-            vendors = []
-        else:
-            vendors = filters[1][1]
-        filtervendor = "all"
-        #otherwise show all products
-        if(len(vendors)<2):
-            if(len(vendors) == 1):
-                filtervendor = vendors[0]
-        if(len(filters[2]) == 1):
-            brandsfilt = []
-        else:
-            brandsfilt = filters[2][1]
-        if(len(brandsfilt)==0):
-            filterbrands = "all"
-        else:
-            filterbrands = brandsfilt
+        filtervendor = filters[1][1]
+        filterbrands = filters[2][1]
     else:
         gender = "all"
         filtervendor = "all"
-    if(filtervendor != "all"):
-        if(filtervendor.lower() == "nike"):
-            products = getNikeContent()
-        else:
-            products = getNordstromContent()
-    counter=0
+        filterbrands = "all"
+
+    counter=0 # used to keep track of the actual products to be displayed (dont use i)
     for i in range(len(products)):
         item = products[i].__dict__
+
+        # Filters out the undesired products
         if(gender != "all"):
             if((item["gender"]==None)or(item["gender"].lower()!=gender)):
+                continue
+        if(filtervendor != "all"):
+            if(item["vendor"] not in filtervendor):
                 continue
         if(filterbrands != "all"):
             if(item["brand"] not in filterbrands):
                 continue
+
+        # adds products to objects array
         if(item["vendor"] == "Nike"):
             #nike
             objects.append(listing())
@@ -333,36 +337,39 @@ def getDiscount(products, filters):
             objects[counter].setGender(item["gender"])
             counter+=1
 
+    # sort by best discount
     objects.sort(key=operator.attrgetter('discount'), reverse=True)
     for i in objects:
         i.setDiscount(str(i.discount) + "%")
 
     return objects
 
+
 def getPrice(products, filters, highlow):
     #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]]]
+    #highlow is a boolean that determines the sort order
     objects = []
     if(filters!=None):
-        gender = filters[0][1]
-        vendors = filters[1][1]
-        filtervendor = "all"
-        #otherwise show all products
-        if(len(vendors)<2):
-            if(len(vendors) == 1):
-                filtervendor = vendors[0]
+        gender = str(filters[0][1])
+        filtervendor = filters[1][1]
+        filterbrands = filters[2][1]
     else:
         gender = "all"
         filtervendor = "all"
-    if(filtervendor != "all"):
-        if(filtervendor.lower() == "nike"):
-            products = getNikeContent()
-        else:
-            products = getNordstromContent()
+        filterbrands = "all"
+
     counter=0
     for i in range(len(products)):
         item = products[i].__dict__
+
         if(gender != "all"):
             if((item["gender"]==None)or(item["gender"].lower()!=gender)):
+                continue
+        if(filtervendor != "all"):
+            if(item["vendor"] not in filtervendor):
+                continue
+        if(filterbrands != "all"):
+            if(item["brand"] not in filterbrands):
                 continue
 
         if(item["vendor"] == "Nike"):
@@ -566,24 +573,6 @@ def globalTimer():
 
     t = Timer(secs, updateContent)
     t.start()
-
-# Big container of product listings
-class objectsArray:
-    def __init__(self):
-        self.nordstrom = None
-        self.nike = None
-
-    def setNordstrom(self, objects):
-        self.nordstrom = objects
-
-    def getNordstrom(self):
-        return self.nordstrom
-
-    def setNike(self, objects):
-        self.nike = objects
-
-    def getNike(self):
-        return self.nike
 
 # Product listing object
 class listing:

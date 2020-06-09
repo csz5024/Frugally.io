@@ -1,31 +1,19 @@
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:[['gender', 'all'], ['vendors', ['Nordstrom']], ['brands', ['Nordstrom']]]
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:[['gender', 'all'], ['vendors', ['Nordstrom']], ['brands', ['Nordstrom']]]
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:['Burberry']
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:[['gender', 'all'], ['vendors', ['Nordstrom']], ['brands', ['Nordstrom']]]
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:[['gender', 'all'], ['vendors', ['Nordstrom']], ['brands', ['Burberry']]]
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:[['gender', 'all'], ['vendors', ['Nordstrom']], ['brands', ['19 Cooper', 'Blu Pepper', 'Donna Morgan']]]
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nordstrom objects loaded: 40505
-INFO:Frugally:Nike objects loaded: 192
-INFO:Frugally:[['gender', 'all'], ['vendors', ['Nordstrom']], ['brands', ['19 Cooper', 'Blu Pepper', 'Donna Morgan']]]
-INFO:Frugally:Nordstrom objects loaded: 40505
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 32, in index
+    obj = objectsArray()
+NameError: name 'objectsArray' is not defined
 INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
