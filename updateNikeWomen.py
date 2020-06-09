@@ -7,7 +7,6 @@ import subprocess
 #finish this
 if __name__ == '__main__':
     newlist = subprocess.Popen("sudo -S scrapy crawl NikeWomen -o NikeWomen0.json", 'w').write('Shoelas')
-    poll = newlist.poll()
     #this is bad programming but oh well
     while newlist.poll() == None:
         time.sleep(1)

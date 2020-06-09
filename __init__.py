@@ -557,23 +557,6 @@ def sendMail(customer, name, message):
     return 'success'
 
 
-# NEED TO FIX: updates the product listing daily at 3am
-def globalTimer():
-    x = datetime.today()
-    y = x.replace(day=x.day, hour=3, minute=0, second=0, microsecond=0) + timedelta(days=1)
-    delta_t=y-x
-
-    secs = delta_t.total_seconds()
-
-    def updateContent():
-        os.system("cd /var/www/Frugally/Frugally/nordstromracksales")
-        os.system("sudo rm NordstromRack.json")
-        os.system("sudo scrapy crawl NordstromRack -o NordstromRack.json")
-        return "success"
-
-    t = Timer(secs, updateContent)
-    t.start()
-
 # Product listing object
 class listing:
     def __init__(self):
@@ -616,5 +599,4 @@ class listing:
 
 
 if __name__ == '__main__':
-    globalTimer()
     app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'), debug=True)
