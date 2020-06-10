@@ -35,7 +35,8 @@
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
-							<form method="post">
+							<h1><em>Frugally</em><h1>
+							<!--<form method="post">
 							<input id="filter" value="1" type="hidden" name="homepage" />
 							<div class="dropdown">
 								<button class="dropbtn" onclick="myFunction()"><h1><em>Frugally <i class="fa fa-caret-down"></i></em></h1></button>
@@ -109,7 +110,7 @@
 								</div>
 								</div>
 							</div>
-							</form>
+							</form>-->
 						</div>
 						<nav id="nav">
 							<ul>
@@ -122,11 +123,11 @@
 				<!-- Products -->
 					<div id="extra">
 						<div class="container small">
-							<!--<div class="btnContainer">
-								<a href="/high" class="button small">Highest Price</a>
-								<a href="/low" class="button small">Lowest Price</a>
-								<a href="/discount" class="button small">Best Discount</a>
-							</div>-->
+							<div class="btnContainer">
+								<a href="/men/home" class="button small">Men's</a>
+								<a href="/women/home" class="button small">Women's</a>
+							</div>
+							<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">
 							{% for i in range(pagination.per_page*(pagination.page-1), pagination.per_page*(pagination.page-1) + pagination.per_page) %}
 							<div class="row no-collapse-1">
 								{% for j in range(itemsinrow) %}

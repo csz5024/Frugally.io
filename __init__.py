@@ -30,14 +30,13 @@ Use app.logger.info() to log information to the flask.log file in the same direc
 def before_request():
     if(request.url.startswith('http://')):
         url = request.url.replace('http://', 'https://', 1)
-        code = 301
         #app.logger.info("HTTPS redirect")
-        return redirect(url,code=code)
+        return redirect(url,code=301)
 
 # landing page
 @app.route('/')
 def index():
-    
+
     nordstrom = getNordstromContent()
     nike = getNikeContent()
     fullList = nordstrom + nike
@@ -46,11 +45,12 @@ def index():
     itemsperpage = 16
     page = 0
     brands = getBrands(fullList)
+    vendors = ["Nordstrom", "Nike"]
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-    return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+    return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
 # post methods for homepage
@@ -69,15 +69,15 @@ def feedback():
         # sends to gmail
         sendMail(email, name, message)
         return redirect('http://frugally.io', code=302)
-    
+
     elif(formid == "1"):
-        radio = request.form.get('radio')
+        #radio = request.form.get('radio')
         #gender = request.form.get('radio2')
-        vendorfilter = request.form.getlist('vendorsBox')
-        brands = request.form.getlist('brandsBox')
+        #vendorfilter = request.form.getlist('vendorsBox')
+        #brands = request.form.getlist('brandsBox')
         #app.logger.info(brands)
-        return returnFilter(radio, vendorfilter, brands)
-    
+        return returnFilter(radio='discount', vendorfilter='all', brands='all')
+
     else:
     	return redirect("http://frugally.io", code=302)
 
@@ -120,12 +120,12 @@ def men(filters):
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
-        #vendors = ["Nordstrom", "Nike"]
+        vendors = ["Nordstrom", "Nike"]
 
         page = request.args.get(get_page_parameter(), type=int, default=1)
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
+        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
     return redirect('https://frugally.io', code=302)
 
 @app.route('/women/<filters>', methods=["GET", "POST"])
@@ -197,7 +197,7 @@ def returnFilter(radio, vendors, brands):
 
 def parseFilter(filter):
     options = filter.split('+')
-    if(len(options) <= 1):
+    if((len(options) <= 1) or (filter == 'home')):
         return [['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
     values = []
     #app.logger.info(options)
@@ -231,9 +231,11 @@ def getBrands(objects):
 
 #wrapper function for getDiscount and getPrice
 def getSort(products, options, gender):
+    app.logger.info(options)
     sortmethod = options.pop(0)
     sortmethod = sortmethod[1]
     options.insert(0,['gender', str(gender)])
+    app.logger.info(options)
     if(sortmethod == 'discount'):
         objects = getDiscount(products, options)
     elif(sortmethod == 'low'):
@@ -241,13 +243,13 @@ def getSort(products, options, gender):
     else:
         objects = getPrice(products, options, highlow=True)
     return objects
-        
+
 # This function ultimatley gets the best discounts with the specified filters
 def getDiscount(products, filters):
     #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, ...]]]
     objects = []
     if(filters!=None):
-        gender = str(filters[0][1])
+        gender = str(filters[0][1]).lower()
         filtervendor = filters[1][1]
         filterbrands = filters[2][1]
     else:
@@ -255,6 +257,7 @@ def getDiscount(products, filters):
         filtervendor = "all"
         filterbrands = "all"
 
+    app.logger.info(gender+" "+filtervendor+" "+filterbrands)
     counter=0 # used to keep track of the actual products to be displayed (dont use i)
     for i in range(len(products)):
         item = products[i].__dict__
@@ -290,14 +293,14 @@ def getDiscount(products, filters):
             objects[counter].setDiscount(discount)
             objects[counter].setBrand(item["brand"])
             objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"])
+            objects[counter].setLink(item["link"].strip('https://'))
             objects[counter].setImg(item["img"])
             objects[counter].setGender(item["gender"])
             counter+=1
-        elif(item["vendor"] == "NordstromRack"):
+        elif(item["vendor"] == "Nordstrom Rack"):
             #nordstrom
             objects.append(listing())
-            objects[counter].setVendor(item["vendor"])
+            objects[counter].setVendor("Nordstrom Rack")
             objects[counter].setName(item["name"])
             objects[counter].setPrice(item["price"])
             if(item["discount"] != None):
@@ -370,14 +373,14 @@ def getPrice(products, filters, highlow):
             objects[counter].setDiscount(str(discount))
             objects[counter].setBrand(item["brand"])
             objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"])
+            objects[counter].setLink(item["link"].strip('https://'))
             objects[counter].setImg(item["img"])
             objects[counter].setGender(item["gender"])
             counter+=1
-        elif(item["vendor"] == "NordstromRack"):
+        elif(item["vendor"] == "Nordstrom Rack"):
             #nordstrom
             objects.append(listing())
-            objects[counter].setVendor(item["vendor"])
+            objects[counter].setVendor("Nordstrom Rack")
             objects[counter].setName(item["name"])
             if(item["price"] != None):
                 if(len(item["price"][1:]) > 6):
@@ -429,7 +432,7 @@ def getNordstromContent():
         objects[count].setOriginal(item["retail-price"])
         objects[count].setLink("nordstromrack.com"+item["link"])
         objects[count].setImg(item["image-link"])
-        objects[count].setVendor(item["vendor"])
+        objects[count].setVendor("Nordstrom Rack")
         objects[count].setGender(item["gender"])
         counter+=1
 
@@ -450,7 +453,7 @@ def getNordstromContent():
         objects[counter].setOriginal(item["retail-price"])
         objects[counter].setLink("nordstromrack.com"+item["link"])
         objects[counter].setImg(item["image-link"])
-        objects[counter].setVendor(item["vendor"])
+        objects[counter].setVendor("Nordstrom Rack")
         objects[counter].setGender(item["gender"])
         counter+=1
 
@@ -477,7 +480,7 @@ def getNikeContent():
         objects[count].setDiscount(str(discount))
         objects[count].setBrand(item["brand"])
         objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink(item["link"])
+        objects[count].setLink(item["link"].strip('https://'))
         objects[count].setImg(item["image-link"])
         objects[count].setVendor(item["vendor"])
         objects[count].setGender(item["gender"])
@@ -500,7 +503,7 @@ def getNikeContent():
         objects[counter].setDiscount(str(discount))
         objects[counter].setBrand(item["brand"])
         objects[counter].setOriginal(item["retail-price"])
-        objects[counter].setLink(item["link"])
+        objects[counter].setLink(item["link"].strip('https://'))
         objects[counter].setImg(item["image-link"])
         objects[counter].setVendor(item["vendor"])
         objects[counter].setGender(item["gender"])

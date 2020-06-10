@@ -1,20 +1,3 @@
-ERROR:Frugally:Exception on / [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/www/Frugally/Frugally/__init__.py", line 32, in index
-    obj = objectsArray()
-NameError: name 'objectsArray' is not defined
 INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
 INFO:Frugally:Nordstrom objects loaded: 40505
@@ -25,5 +8,802 @@ INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
 INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:https://www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:www.nike.com/t/joyride-dual-run-mens-running-shoe-Gvfp81/CD4365-102
+INFO:Frugally:https://www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:www.nike.com/t/blazer-mid-77-vintage-shoe-flCCX4/BQ6806-103
+INFO:Frugally:https://www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:www.nike.com/t/flight-basketball-t-shirt-1WVzVS/CD1314-100
+INFO:Frugally:https://www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:www.nike.com/t/free-rn-2018-mens-running-shoe-4VTnGqeZ/942836-100
+INFO:Frugally:https://www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:www.nike.com/t/epic-react-flyknit-2-mens-running-shoe-2S0Cn1/BQ8928-100
+INFO:Frugally:https://www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:www.nike.com/t/jordan-sport-dna-mens-crew-kmVsRS/CJ6223-100
+INFO:Frugally:https://www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:www.nike.com/t/jordan-23-engineered-mens-spacer-mesh-pullover-t3g2P7/CJ6063-100
+INFO:Frugally:https://www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:www.nike.com/t/joyride-run-flyknit-mens-running-shoe-PjmR5M/AQ2730-004
+INFO:Frugally:https://www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:www.nike.com/t/air-max-270-react-mens-shoe-bZ8t5l/CT3135-001
+INFO:Frugally:https://www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:www.nike.com/t/techknit-wild-run-mens-running-top-xJN1jj/CJ5814-011
+INFO:Frugally:https://www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:www.nike.com/t/air-zoom-pegasus-36-trail-mens-trail-running-shoe-r48p3j/AR5677-800
+INFO:Frugally:https://www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:www.nike.com/t/air-max-tailwind-iv-mens-shoe-75BhCZ/AQ2567-109
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:www.nike.com/t/sportswear-tech-pack-mens-short-sleeve-knit-top-1F9r5H/CJ5167-010
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:www.nike.com/t/sportswear-tech-fleece-mens-joggers-gXTOoz1v/805162-063
+INFO:Frugally:https://www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:www.nike.com/t/air-jordan-7-retro-se-shoe-HVxKJm/CT8528-002
+INFO:Frugally:https://www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:www.nike.com/t/air-vapormax-360-mens-shoe-b09bdB/CK2718-004
+INFO:Frugally:https://www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:www.nike.com/t/mens-short-sleeve-training-top-z37RnD/CJ4619-100
+INFO:Frugally:https://www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:www.nike.com/t/sportswear-mens-cargo-pants-vT5jb2/BV3127-355
+INFO:Frugally:https://www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:www.nike.com/t/air-monarch-iv-lifestyle-gym-shoe-lPtRrS/415445-002
+INFO:Frugally:https://www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:www.nike.com/t/explore-strada-mens-shoe-N3ptZL/CD7093-011
+INFO:Frugally:https://www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:www.nike.com/t/metcon-5-mens-training-shoe-lFwjMP/AQ1189-040
+INFO:Frugally:https://www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:www.nike.com/t/pro-mens-short-sleeve-top-CTKmcB/BV5633-432
+INFO:Frugally:https://www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:www.nike.com/t/sportswear-tech-fleece-mens-shorts-Dmdg11/928513-011
+INFO:Frugally:https://www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:www.nike.com/t/jordan-jumpman-classics-mens-long-sleeve-t-shirt-lQhdnh/CT6747-100
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
 INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192

@@ -486,6 +486,11 @@
 			margin-right: 10px;
 			margin-top: 5px;
 			margin-bottom: 5px;
+  			width: 150px;
+	                /*color: #777776;
+        	        background-color: white;
+                	border-color: #777776;
+			border-width: thin;*/
 		}
 
 		input[type="submit"].medium,
@@ -745,6 +750,7 @@
 	}
 	.img-top-left h1 {
 		width: 100%;
+		font-size: 1em;
 		text-align: center;
 		text-decoration: none;
 		background-color: #777776;
