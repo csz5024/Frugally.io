@@ -17,6 +17,7 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 
 '''
+All code is original and written by Casey Zduniak, 2020
 
 Use app.logger.info() to log information to the flask.log file in the same directory. use like a normal print statement
 
@@ -36,21 +37,20 @@ def before_request():
 # landing page
 @app.route('/')
 def index():
-
-    itemsinrow = 3
+    
     nordstrom = getNordstromContent()
     nike = getNikeContent()
     fullList = nordstrom + nike
     items = len(fullList)
+    itemsinrow = 3
     itemsperpage = 16
     page = 0
     brands = getBrands(fullList)
-    vendors = ["Nordstrom", "Nike"]
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-    return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+    return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
 
 
 # post methods for homepage
@@ -69,15 +69,15 @@ def feedback():
         # sends to gmail
         sendMail(email, name, message)
         return redirect('http://frugally.io', code=302)
-
+    
     elif(formid == "1"):
         radio = request.form.get('radio')
-        gender = request.form.get('radio2')
+        #gender = request.form.get('radio2')
         vendorfilter = request.form.getlist('vendorsBox')
         brands = request.form.getlist('brandsBox')
         #app.logger.info(brands)
-        return returnFilter(radio, gender, vendorfilter, brands)
-
+        return returnFilter(radio, vendorfilter, brands)
+    
     else:
     	return redirect("http://frugally.io", code=302)
 
@@ -87,8 +87,8 @@ The following contains three sub directories from the index page that are classi
 
 In the future, I would like to combine these elements into a single dynamic route under def feedback() ^
 '''
-@app.route('/low/<filters>', methods=["GET", "POST"])
-def sortLow(filters):
+@app.route('/men/<filters>', methods=["GET", "POST"])
+def men(filters):
 
     #POST
     if(request.method == 'POST'):
@@ -106,30 +106,30 @@ def sortLow(filters):
 
         elif(formid == "1"):
             radio = request.form.get('radio')
-            gender = request.form.get('radio2')
+            #gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
             brands = request.form.getlist('brandsBox')
-            return returnFilter(radio, gender, vendorfilter, brands)
+            return returnFilter(radio, vendorfilter, brands)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
         nike = getNikeContent()
+        objects = getSort(nordstrom+nike, options, gender='men')
         itemsinrow = 3
-        objects = getPrice(nordstrom+nike, options, highlow=False)
         items = len(objects)
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
-        vendors = ["Nordstrom", "Nike"]
+        #vendors = ["Nordstrom", "Nike"]
 
         page = request.args.get(get_page_parameter(), type=int, default=1)
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands)
     return redirect('https://frugally.io', code=302)
 
-@app.route('/high/<filters>', methods=["GET", "POST"])
-def sortHigh(filters):
+@app.route('/women/<filters>', methods=["GET", "POST"])
+def women(filters):
     #POST
     if(request.method == 'POST'):
         formid = request.form.get("homepage","")
@@ -146,59 +146,17 @@ def sortHigh(filters):
 
         elif(formid == "1"):
             radio = request.form.get('radio')
-            gender = request.form.get('radio2')
+            #gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
             brands = request.form.getlist('brandsBox')
-            return returnFilter(radio, gender, vendorfilter, brands)
+            return returnFilter(radio, vendorfilter, brands)
     else:
         options = parseFilter(filters)
         nordstrom = getNordstromContent()
         nike = getNikeContent()
-        itemsinrow = 3
-        objects = getPrice(nordstrom+nike, options, highlow=True)
+        objects = getSort(nordstrom+nike, options, gender='women')
         items = len(objects)
-        itemsperpage = 16
-        page = 0
-        brands = getBrands(objects)
-        vendors = ["Nordstrom", "Nike"]
-
-        page = request.args.get(get_page_parameter(), type=int, default=1)
-        pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
-
-        return render_template('index.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
-    return redirect('https://frugally.io', code=302)
-
-@app.route('/discount/<filters>', methods=["GET", "POST"])
-def sortDiscount(filters):
-
-    #POST
-    if(request.method == 'POST'):
-        formid = request.form.get("homepage","")
-
-        # Send email (gmail disabled our account for some reason)
-        if(formid == "2"):
-
-            name = request.form['name']
-            email = request.form['email']
-            message = request.form['message']
-
-            # sends to gmail
-            sendMail(email, name, message)
-
-        #redirect
-        elif(formid == "1"):
-            radio = request.form.get('radio')
-            gender = request.form.get('radio2')
-            vendorfilter = request.form.getlist('vendorsBox')
-            brands = request.form.getlist('brandsBox')
-            return returnFilter(radio, gender, vendorfilter, brands)
-    else:
-        options = parseFilter(filters)
-        nordstrom = getNordstromContent()
-        nike = getNikeContent()
         itemsinrow = 3
-        objects = getDiscount(nordstrom+nike, options)
-        items = len(objects)
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
@@ -217,10 +175,13 @@ def login():
     return render_template('login.html')
 
 # The packing and unpacking URL filters
-def returnFilter(radio, gender, vendors, brands):
+def returnFilter(radio, vendors, brands):
     try:
-        radio = radio.lower()
-        filterstring = "gender="+gender+"+vendors="
+        if(radio == None):
+            radio = 'discount'
+        else:
+            radio = radio.lower()
+        filterstring = "sort="+radio+"+vendors="
         for i in vendors:
            filterstring = filterstring+str(i)+"_"
         if(filterstring[-1] != '='):
@@ -230,12 +191,14 @@ def returnFilter(radio, gender, vendors, brands):
            filterstring = filterstring+str(i)+"_"
         if(filterstring[-1] != "="):
             filterstring = filterstring[:-1]
-        return redirect(("http://frugally.io/"+radio+"/"+filterstring), code=302)
+        return redirect(("http://frugally.io/"+filterstring), code=302)
     except:
         return redirect("http://frugally.io", code=302)
 
 def parseFilter(filter):
     options = filter.split('+')
+    if(len(options) <= 1):
+        return [['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
     values = []
     #app.logger.info(options)
     for i in options:
@@ -266,6 +229,19 @@ def getBrands(objects):
     brands.sort()
     return brands
 
+#wrapper function for getDiscount and getPrice
+def getSort(products, options, gender):
+    sortmethod = options.pop(0)
+    sortmethod = sortmethod[1]
+    options.insert(0,['gender', str(gender)])
+    if(sortmethod == 'discount'):
+        objects = getDiscount(products, options)
+    elif(sortmethod == 'low'):
+        objects = getPrice(products, options, highlow=False)
+    else:
+        objects = getPrice(products, options, highlow=True)
+    return objects
+        
 # This function ultimatley gets the best discounts with the specified filters
 def getDiscount(products, filters):
     #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, ...]]]
