@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, Response, url_for
+from flask import Flask, render_template, request, redirect, Response
 from flaskext.mysql import MySQL
 from PIL import Image
 import requests
@@ -36,12 +36,6 @@ data = cursor.fetchone()
 
 '''
 
-def mySQLscratch():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute('CREATE TABLE IF NOT EXISTS Nike(NAME CHAR(100), SEX CHAR(1), PRICE CHAR(10))')
-    conn.close()
-
 
 
 '''
@@ -62,10 +56,9 @@ def before_request():
         return redirect(url,code=301)
 
 # landing page
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
 
-    mySQLscratch()
     nordstrom = getNordstromContent()
     nike = getNikeContent()
     fullList = nordstrom + nike
@@ -88,7 +81,7 @@ def google():
     return render_template('google5e9dcfe4850ad995.html')
 
 #robots.txt
-@app.route('/robots.txt', methods=['GET'])
+@app.route('/robots.txt')
 def robots():
     with open('/var/www/Frugally/Frugally/templates/robots.txt', 'r') as f:
         content = f.read()
@@ -99,19 +92,14 @@ def robots():
 #    return response
 
 #sitemap
-@app.route('/sitemap.xml', methods=['GET'])
+@app.route('/sitemap.xml')
 def sitemap():
 #    with open('/var/www/Frugally/Frugally/templates/sitemap.xml', 'r') as f:
 #        content = f.read()
 #    return Response(content, mimetype='text/xml')
     pages = []
-    deltadays = datetime.now() - timedelta(days=7)
-
-    for rule in app.url_map.iter_rules():
-        if 'GET' in rule.methods and len(rule.arguments) == 0 and not rule.rule.startswith('/admin'):
-            pages.append([ url_for('index', _external=True) + rule.rule, deltadays])
-
-    sitemap_template = render_template('sitemap.xml', pages=pages)
+    deltadays = d
+    sitemap_template = render_template('sitemap.xml')
     response = Response(sitemap_template)
     response.headers["Content-Type"] = "application/xml"
     return response

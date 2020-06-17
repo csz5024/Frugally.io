@@ -1,0 +1,430 @@
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 42, in mySQLscratch
+    cursor.execute('CREATE TABLE Nike(NAME CHAR(100), SEX CHAR(1), PRICE CHAR(10))')
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1050, "Table 'Nike' already exists")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 40, in mySQLscratch
+    conn = mysql.connect()
+  File "/usr/local/lib/python3.6/dist-packages/flaskext/mysql.py", line 59, in connect
+    return pymysql.connect(**self.connect_args)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 40, in mySQLscratch
+    conn = mysql.connect()
+  File "/usr/local/lib/python3.6/dist-packages/flaskext/mysql.py", line 59, in connect
+    return pymysql.connect(**self.connect_args)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 40, in mySQLscratch
+    conn = mysql.connect()
+  File "/usr/local/lib/python3.6/dist-packages/flaskext/mysql.py", line 59, in connect
+    return pymysql.connect(**self.connect_args)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 40, in mySQLscratch
+    conn = mysql.connect()
+  File "/usr/local/lib/python3.6/dist-packages/flaskext/mysql.py", line 59, in connect
+    return pymysql.connect(**self.connect_args)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 40, in mySQLscratch
+    conn = mysql.connect()
+  File "/usr/local/lib/python3.6/dist-packages/flaskext/mysql.py", line 59, in connect
+    return pymysql.connect(**self.connect_args)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 40, in mySQLscratch
+    conn = mysql.connect()
+  File "/usr/local/lib/python3.6/dist-packages/flaskext/mysql.py", line 59, in connect
+    return pymysql.connect(**self.connect_args)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 68, in index
+    mySQLscratch()
+  File "/var/www/Frugally/Frugally/__init__.py", line 42, in mySQLscratch
+    cursor.execute('CREATE TABLE IF NOT EXISTS Nike(NAME CHAR(100), SEX CHAR(1), PRICE CHAR(10))')
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1050, "Table 'Nike' already exists")
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+ERROR:Frugally:Exception on /sitemap.xml [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 108, in sitemap
+    deltadays = datetime.now().ToString("yyy-MM-ddTHH:mm:sszzz") - timedelta(days=7)
+AttributeError: 'datetime.datetime' object has no attribute 'ToString'
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+ERROR:Frugally:Exception on /sitemap.xml [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 108, in sitemap
+    deltadays = datetime.now().ToString("yyy-MM-ddTHH:mm:sszzz") - timedelta(days=7)
+AttributeError: 'datetime.datetime' object has no attribute 'ToString'
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
