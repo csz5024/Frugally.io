@@ -1,5 +1,14 @@
+import mysql.connector
+
+conn = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  password="yourpassword",
+  database="mydatabase"
+)
+
 def populateTables():
-  conn = mysql.connect()
+  #conn = mysql.connect()
   cursor = conn.cursor()
   #cursor.execute('CREATE TABLE IF NOT EXISTS Nike(NAME CHAR(100), SEX CHAR(1), PRICE CHAR(10))')
 
