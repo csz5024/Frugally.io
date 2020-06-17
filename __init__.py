@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from flaskext.mysql import MySQL
 from PIL import Image
 import requests
 import json
@@ -15,6 +16,27 @@ from flask_paginate import Pagination, get_page_parameter
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+mysql = MySQL()
+
+app.config['MYSQL_DATABASE_USER'] = 'frugally'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Shoelas'
+app.config['MYSQL_DATABASE_DB'] = 'Frugally'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
+
+'''
+
+basic syntax. refer to CanvasPath for more examples
+
+conn = mysql.connect()
+cursor = conn.cursor()
+
+cursor.execute("SELECT * from USER")
+data = cursor.fetchone()
+
+'''
+
+
 
 '''
 All code is original and written by Casey Zduniak, 2020
@@ -578,4 +600,11 @@ class listing:
 
 
 if __name__ == '__main__':
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    cursor.execute("CREATE DATABASE [IF NOT EXISTS] Frugally")
+    conn.commit()
+    cur.close()
+    conn.close()
     app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'), debug=True)

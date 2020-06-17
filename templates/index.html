@@ -19,7 +19,16 @@
 		</noscript>
 			<!--		noscript tag-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
-	</head>
+	        <!--Global Site Tag(gtag.js)-Google Analytics-->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169170066-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-169170066-1');
+		</script>
+        </head>
 	<body>
 
 		<!-- Wrapper -->
@@ -126,6 +135,24 @@
 							<div class="btnContainer">
 								<a href="/men/home" class="button small">Men's</a>
 								<a href="/women/home" class="button small">Women's</a>
+							</div>
+							<div class="dropContainer">
+								<button onclick="myfunction()" class="dropbtn2">Sort</button>
+								<div id="dropMenu" class="dropdown-content">
+									<h2>Sort</h2>
+									<label class="containerFilter">Highest Price
+									  <input type="radio" name="radio" id="1" value="High">
+									  <span class="radioCheck"></span>
+									</label>
+									<label class="containerFilter">Lowest Price
+									  <input type="radio" name="radio" id="2" value="Low">
+									  <span class="radioCheck"></span>
+									</label>
+									<label class="containerFilter">Best Discount
+									  <input type="radio" name="radio" id="3" value="Discount">
+									  <span class="radioCheck"></span>
+									</label>
+								</div>
 							</div>
 							<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">
 							{% for i in range(pagination.per_page*(pagination.page-1), pagination.per_page*(pagination.page-1) + pagination.per_page) %}
