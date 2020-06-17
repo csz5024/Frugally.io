@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, Response, url_for
 from flaskext.mysql import MySQL
 from PIL import Image
 import requests
@@ -56,7 +56,7 @@ def before_request():
         return redirect(url,code=301)
 
 # landing page
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
 
     nordstrom = getNordstromContent()
@@ -73,6 +73,42 @@ def index():
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
     return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+
+
+#this is for google only
+@app.route('/google5e9dcfe4850ad995.html')
+def google():
+    return render_template('google5e9dcfe4850ad995.html')
+
+#robots.txt
+@app.route('/robots.txt', methods=['GET'])
+def robots():
+    with open('/var/www/Frugally/Frugally/templates/robots.txt', 'r') as f:
+        content = f.read()
+    return Response(content, mimetype='text')
+#    robots_template = render_template('robots.txt')
+#    response = Response(robots_template)
+#    response.headers["Content-Type"] = "application/text"
+#    return response
+
+#sitemap
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+#    with open('/var/www/Frugally/Frugally/templates/sitemap.xml', 'r') as f:
+#        content = f.read()
+#    return Response(content, mimetype='text/xml')
+    pages = []
+    deltadays = datetime.now() - timedelta(days=7)
+
+    for rule in app.url_map.iter_rules():
+        if 'GET' in rule.methods and len(rule.arguments) == 0 and not rule.rule.startswith('/admin'):
+            pages.append([ url_for('index', _external=True) + rule.rule, deltadays])
+
+    sitemap_template = render_template('sitemap.xml', pages=pages)
+    response = Response(sitemap_template)
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
 
 
 # post methods for homepage

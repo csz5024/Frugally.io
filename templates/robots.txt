@@ -1,0 +1,6 @@
+# frugally.io robots.txt
+
+Sitemap: https://frugally.io/sitemap.xml
+
+User-agent: *
+Disallow:
