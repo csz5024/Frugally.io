@@ -711,3 +711,9 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 147, in mogrify
     query = query % self._escape_args(args, conn)
 TypeError: not enough arguments for format string
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
+INFO:Frugally:Nordstrom objects loaded: 40505
+INFO:Frugally:Nike objects loaded: 192
