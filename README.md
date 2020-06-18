@@ -25,14 +25,55 @@ This section lists a few essential unix commands needed for navigating through t
 **WARNING** This command will restart the physical hardware server, so make sure you save any work and that you know what you are doing when you run this command. You will lose SSH connection upon execution, and will have to wait a few minutes before it fully boots back up.
 
 `sudo restart`
-### Restarting Software Components
+### Resetting iptables
+For some reason, when the server undergoes a hard restart, the firewall of the physical server resets. Below are the necessary commands to get back up and running. Don't mess with this unless you know what you are doing.
+```
+iptables-save > iptables.dump
+iptables-restore < iptables.dump
 
+iptables -L
+iptables -D INPUT <index of the REJECT rule to delete.>
+sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+```
+
+### Restarting Software Components
+`sudo systemctl restart <component name>`
+ - `apache2`: restarts the web server
+ - `mysql`: restarts the database
+ - You can also swap `restart` for `start` `stop` or `status`
+ 
+ ### Important Directory Locations
+  - **Git Directory:** `/var/www/Frugally/Frugally` - One directory up are configuration files related to the backend components, and generally should not be touched.
+  - **Flask Logs:** `/var/www/Frugally/Frugally/flask.log`
+  - **Apache Logs:** `/var/www/Frugally/logs`
+  - **WSGI Config:** `/var/www/Frugally/frugally.wsgi`
+  - **Apacahe Config:** `/etc/apache2/sites-available/Frugally.conf`
+  - **MySQL Config:** `sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf`
+  - **MySQL Login Command:** `/usr/bin/mysql -u root -p`
+  - **MySQL Data Directory Command:** `select @@datadir;` - Shows where the Databases are located
+  
+  ### Useful Commands
+   - `cd <directory>` - change directory
+   - `pwd` - shows the present working directory
+   - `dir` - shows the contents of the current directory
+   - `df` - shows disk space on the root, disk1 and disk2
+   - `nano <filename>` - text editor
+   - `cp <source> <destination>` - copy file
+   - `rm <filename>` - delete file
+   - `mv <source> <destination>` - move or rename file
+   
+   ### Useful Git Commands
+   - `sudo git pull` - downloads the latest code from the master branch
+   - `sudo git add .` - add all files to be staged for commit
+   - `git status` - show the status of the git directory
+   - `sudo git commit -am "message content"` - commit a change to be made to the git directory
+   - `sudo git push origin <branch name>` - push the commit up to github branch name
+ 
 
 <a name="ServerConfigurations"/>
 
 ## Server Configurations
-
-Frugally.io
 
 Need to update SSL certificates every 60 days
 
