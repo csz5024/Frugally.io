@@ -14,7 +14,18 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 > *The Orphan Master's Son by Adam Johnson*
 
 ## Table of Contents
-[Server Configurations](#ServerConfigurations)
+ 1. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
+ 2. [Server Configurations](#ServerConfigurations)
+
+<a name="UnixCommands"/>
+
+## Unix Commands
+This section lists a few essential unix commands needed for navigating through the Frugally Server
+### Restarting the Physical Server
+**WARNING** This command will restart the physical hardware server, so make sure you save any work and that you know what you are doing when you run this command. You will lose SSH connection upon execution, and will have to wait a few minutes before it fully boots back up.
+
+`sudo restart`
+### Restarting Software Components
 
 
 <a name="ServerConfigurations"/>
