@@ -14,8 +14,20 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 > *The Orphan Master's Son by Adam Johnson*
 
 ## Table of Contents
- 1. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
- 2. [Server Configurations](#ServerConfigurations)
+ 1. [Frugally Web Server](#WebServer)
+ 2. [Scraping](#Scraping)
+ 3. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
+ 4. [Server Configurations](#ServerConfigurations)
+
+<a name="WebServer"/>
+
+## Frugally Web Server
+This section details the code that can be found on the Github Repository, as well as under the `/var/www/Frugally/Frugally` directory on the server
+
+<a name="Scraping"/>
+
+## Scraping
+This section details the web scraping.
 
 <a name="UnixCommands"/>
 
@@ -69,7 +81,6 @@ sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctsta
    - `git status` - show the status of the git directory
    - `sudo git commit -am "message content"` - commit a change to be made to the git directory
    - `sudo git push origin <branch name>` - push the commit up to github branch name
- 
 
 <a name="ServerConfigurations"/>
 
