@@ -15,9 +15,10 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 
 ## Table of Contents
  1. [Frugally Web Server](#WebServer)
- 2. [Scraping](#Scraping)
- 3. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
- 4. [Server Configurations](#ServerConfigurations)
+ 2. [Frugally Database](#Database)
+ 3. [Scraping](#Scraping)
+ 4. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
+ 5. [Server Configurations](#ServerConfigurations)
 
 <a name="WebServer"/>
 
@@ -97,6 +98,11 @@ Frugally/
     ├── sitemap.xml
     └── template.html
 ```
+
+<a name="Database"/>
+
+## Frugally Database
+This section details the MySQL Database used to hold all of our scraped product listings on the site
 
 <a name="Scraping"/>
 
