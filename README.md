@@ -21,6 +21,7 @@ Frugally is an entirely free service to the user, however feel free to buy your 
  3. [Scraping](#Scraping)
  4. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
  5. [Server Configurations](#ServerConfigurations)
+ 6. [Porkbun Login Information](#Porkbun)
 
 <a name="WebServer"/>
 
@@ -222,3 +223,9 @@ from Frugally import app as application
 </VirtualHost>
 ```
 
+
+<a name="Porkbun"/>
+
+## Porkbun
+Login: jadblaik
+pw: tJgxbMgsdG@!!M%P5n6s
