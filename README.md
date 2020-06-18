@@ -105,6 +105,9 @@ Frugally/
 
 ## Frugally Database
 This section details the MySQL Database used to hold all of our scraped product listings on the site
+  - **MySQL Config:** `sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf`
+  - **MySQL Login Command:** `/usr/bin/mysql -u root -p`
+  - **MySQL Data Directory Command:** `select @@datadir;` - Shows where the Databases are located
 
 <a name="Scraping"/>
 
