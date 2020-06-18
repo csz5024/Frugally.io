@@ -17,6 +17,8 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 [Server Configurations](#ServerConfigurations)
 
 
+<a name="ServerConfigurations"/>
+
 ## Server Configurations
 
 Frugally.io
