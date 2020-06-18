@@ -1,6 +1,8 @@
 # Frugally.io
 ###### A Smarter Shopping Experience
 
+https://frugally.io
+
 
 ## About our project
 Frugally is a smarter online shopping experience. Minimize your time spent staring at a screen by having all of the best deals from all of your favorite vendors in one convenient place. Whats more, we have our own algorithms set in place to recommend you deals based upon your previous purchases. Create an account today to take full advantage!
