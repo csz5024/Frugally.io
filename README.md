@@ -174,19 +174,6 @@ sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctsta
 
 Need to update SSL certificates every 60 days
 
-iptables:
-Need to edit on physical server restart
-```
-iptables-save > iptables.dump
-iptables-restore < iptables.dump
-
-iptables -I INPUT 1 blah blah blah
-sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-iptables -D INPUT 5
-iptables -L
-```
-
 frugally.wsgi
 ```
 #!/usr/bin/python3
