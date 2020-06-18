@@ -14,8 +14,9 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 > *The Orphan Master's Son by Adam Johnson*
 
 ## Table of Contents
+[Server Configurations](#ServerConfigurations)
 
-
+<a name="ServerConfigurations"/>
 ## Server Configurations
 
 Frugally.io
