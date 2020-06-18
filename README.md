@@ -23,6 +23,80 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 
 ## Frugally Web Server
 This section details the code that can be found on the Github Repository, as well as under the `/var/www/Frugally/Frugally` directory on the server
+### File Structure
+```
+Frugally/
+├── PopulateDB.py
+├── README.md
+├── __init__.py
+├── chromedriver.exe
+├── flask.log
+├── nordstromracksales/
+│   ├── NikeMen.json
+│   ├── NikeWomen.json
+│   ├── NordstromRackMen.json
+│   ├── NordstromRackWomen.json
+│   ├── scrapy.cfg
+│   └── nordstromracksales/
+|       ├── items.py
+|       ├── middlewares.py
+|       ├── pipelines.py
+|       ├── settings.py
+|       ├── module/
+|       │   ├── __init__.py
+|       │   ├── items.py.tmpl
+|       │   ├── middlewares.py.tmpl
+|       │   ├── pipelines.py.tmpl
+|       │   ├── settings.py.tmpl
+|       │   └── spiders/
+│       |       └── __init__.py 
+|       └── spiders/
+|           ├── __init__.py
+|           ├── adidas_spider.py
+|           ├── asos_spider.py
+|           ├── newbalance_spider.py
+|           ├── nike_spider_men.py
+|           ├── nike_spider_women.py
+|           ├── nordstromrack_spider.py
+|           ├── nordstromrack_spider_men.py
+|           ├── nordstromrack_spider_women.py
+|           ├── patagonia_spider.py
+│           └── urbanoutfitters_spider.py 
+├── static/
+│   ├── css/
+|   │   ├── font-awesome.min.css
+|   │   ├── skel.css
+|   │   ├── style-mobile.css
+|   │   ├── font-awesome.min.css
+|   │   ├── skel.css
+|   │   ├── style-mobile.css
+|   │   ├── style-narrow.css
+|   │   ├── style-narrower.css
+|   │   ├── style-normal.css
+|   │   ├── style-wide.css
+|   │   └── style.css
+│   ├── fonts/
+|   │   ├── FontAwesome.otf
+|   │   ├── fontawesome-webfont.eot
+|   │   ├── fontawesome-webfont.svg
+|   │   ├── fontawesome-webfont.ttf
+|   │   └── fontawesome-webfont.woff
+│   ├── images/
+│   └── js/
+|       ├── init.js
+|       ├── jquery.droptron.min.js
+|       ├── jquery.min.js
+|       ├── skel-layers.min.js
+|       └── skel.min.js
+└── templates/
+    ├── LICENSE.txt
+    ├── google5e9dcfe4850ad995.html
+    ├── index.html
+    ├── login.html
+    ├── robots.txt
+    ├── sitemap.xml
+    └── template.html
+```
 
 <a name="Scraping"/>
 
