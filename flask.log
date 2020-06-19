@@ -717,3 +717,591 @@ INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
 INFO:Frugally:Nordstrom objects loaded: 40505
 INFO:Frugally:Nike objects loaded: 192
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 507, in getNordstromContent
+    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRackMen.json') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/var/www/Frugally/Frugally/nordstromracksales/NordstromRackMen.json'
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 508, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 5795 column 1 (char 2247388)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 508, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 8034 column 1 (char 3116316)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 508, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 8034 column 1 (char 3116316)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 508, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 8622 column 1 (char 3345428)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 508, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 8712 column 1 (char 3380298)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 508, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 8812 column 1 (char 3420148)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 530, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1596 column 1 (char 610792)
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 70, in index
+    nordstrom = getNordstromContent()
+  File "/var/www/Frugally/Frugally/__init__.py", line 530, in getNordstromContent
+    data = json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2957 column 1 (char 1144293)
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'women'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:women all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:[['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:[['gender', 'men'], ['vendors', 'all'], ['brands', 'all']]
+INFO:Frugally:men all all
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640
+INFO:Frugally:Nordstrom objects loaded: 12499
+INFO:Frugally:Nike objects loaded: 2640

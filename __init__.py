@@ -16,32 +16,6 @@ from flask_paginate import Pagination, get_page_parameter
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
-#mysql = MySQL()
-
-#app.config['MYSQL_DATABASE_USER'] = 'frugally'
-#app.config['MYSQL_DATABASE_PASSWORD'] = 'Shoelas'
-#app.config['MYSQL_DATABASE_DB'] = 'Frugally'
-#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-#mysql.init_app(app)
-
-'''
-
-basic syntax. refer to CanvasPath for more examples
-
-conn = mysql.connect()
-cursor = conn.cursor()
-
-cursor.execute("SELECT * from USER")
-data = cursor.fetchone()
-
-'''
-
-#def mySQLscratch():
-#    conn = mysql.connect()
-#    cursor = conn.cursor()
-#    cursor.execute('CREATE TABLE IF NOT EXISTS Nike(NAME CHAR(100), SEX CHAR(1), PRICE CHAR(10))')
-#    conn.close()
-
 
 
 '''
@@ -107,6 +81,7 @@ def sitemap():
 #    return Response(content, mimetype='text/xml')
     pages = []
     deltadays = datetime.now() - timedelta(days=7)
+    deltadays = deltadays.strftime("%Y-%m-%d")
 
     for rule in app.url_map.iter_rules():
         if 'GET' in rule.methods and len(rule.arguments) == 0 and not rule.rule.startswith('/admin'):
