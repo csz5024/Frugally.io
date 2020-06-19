@@ -45,81 +45,6 @@
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
 							<h1><em>Frugally</em><h1>
-							<!--<form method="post">
-							<input id="filter" value="1" type="hidden" name="homepage" />
-							<div class="dropdown">
-								<button class="dropbtn" onclick="myFunction()"><h1><em>Frugally <i class="fa fa-caret-down"></i></em></h1></button>
-								<div class="dropdown-content" id="myDropdown">
-								<div class="headerD">
-									<h1>Filters</h1>
-									<div class="rowD">
-										<div class="columnD">
-											<h2>Sort</h2>
-											<label class="containerFilter">Highest Price
-											  <input type="radio" name="radio" id="1" value="High">
-											  <span class="radioCheck"></span>
-											</label>
-
-											<label class="containerFilter">Lowest Price
-											  <input type="radio" name="radio" id="2" value="Low">
-											  <span class="radioCheck"></span>
-											</label>
-											<label class="containerFilter">Best Discount
-											  <input type="radio" name="radio" id="3" value="Discount">
-											  <span class="radioCheck"></span>
-											</label>
-										</div>
-										<div class="columnD">
-											<h2>Brands</h2>
-											{% for i in brands %}
-											<label class="containerFilter">{{ i }}
-											  <input type="checkbox" name="brandsBox" value="{{ i }}">
-											  <span class="checkBox"></span>
-											</label>
-											{% endfor %}
-										</div>
-										<div class="columnD">
-											<h2>Vendors</h2>
-											{% for i in vendors %}
-											<label class="containerFilter">{{ i }}
-											  <input type="checkbox" name="vendorsBox" value="{{ i }}">
-											  <span class="checkBox"></span>
-											</label>
-											{% endfor %}
-										</div>	
-									</div>
-									<h1>More Filters</h1>
-									<div class="rowD">
-										<div class="columnD">
-											<h2>Gender</h2>
-											<label class="containerFilter">Men's
-											  <input type="radio" name="radio2" id="4" value="men">
-											  <span class="radioCheck"></span>
-											</label>
-
-											<label class="containerFilter">Women's
-											  <input type="radio" name="radio2" id="5" value="women">
-											  <span class="radioCheck"></span>
-											</label>
-											<label class="containerFilter">All
-											  <input type="radio" name="radio2" id="6" value="all">
-											  <span class="radioCheck"></span>
-											</label>
-										</div>
-										<div class="columnD">
-											<h2>Price Range</h2>
-											<label class="containerFilter">
-											  <input class="text" type="text" name="rangeLow" id="rangeLow" placeholder="Low" />
-											  <input class="text" type="text" name="rangeHigh" id="rangeHigh" placeholder="High" />
-											</label>		
-										</div>
-									</div>
-									<input type="submit" value="Filter" class="button small" />
-									<a href="https://frugally.io" class="button small">Reset</a>
-								</div>
-								</div>
-							</div>
-							</form>-->
 						</div>
 						<nav id="nav">
 							<ul>
@@ -135,24 +60,6 @@
 							<div class="btnContainer">
 								<a href="/men/home" class="button small">Men's</a>
 								<a href="/women/home" class="button small">Women's</a>
-							</div>
-							<div class="dropContainer">
-								<button onclick="myfunction()" class="dropbtn2">Sort</button>
-								<div id="dropMenu" class="dropdown-content">
-									<h2>Sort</h2>
-									<label class="containerFilter">Highest Price
-									  <input type="radio" name="radio" id="1" value="High">
-									  <span class="radioCheck"></span>
-									</label>
-									<label class="containerFilter">Lowest Price
-									  <input type="radio" name="radio" id="2" value="Low">
-									  <span class="radioCheck"></span>
-									</label>
-									<label class="containerFilter">Best Discount
-									  <input type="radio" name="radio" id="3" value="Discount">
-									  <span class="radioCheck"></span>
-									</label>
-								</div>
 							</div>
 							<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">
 							{% for i in range(pagination.per_page*(pagination.page-1), pagination.per_page*(pagination.page-1) + pagination.per_page) %}
