@@ -1,6 +1,6 @@
 
 @import url("font-awesome.min.css");
-@import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,500,600,700,800,900");
 
 
 /* Basic */
@@ -543,8 +543,10 @@
 		font-size: 1.2em;
 		cursor: default;
 	}
-
-	#logo h1 {
+	#logo a {
+		color: white;
+	}
+	#logo a h1 {
 		display: inline-block;
 		text-transform: uppercase;
 	}
