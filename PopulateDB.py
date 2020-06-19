@@ -1,6 +1,10 @@
 import mysql.connector
 import json
 
+'''
+This file is a script with no dependencies. It relays the content found in the json files to the database
+'''
+
 conn = mysql.connector.connect(
   host="localhost",
   user="frugally",
