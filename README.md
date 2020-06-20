@@ -97,6 +97,8 @@ Frugally/
     ├── google5e9dcfe4850ad995.html
     ├── index.html
     ├── login.html
+    ├── mens.html
+    ├── womens.html
     ├── robots.txt
     ├── sitemap.xml
     └── template.html
