@@ -94,7 +94,7 @@ class NordstromracksalesDownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
-        if request.url != 'https://www.nordstromrack.com/shop/Men/Clothing':
+        if (request.url != 'https://www.nordstromrack.com/shop/Men/Clothing' or request.url != 'https://www.nordstromrack.com/shop/Women/Clothing'):
             return None
 
         driver.get(request.url)
