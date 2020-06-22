@@ -99,6 +99,7 @@ Frugally/
     ├── login.html
     ├── mens.html
     ├── womens.html
+    ├── 500.html
     ├── robots.txt
     ├── sitemap.xml
     └── template.html
