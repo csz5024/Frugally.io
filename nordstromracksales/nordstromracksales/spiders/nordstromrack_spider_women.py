@@ -10,6 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 
+<<<<<<< HEAD
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument('window-size=1200x900')
@@ -20,12 +21,16 @@ options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
 
+=======
+>>>>>>> scraping
 class NordstromRackWomenSpider(scrapy.Spider):
     name = "NordstromRackWomen"
     start_urls = ["https://www.nordstromrack.com/shop/Women/Clothing"]
 
 
     def parse(self, response):
+
+        # Loading a chrome window with specific settings
 
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
@@ -36,19 +41,16 @@ class NordstromRackWomenSpider(scrapy.Spider):
 
         self.driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
 
+        # Iterating over the number of pages in Nordstrom Rack
+
         iter = 1
 
         while True:
-
+            # Loading each page to extract the data
             url = "https://www.nordstromrack.com/shop/Women/Clothing?page={0}&sort=most_popular"
             self.driver.get(url.format(iter))
-            numitems = 0\
 
-            WebDriverWait(self.driver, 2)
-
-
-            last_height = self.driver.execute_script("return document.body.scrollHeight")
-            new_height = 0
+            # Finding the next page button, and scrolling to it
 
             element = self.driver.find_element_by_class_name('pagination__link')
 
@@ -56,26 +58,27 @@ class NordstromRackWomenSpider(scrapy.Spider):
 
             actions.move_to_element(element).perform()
 
-            print('here')
-            print(element)
-
-            WebDriverWait(self.driver, 2)
-
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
             WebDriverWait(self.driver, 2)
 
             scrapy_selector = Selector(text=self.driver.page_source)
 
-            WebDriverWait(self.driver, 2)
+            #Loading each product card
 
             scraplist = scrapy_selector.css('div.product-grid-item')
+
+            # Loading each image
 
             data = self.driver.find_element_by_class_name('product-grid')
             imlist = data.find_elements_by_tag_name('img')
 
+<<<<<<< HEAD
             for i in range(0,len(response.css('div.product-grid-item'))):
                 article = scraplist[i]
+=======
+            for i in range(0,len(scraplist)):
+                article = scraplist[i]
+                # Finding the discount of each article and yielding all the data
+>>>>>>> scraping
                 discount = article.css('.product-grid-item__sale-price-discount ::text').get()
                 if discount is not None:
                     image = imlist[i*2].get_attribute('src')
@@ -91,9 +94,6 @@ class NordstromRackWomenSpider(scrapy.Spider):
                         'link': article.css('.product-grid-item a::attr(href)').get()
                 }
             iter += 1
-            print(iter)
 
             if element is None:
-                print('now')
                 break
-            print(numitems)
