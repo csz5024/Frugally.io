@@ -452,6 +452,8 @@
 		font-size: 1.2em;
 		font-weight: 600;
 		color: #FFF !important;
+		width: 100%;
+		max-width: 350px;
 	}
 
 		input[type="submit"]:hover,
@@ -600,17 +602,6 @@
 		font: inherit;
 		margin: auto;
 	}
-	.dropdown .dropbtn h1 {
-		font-size: 1.2em;
-		text-align: left !important;
-		display: inline-block;
-		text-transform: uppercase;
-		width: 100%;
-		padding: 15px;
-		margin: 15px;
-		color: white;
-		z-index: 999;
-	}
 	.dropdown-content {
 		display: none;
 		position: absolute;
@@ -618,8 +609,15 @@
 		background-color: #fff;
 		width: 100%;
 		left: 0;
+		padding: 5px;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		z-index: 100;
+	}
+	.dropdown-content h2 {
+		font-size: 12px;
+		padding: 10px;
+		font: inherit;
+		margin: auto;
 	}
 	.dropdown-content .headerD {
 		background: #0f1116;
@@ -734,7 +732,7 @@
 /* Box */
 
 	.box {
-		padding: 1em 3em 1em 0em;
+		padding: 1em 0em 1em 0em;
 		background: #FFF;
 		text-align: center;
 		/*border: 1px solid #777776;*/
