@@ -317,11 +317,9 @@
                 text-align: center;
 	}
         .dropdown {
-        	margin: auto;
-                float: none;
                 text-align: center;
                 overflow: hidden;
-                display: inline-block;
+                z-index: 100;
 	}
         .dropdown .dropbtn {
 		margin: auto;

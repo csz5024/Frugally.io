@@ -18,8 +18,8 @@
 	}
 
 	a {
-		color: #777776;
-		text-decoration: underline;
+		color: white;
+		text-decoration: none;
 	}
 
 	strong, b {
@@ -544,17 +544,15 @@
 		cursor: default;
 	}
 	#logo a {
-		color: white;
+		color: white !important;
 	}
 	#logo a h1 {
+		color: white !important;
 		display: inline-block;
 		text-transform: uppercase;
 	}
 	#logo form {
 		display: inline-flex;
-	}
-	input#filter:hover {
-		background-color: #eee;
 	}
 
 /* Navigation */
