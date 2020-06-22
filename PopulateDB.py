@@ -99,13 +99,19 @@ def populateNikeTables():
 
   for count, item in enumerate(data):
     if((item["retail-price"]!=None) and (item["price"]!=None)):
-            retail = float(item["retail-price"].strip("$"))
-            price = float(item["price"].strip("$"))
+            if(len(item["retail-price"])>4):
+                retail = float(item["retail-price"].strip("$").replace(',',''))
+            else:
+                retail = float(item["retail-price"].strip("$"))
+            if(len(item["price"])>4):
+                price = float(item["price"].strip("$").replace(',',''))
+            else:
+                price = float(item["price"].strip("$"))
             discount = round((1-(price/retail))*100)
     else:
             discount = 0
     sql = 'INSERT INTO NikeMen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), str(item['retail-price']), str(item['price']), str(discount), str(item['image-link']), str(item['link']))
+    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), str(item['link']))
 
     print("NikeMen item number "+str(count))
     cursor.execute(sql, val)
@@ -115,13 +121,19 @@ def populateNikeTables():
 
   for count, item in enumerate(data):
     if((item["retail-price"]!=None) and (item["price"]!=None)):
-            retail = float(item["retail-price"].strip("$"))
-            price = float(item["price"].strip("$"))
+            if(len(item["retail-price"])>4):
+                retail = float(item["retail-price"].strip("$").replace(',',''))
+            else:
+                retail = float(item["retail-price"].strip("$"))
+            if(len(item["price"])>4):
+                price = float(item["price"].strip("$").replace(',',''))
+            else:
+                price = float(item["price"].strip("$"))
             discount = round((1-(price/retail))*100)
     else:
             discount = 0
     sql = 'INSERT INTO NikeWomen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), str(item['retail-price']), str(item['price']), str(discount), str(item['image-link']), str(item['link']))
+    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), str(item['link']))
 
     print("NikeWomen item number "+str(count))
     cursor.execute(sql, val)
@@ -129,7 +141,7 @@ def populateNikeTables():
   return 0
 
 if __name__=='__main__':
-  populateNordstromTables()
+#  populateNordstromTables()
   populateNikeTables()
   cursor.close()
   conn.close()
