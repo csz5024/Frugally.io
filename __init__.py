@@ -35,6 +35,11 @@ def before_request():
         #app.logger.info("HTTPS redirect")
         return redirect(url,code=301)
 
+# Custom Internal Server Error Page 
+@app.errorhandler(500)
+def InternalError(e):
+    return render_template('500.html'), 500
+
 # landing page
 @app.route('/', methods=['GET'])
 def index():

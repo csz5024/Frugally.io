@@ -29,11 +29,26 @@ def populateNordstromTables():
   for count, item in enumerate(data):
       if(item['discount'] != None):
           disc = item["discount"].split()
-          disc = disc[0]
+          disc = disc[0].strip('%')
+          disc = int(disc)
       else:
-          disc = "-0%"
+          disc = int(0)
+      if(item['retail-price'] != None):
+          rprice = item["retail-price"].strip('$')
+          if(len(rprice)>6):
+              rprice=rprice.replace(',','')
+          rprice = float(rprice)
+      else:
+          rprice = float(0)
+      if(item['price'] != None):
+          price = item["price"].strip('$')
+          if(len(price)>6):
+              price=price.replace(',','')
+          price = float(price)
+      else:
+          price = float(0)
       sql = 'INSERT INTO NordstromRackMen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), str(item['retail-price']), str(item['price']), str(disc), str(item['image-link']), str(item['link']))
+      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str(item['link']))
 
       print("NordstromRackMen item number "+str(count))
       cursor.execute(sql, val)
@@ -45,11 +60,26 @@ def populateNordstromTables():
   for count, item in enumerate(data):
       if(item['discount'] != None):
           disc = item["discount"].split()
-          disc = disc[0]
+          disc = disc[0].strip('%')
+          disc = int(disc)
       else:
-          disc = "-0%"
+          disc = int(0)
+      if(item['retail-price'] != None):
+          rprice = item["retail-price"].strip('$')
+          if(len(rprice)>6):
+              rprice=rprice.replace(',','')
+          rprice = float(rprice)
+      else:
+          rprice = float(0)
+      if(item['price'] != None):
+          price = item["price"].strip('$')
+          if(len(price)>6):
+              price=price.replace(',','')
+          price = float(price)
+      else:
+          price = float(0)
       sql = 'INSERT INTO NordstromRackWomen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), str(item['retail-price']), str(item['price']), str(disc), str(item['image-link']), str(item['link']))
+      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str(item['link']))
 
       print("NordstromRackWomen item number "+str(count))
       cursor.execute(sql, val)
