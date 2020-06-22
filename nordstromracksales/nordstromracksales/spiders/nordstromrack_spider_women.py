@@ -10,19 +10,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-<<<<<<< HEAD
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-options.add_argument('window-size=1200x900')
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-
-driver = webdriver.Chrome(executable_path="/var/www/Frugally/Frugally/chromedriver", chrome_options=options)
-
-
-=======
->>>>>>> scraping
 class NordstromRackWomenSpider(scrapy.Spider):
     name = "NordstromRackWomen"
     start_urls = ["https://www.nordstromrack.com/shop/Women/Clothing"]
@@ -71,14 +58,9 @@ class NordstromRackWomenSpider(scrapy.Spider):
             data = self.driver.find_element_by_class_name('product-grid')
             imlist = data.find_elements_by_tag_name('img')
 
-<<<<<<< HEAD
-            for i in range(0,len(response.css('div.product-grid-item'))):
-                article = scraplist[i]
-=======
             for i in range(0,len(scraplist)):
                 article = scraplist[i]
                 # Finding the discount of each article and yielding all the data
->>>>>>> scraping
                 discount = article.css('.product-grid-item__sale-price-discount ::text').get()
                 if discount is not None:
                     image = imlist[i*2].get_attribute('src')

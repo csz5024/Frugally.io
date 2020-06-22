@@ -14,6 +14,7 @@ import operator
 import locale
 from flask_paginate import Pagination, get_page_parameter
 from flask_bootstrap import Bootstrap
+from DBqueries import getSQLNordstrom, getSQLNike
 
 app = Flask(__name__)
 
@@ -44,10 +45,10 @@ def InternalError(e):
 @app.route('/', methods=['GET'])
 def index():
 
-    #mySQLscratch()
-    #populateTables()
-    nordstrom = getNordstromContent()
-    nike = getNikeContent()
+    #nordstrom = getNordstromContent()
+    nordstrom = getSQLNordstrom()
+    #nike = getNikeContent()
+    nike = getSQLNike()
     fullList = nordstrom + nike
     items = len(fullList)
     itemsinrow = 3
@@ -269,9 +270,9 @@ def parseFilter(filter):
 def getBrands(objects):
     brands = []
     for i in objects:
-        if(i.brand not in brands):
-            if(i.brand != None):
-                brands.append(i.brand)
+        if(i[3] not in brands):
+            if(i[3] != None):
+                brands.append(i[3])
     brands.sort()
     return brands
 
@@ -479,7 +480,6 @@ def populateTables():
     conn.commit()
     conn.close()
     return 0
-
 
 # Populates product listings
 def getNordstromContent():
