@@ -9,7 +9,7 @@ Frugally is a smarter online shopping experience. Minimize your time spent stari
 
 Frugally is a simple design that employs the use of Selenium's web scraping libraries to gather all of the best deals from a set list of vendors. By handing this data off to our full stack web server (Hardware owned!), we are able to create a truly unique shopping experience that is curated to the user. All of your personal data is stored at home, right here in Philadelphia Pennsylvania- and in future iterations, will be stored in the safest place on earth; the Blockchain.
 
-Frugally is an entirely free service to the user, however feel free to buy your favorite team of engineers and entrepreneurs a cup of coffee by donating to our site (insert link here). If you would like to get involved or have any suggestions, email us at frugally@frugally.io. 
+Frugally is an entirely free service to the user, however feel free to buy your favorite team of engineers and entrepreneurs a cup of coffee by donating to our site https://www.patreon.com/frugallyio?fan_landing=true. If you would like to get involved or have any suggestions, email us at frugally@frugally.io. 
 
 > And then came that girl who rowed in the dark. Each night she paused to relay her coordinates, how her body was performing, and the atmospheric conditions. Often she noted things-the outlines of birds migrating at night, a whale shark seining for krill off her bow. She had, she said, a growing ability to dream while she rowed.
 >
