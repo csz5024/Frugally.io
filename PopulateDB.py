@@ -47,8 +47,9 @@ def populateNordstromTables():
           price = float(price)
       else:
           price = float(0)
+	
       sql = 'INSERT INTO NordstromRackMen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str(item['link']))
+      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
 
       print("NordstromRackMen item number "+str(count))
       cursor.execute(sql, val)
@@ -79,7 +80,7 @@ def populateNordstromTables():
       else:
           price = float(0)
       sql = 'INSERT INTO NordstromRackWomen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str(item['link']))
+      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
 
       print("NordstromRackWomen item number "+str(count))
       cursor.execute(sql, val)
@@ -111,7 +112,8 @@ def populateNikeTables():
     else:
             discount = 0
     sql = 'INSERT INTO NikeMen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), str(item['link']))
+    link = item['link'].strip("https://") 
+    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
 
     print("NikeMen item number "+str(count))
     cursor.execute(sql, val)
@@ -133,7 +135,8 @@ def populateNikeTables():
     else:
             discount = 0
     sql = 'INSERT INTO NikeWomen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), str(item['link']))
+    link = item['link'].strip("https://") 
+    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
 
     print("NikeWomen item number "+str(count))
     cursor.execute(sql, val)
@@ -141,7 +144,7 @@ def populateNikeTables():
   return 0
 
 if __name__=='__main__':
-#  populateNordstromTables()
+  populateNordstromTables()
   populateNikeTables()
   cursor.close()
   conn.close()

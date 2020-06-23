@@ -19,8 +19,8 @@ def getSQLNordstrom():
 
     item2 = cursor.fetchall()
     item = item + item2
-    #for i in item:
-    #    print(i)
+    for i in item:
+        print(i)
 
     cursor.close()
     conn.close()
@@ -47,4 +47,4 @@ def getSQLNike():
 
 if __name__ == '__main__':
     getSQLNordstrom()
-    getSQLNike()
+   # getSQLNike()

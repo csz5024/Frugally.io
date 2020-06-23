@@ -675,9 +675,11 @@
 			font-size: 1.75em;
 			line-height: 1.75em;
 		}
+        #banner a {
+		float: left;
+	}
 
-	#banner strong,
-	#banner a {
+	#banner strong {
 		color: inherit;
 	}
 

@@ -22,12 +22,12 @@ conn = mysql.connector.connect(
     password="Shoelas",
     database="Frugally"
 )
-cursor = conn.cursor()
 
 app = Flask(__name__)
 
 
 '''
+
 All code is original and written by Casey Zduniak, 2020
 
 Use app.logger.info() to log information to the flask.log file in the same directory. use like a normal print statement
@@ -44,10 +44,12 @@ def before_request():
         #app.logger.info("HTTPS redirect")
         return redirect(url,code=301)
 
+
 # Custom Internal Server Error Page 
 @app.errorhandler(500)
 def InternalError(e):
     return render_template('500.html'), 500
+
 
 # landing page
 @app.route('/', methods=['GET'])
@@ -76,23 +78,18 @@ def index():
 def google():
     return render_template('google5e9dcfe4850ad995.html')
 
+
 #robots.txt
 @app.route('/robots.txt', methods=['GET'])
 def robots():
     with open('/var/www/Frugally/Frugally/templates/robots.txt', 'r') as f:
         content = f.read()
     return Response(content, mimetype='text')
-#    robots_template = render_template('robots.txt')
-#    response = Response(robots_template)
-#    response.headers["Content-Type"] = "application/text"
-#    return response
+
 
 #sitemap
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
-#    with open('/var/www/Frugally/Frugally/templates/sitemap.xml', 'r') as f:
-#        content = f.read()
-#    return Response(content, mimetype='text/xml')
     pages = []
     deltadays = datetime.now() - timedelta(days=7)
     deltadays = deltadays.strftime("%Y-%m-%d")
@@ -138,9 +135,9 @@ def feedback():
 
 
 '''
-The following contains three sub directories from the index page that are classified by price sorting.
+The following contains two url paths, one for men, and one for women
 
-In the future, I would like to combine these elements into a single dynamic route under def feedback() ^
+<filters> is a dynamic route that acts as a url variable, containing various info
 '''
 @app.route('/men/<filters>', methods=["GET", "POST"])
 def men(filters):
@@ -167,9 +164,11 @@ def men(filters):
             return returnFilter(radio, vendorfilter, brands)
     else:
         options = parseFilter(filters)
-        nordstrom = getNordstromContent()
-        nike = getNikeContent()
-        objects = getSort(nordstrom+nike, options, gender='men')
+        #nordstrom = getNordstromContent()
+        #nike = getNikeContent()
+        nordstrom = getSQLNordstrom()
+        nike = getSQLNike()
+        #objects = getSort(nordstrom+nike, options, gender='men')
         itemsinrow = 3
         items = len(objects)
         itemsperpage = 16
@@ -229,6 +228,7 @@ def women(filters):
 def login():
     return render_template('login.html')
 
+
 # The packing and unpacking URL filters
 def returnFilter(radio, vendors, brands):
     try:
@@ -284,6 +284,7 @@ def getBrands(objects):
     brands.sort()
     return brands
 
+'''
 #wrapper function for getDiscount and getPrice
 def getSort(products, options, gender):
     app.logger.info(options)
@@ -465,9 +466,40 @@ def getPrice(products, filters, highlow):
             i.setPrice("$"+str(i.price))
 
     return objects
+'''
 
+# The goal of this function is to return a set of products
+# whose attributes match that of the filters
+# and are sorted in order of highest discount to lowest
+def getSQLdiscount(filters):
+
+    # Parse out the filters
+    if(filters!=None):
+        gender = str(filters[0][1]).lower()
+        filtervendor = filters[1][1]
+        filterbrands = filters[2][1]
+    else:
+        gender = "all"
+        filtervendor = "all"
+        filterbrands = "all"
+
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM NordstromRackMen WHERE', gender)
+
+    item = cursor.fetchall()
+
+
+# The goal of this function is to return a set of products
+# whose attributes match that of the filters
+# and are sorted in order of price, depending on the boolean value of highlow
+def getSQLprice(filters, highlow):
+    pass
+
+
+#This function simply fetches all nordstromrack content
 def getSQLNordstrom():
 
+    cursor = conn.cursor()
     cursor.execute('SELECT * FROM NordstromRackMen')
 
     item = cursor.fetchall()
@@ -480,11 +512,13 @@ def getSQLNordstrom():
     #    print(i)
 
     cursor.close()
-    conn.close()
     return item
 
+
+#This funciton simply fetches all nike content
 def getSQLNike():
 
+    cursor = conn.cursor()
     cursor.execute('SELECT * FROM NikeMen')
 
     item = cursor.fetchall()
@@ -497,9 +531,9 @@ def getSQLNike():
     #    print(i)
 
     cursor.close()
-    conn.close()
     return item
 
+'''
 # Populates product listings
 def getNordstromContent():
     objects = []
@@ -600,7 +634,7 @@ def getNikeContent():
     app.logger.info('Nike objects loaded: '+str(len(objects)))
     f.close()
     return objects
-
+'''
 
 # Sends email from burner gmail to frugally gmail
 def sendMail(customer, name, message):
@@ -623,7 +657,7 @@ def sendMail(customer, name, message):
     server.quit()
     return 'success'
 
-
+'''
 # Product listing object
 class listing:
     def __init__(self):
@@ -663,14 +697,7 @@ class listing:
 
     def setGender(self, gender):
         self.gender = gender
-
+'''
 
 if __name__ == '__main__':
-    conn = mysql.connect()
-    cursor = conn.cursor()
-
-    cursor.execute("CREATE DATABASE [IF NOT EXISTS] Frugally")
-    conn.commit()
-    cur.close()
-    conn.close()
     app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'), debug=True)

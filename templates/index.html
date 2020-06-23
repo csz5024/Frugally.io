@@ -4,7 +4,6 @@
 		<title>Frugally</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="Frugally is a comprehensive deal-finding website that uses an interactive learning algorithm to curate deals for you." />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--[if lte IE 8]><script src="static/css/ie/html5shiv.js"></script><![endif]-->
 		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}"></script>
@@ -15,6 +14,7 @@
 			<link rel="stylesheet" href="static/css/skel.css" />
 			<link rel="stylesheet" href="static/css/style.css" />
 			<link rel="stylesheet" href="static/css/style-wide.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
 		</noscript>
 			<!--		noscript tag-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
@@ -69,15 +69,15 @@
 									<div id="cardcontainer">
 										<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>
 										<div id="triangle-topright"></div>
-										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}</h1></div>
+										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
 										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j][7] }} alt=""></a>
 									</div>
 									<div class="box">
 										<div class="boxp">
 											<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j][2] }}</p>
 										</div>
-										<p style="color:red"><del>{{objects[i*itemsinrow+j][4]}}</del></p>
-										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button">{{ objects[i*itemsinrow+j][5] }}</a>
+										<p style="color:red"><del>${{objects[i*itemsinrow+j][4]}}</del></p>
+										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button">${{ objects[i*itemsinrow+j][5] }}</a>
 									</div>
 								</section>
 								{% endif %}
@@ -124,6 +124,11 @@
 										<input type="submit" value="Send Message" class="button alt" />
 									</li>
 								</ul>
+							</div>
+						</div>
+                                                <div class="row half">
+							<div class="12u">
+								<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
 							</div>
 						</div>
 					</form>
