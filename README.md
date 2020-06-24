@@ -258,8 +258,6 @@ the filters parameter should look something like ```[[gender, m/f], [vendor, [ni
 unpack the filters and insert them into the SQL statement so that the database returns the correct set of products.
 you can see that I tried to do that with the if, else statement, feel free to delete that and write your own.
 
-once again the login for mysql is ```/usr/bin/mysql -u frugally -p``` then just enter the super secret password.
-
 ```
 # The goal of this function is to return a set of products
 # whose attributes match that of the filters
@@ -282,4 +280,16 @@ def getSQLdiscount(filters):
     item = cursor.fetchall()
 
 ```
+
+once again the login for mysql is ```/usr/bin/mysql -u frugally -p``` then just enter the super secret password.
+
+If you want to test your query before putting it in the __init__.py file (which I would recommend) 
+
+1. login to the mysql server ```/usr/bin/mysql -u frugally -p```
+2. ```use Frugally```
+3. ```show tables;``` and ```describe [tablename];```
+4. write the sql statements here and see what kind of output you get 
+   - Ex. ```SELECT * FROM NordstromRackMen WHERE gender='male', brand='burberry' OR brand='guess' OR brand='zara' ORDER BY discount;```
+
+
 
