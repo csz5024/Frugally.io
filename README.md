@@ -255,8 +255,7 @@ best of luck and godspeed.
 On line 474 of __init__.py you will find the ```getSQLdiscount``` function. This function will return an array of products, sorted from best discount to lowest discount, with any combination of filters applied.
 
 the filters parameter should look something like ```[[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, zara ...]]]```
-unpack the filters and insert them into the SQL statement so that the database returns the correct set of products.
-you can see that I tried to do that with the if, else statement, feel free to delete that and write your own.
+unpack the filters and insert them into the corresponding SQL statements so that the database returns the correct set of products. You should have multiple SQL statements, one for each table (in other words one for each vendor). To collect the results, just append the item variable by ```item = item + cursor.fetchall()``` after each SQL statement. then at the very end, return item.
 
 ```
 # The goal of this function is to return a set of products
