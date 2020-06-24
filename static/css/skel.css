@@ -31,7 +31,10 @@
 			/* width: (containers) * 0.75; */
 			width: 900px;
 		}
-
+                .container.sidebar {
+			width: 300px;
+                        background-color: #777776;
+		}
 		.container.big {
 			width: 100%;
 

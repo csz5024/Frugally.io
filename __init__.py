@@ -694,7 +694,7 @@ class listing:
 
     def setVendor(self, vendor):
         self.vendor = vendor
-
+`
     def setGender(self, gender):
         self.gender = gender
 '''
