@@ -22,6 +22,7 @@ Frugally is an entirely free service to the user, however feel free to buy your 
  4. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
  5. [Server Configurations](#ServerConfigurations)
  6. [Porkbun Login Information](#Porkbun)
+ 7. [Guide for Steve](#Guide)
 
 <a name="WebServer"/>
 
@@ -219,3 +220,66 @@ from Frugally import app as application
 ## Porkbun
 Login: jadblaik
 pw: tJgxbMgsdG@!!M%P5n6s
+
+<a name="Guide"/>
+
+## Guide
+### Debugging process
+1. Log on to the server
+2. change directory ```cd /var/www/Frugally/Frugally```
+3. view contents of directory ```dir```
+4. open the __init__ file ```sudo nano __init__.py```
+5. make edits to ```getSQL``` functions
+6. save and exit by pressing ```ctrl+x``` or just save ```ctrl+s```
+7. restart the server to test your changes ```sudo systemctl restart apache2```
+8. navigate to the website
+9. If you get an error page:
+   - check the frugally error logs ```sudo nano flask.log``` and scroll to the bottom. This should give you a standard python error.
+   - be sure to delete the file afterwards to reset it ```sudo rm flask.log```
+   - check the apache error logs: 
+     - first go up one directory ```cd ..```
+     - then change directories ```cd logs``` view the contents of the directory ```dir```
+     - check the ```error.log``` file as well as the ```ssl_error.log``` by typing ```sudo nano error.log``` and scrolling to the bottom.
+     - feel free to delete these files afterwards as well.
+     
+If you find that still, after all of that, you dont have a clue as to why your code isnt working, this is completley common. I have banged my head on my desk trying to get the stupid error logs to work, and they still dont log some errors. Just try to think it through.
+
+### Additional super useful debugging tip
+- place ```app.logger.info("<enter debugging message here>")``` anywhere in the __init__.py file to print information to the flask.log file. If all else fails, this can end up being your guardian angel.
+
+best of luck and godspeed.
+
+### First Assignment:
+- Create SQL Statements that filter content based on user input.
+
+On line 474 of __init__.py you will find the ```getSQLdiscount``` function. This function will return an array of products, sorted from best discount to lowest discount, with any combination of filters applied.
+
+the filters parameter should look something like ```[[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, zara ...]]]```
+unpack the filters and insert them into the SQL statement so that the database returns the correct set of products.
+you can see that I tried to do that with the if, else statement, feel free to delete that and write your own.
+
+once again the login for mysql is ```/usr/bin/mysql -u frugally -p``` then just enter the super secret password.
+
+```
+# The goal of this function is to return a set of products
+# whose attributes match that of the filters
+# and are sorted in order of highest discount to lowest
+def getSQLdiscount(filters):
+
+    # Parse out the filters
+    if(filters!=None):
+        gender = str(filters[0][1]).lower()
+        filtervendor = filters[1][1]
+        filterbrands = filters[2][1]
+    else:
+        gender = "all"
+        filtervendor = "all"
+        filterbrands = "all"
+
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM NordstromRackMen WHERE', gender)
+
+    item = cursor.fetchall()
+
+```
+
