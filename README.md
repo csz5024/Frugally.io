@@ -176,6 +176,8 @@ sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctsta
 
 ## Server Configurations
 
+list crontab configurations ```sudo crontab -e```
+
 Need to update SSL certificates every 60 days
 
 frugally.wsgi
