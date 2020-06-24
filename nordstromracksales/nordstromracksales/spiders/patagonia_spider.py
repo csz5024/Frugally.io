@@ -86,7 +86,7 @@ class PatagoniaMenSpider(scrapy.Spider):
 
             scraplist = scrapy_selector.css('div.product-tile__wrapper')
 
-            for i in range(0,len(response.css('div.product-tile__wrapper'))):
+            for i in range(0,len(scraplist)):
                 article = scraplist[i]
                 yield {
                     'vendor': 'Patagonia',
