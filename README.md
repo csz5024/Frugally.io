@@ -19,9 +19,9 @@ Frugally is an entirely free service to the user, however feel free to buy your 
  1. [Frugally Web Server](#WebServer)
  2. [Frugally Database](#Database)
  3. [Scraping](#Scraping)
- 4. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
- 5. [Server Configurations](#ServerConfigurations)
- 6. [Porkbun Login Information](#Porkbun)
+ 4. [Server Configurations](#ServerConfigurations)
+ 5. [Porkbun Login Information](#Porkbun)
+ 6. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
  7. [Guide for Steve](#Guide)
 
 <a name="WebServer"/>
@@ -119,6 +119,60 @@ This section details the MySQL Database used to hold all of our scraped product 
 ## Scraping
 This section details the web scraping.
 
+
+
+<a name="ServerConfigurations"/>
+
+## Server Configurations
+
+list crontab configurations ```sudo crontab -e```
+``` grep CRON /var/log/syslog```
+
+Need to update SSL certificates every 60 days
+
+frugally.wsgi
+```
+#!/usr/bin/python3
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/Frugally/")
+
+from Frugally import app as application
+```
+
+
+/etc/apache2/sites-available/Frugally.conf
+```
+<VirtualHost *:80>
+  ServerName 192.168.1.xxx
+  ServerAdmin caseyzduniak@gmail.com
+  ErrorLog /var/www/Frugally/logs/error.log
+  CustomLog /var/www/Frugally/logs/access.log combined
+  
+  WSGIDaemonProcess frugally user=www-data group=www-data threads=5
+  WSGIProcessGroup frugally
+  WSGIScriptAlias / /var/www/Frugally/frugally.wsgi
+  <Directory /var/www/Frugally/Frugally/>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+  
+  Alias /static /var/www/Frugally/Frugally/static
+  <Directory /var/www/Frugally/Frugally/static/>
+    Require all granted
+  </Directory>
+</VirtualHost>
+```
+
+
+<a name="Porkbun"/>
+
+## Porkbun
+Login: jadblaik
+pw: tJgxbMgsdG@!!M%P5n6s
+
 <a name="UnixCommands"/>
 
 ## Unix Commands
@@ -171,57 +225,6 @@ sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctsta
    - `git status` - show the status of the git directory
    - `sudo git commit -am "message content"` - commit a change to be made to the git directory
    - `sudo git push origin <branch name>` - push the commit up to github branch name
-
-<a name="ServerConfigurations"/>
-
-## Server Configurations
-
-list crontab configurations ```sudo crontab -e```
-
-Need to update SSL certificates every 60 days
-
-frugally.wsgi
-```
-#!/usr/bin/python3
-import sys
-import logging
-logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/Frugally/")
-
-from Frugally import app as application
-```
-
-
-/etc/apache2/sites-available/Frugally.conf
-```
-<VirtualHost *:80>
-  ServerName 192.168.1.xxx
-  ServerAdmin caseyzduniak@gmail.com
-  ErrorLog /var/www/Frugally/logs/error.log
-  CustomLog /var/www/Frugally/logs/access.log combined
-  
-  WSGIDaemonProcess frugally user=www-data group=www-data threads=5
-  WSGIProcessGroup frugally
-  WSGIScriptAlias / /var/www/Frugally/frugally.wsgi
-  <Directory /var/www/Frugally/Frugally/>
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-  </Directory>
-  
-  Alias /static /var/www/Frugally/Frugally/static
-  <Directory /var/www/Frugally/Frugally/static/>
-    Require all granted
-  </Directory>
-</VirtualHost>
-```
-
-
-<a name="Porkbun"/>
-
-## Porkbun
-Login: jadblaik
-pw: tJgxbMgsdG@!!M%P5n6s
 
 <a name="Guide"/>
 
