@@ -228,12 +228,12 @@ sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctsta
 
 <a name="Guide"/>
 
-## Guide
+## Guide for Steve
 ### Debugging process
 1. Log on to the server
 2. change directory ```cd /var/www/Frugally/Frugally```
 3. view contents of directory ```dir```
-4. open the __init__ file ```sudo nano __init__.py```
+4. open the DBqueries.py file ```sudo nano DBqueries.py```
 5. make edits to ```getSQL``` functions
 6. save and exit by pressing ```ctrl+x``` or just save ```ctrl+s```
 7. restart the server to test your changes ```sudo systemctl restart apache2```
@@ -250,14 +250,14 @@ sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctsta
 If you find that still, after all of that, you dont have a clue as to why your code isnt working, this is completley common. I have banged my head on my desk trying to get the stupid error logs to work, and they still dont log some errors. Just try to think it through.
 
 ### Additional super useful debugging tip
-- place ```app.logger.info("<enter debugging message here>")``` anywhere in the __init__.py file to print information to the flask.log file. If all else fails, this can end up being your guardian angel.
+- place ```app.logger.info("<enter debugging message here>")``` anywhere in the __init__.py file or DBqueries.py to print information to the flask.log file. If all else fails, this can end up being your guardian angel.
 
 best of luck and godspeed.
 
 ### First Assignment:
 - Create SQL Statements that filter content based on user input.
 
-On line 474 of __init__.py you will find the ```getSQLdiscount``` function. This function will return an array of products, sorted from best discount to lowest discount, with any combination of filters applied.
+In DBqueries.py you will find the ```getSQLdiscount``` function. This function will return an array of products, sorted from best discount to lowest discount, with any combination of filters applied.
 
 the filters parameter should look something like ```[[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, zara ...]]]```
 unpack the filters and insert them into the corresponding SQL statements so that the database returns the correct set of products. You should have multiple SQL statements, one for each table (in other words one for each vendor). To collect the results, just append the item variable by ```item = item + cursor.fetchall()``` after each SQL statement. then at the very end, return item.
@@ -287,7 +287,7 @@ def getSQLdiscount(filters):
 
 once again the login for mysql is ```/usr/bin/mysql -u frugally -p``` then just enter the super secret password.
 
-If you want to test your query before putting it in the __init__.py file (which I would recommend) 
+If you want to test your query before putting it in the DBqueries.py file (which I would recommend) 
 
 1. login to the mysql server ```/usr/bin/mysql -u frugally -p```
 2. ```use Frugally```
