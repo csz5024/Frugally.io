@@ -9,12 +9,15 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime, timedelta
-from threading import Timer
+#from threading import Timer
 import operator
 import locale
 from flask_paginate import Pagination, get_page_parameter
 from flask_bootstrap import Bootstrap
 import mysql.connector
+import sys
+sys.path.append("..")
+from Frugally import DBqueries
 
 conn = mysql.connector.connect(
     host="localhost",

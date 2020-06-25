@@ -117,6 +117,7 @@ def populateNikeTables():
     print("NikeMen item number "+str(count))
     cursor.execute(sql, val)
   conn.commit()
+
   with open('/var/www/Frugally/Frugally/nordstromracksales/NikeWomen.json') as f:
     data = json.load(f)
 

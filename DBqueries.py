@@ -44,7 +44,3 @@ def getSQLNike():
     return item
 
 
-
-if __name__ == '__main__':
-    getSQLNordstrom()
-   # getSQLNike()
