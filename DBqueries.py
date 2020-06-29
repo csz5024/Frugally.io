@@ -40,6 +40,15 @@ def getSQLprice(filters, highlow):
 #This function simply fetches all nordstromrack content
 def getSQLNordstrom():
 
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas",
+        database="Frugally"
+    )
+    cursor = conn.cursor()
+
+
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM NordstromRackMen')
 
@@ -53,11 +62,21 @@ def getSQLNordstrom():
     #    print(i)
 
     cursor.close()
+    conn.close()
     return item
 
 
 #This funciton simply fetches all nike content
 def getSQLNike():
+
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas",
+        database="Frugally"
+    )
+    cursor = conn.cursor()
+
 
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM NikeMen')
@@ -72,5 +91,6 @@ def getSQLNike():
     #    print(i)
 
     cursor.close()
+    conn.close()
     return item
 

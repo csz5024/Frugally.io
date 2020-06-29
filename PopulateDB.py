@@ -96,27 +96,29 @@ def populateNikeTables():
   with open('/var/www/Frugally/Frugally/nordstromracksales/NikeMen.json') as f:
     data = json.load(f)
 
-  print('Adding Nike Content to Database, please wait...')
-  for count, item in enumerate(data):
-    if((item["retail-price"]!=None) and (item["price"]!=None)):
-            if(len(item["retail-price"])>4):
-                retail = float(item["retail-price"].strip("$").replace(',',''))
-            else:
-                retail = float(item["retail-price"].strip("$"))
-            if(len(item["price"])>4):
-                price = float(item["price"].strip("$").replace(',',''))
-            else:
-                price = float(item["price"].strip("$"))
-            discount = round((1-(price/retail))*100)
-    else:
-            discount = 0
-    sql = 'INSERT INTO NikeMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-    link = item['link'].strip("https://") 
-    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
+  if(data != None):
+    print('Adding Nike Content to Database, please wait...')
+    for count, item in enumerate(data):
+      if((item["retail-price"]!=None) and (item["price"]!=None)):
+              if(len(item["retail-price"])>4):
+                  retail = float(item["retail-price"].strip("$").replace(',',''))
+              else:
+                  retail = float(item["retail-price"].strip("$"))
+              if(len(item["price"])>4):
+                  price = float(item["price"].strip("$").replace(',',''))
+              else:
+                  price = float(item["price"].strip("$"))
+              discount = round((1-(price/retail))*100)
+      else:
+              discount = 0
+      title = str(item['title'].strip("Nike "))
+      sql = 'INSERT INTO NikeMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+      link = item['link'].strip("https://") 
+      val =  (str(item['vendor']), str(item['gender']), title, str(item['brand']), retail, price, discount, str(item['image-link']), link)
 
-    print("NikeMen item number "+str(count))
-    cursor.execute(sql, val)
-  conn.commit()
+      print("NikeMen item number "+str(count))
+      cursor.execute(sql, val)
+    conn.commit()
 
   with open('/var/www/Frugally/Frugally/nordstromracksales/NikeWomen.json') as f:
     data = json.load(f)
@@ -134,6 +136,7 @@ def populateNikeTables():
             discount = round((1-(price/retail))*100)
     else:
             discount = 0
+    title = str(item['title'].strip("Nike "))
     sql = 'INSERT INTO NikeWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
     link = item['link'].strip("https://") 
     val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
@@ -145,7 +148,7 @@ def populateNikeTables():
 
 def swapTables():
   print("Dropping old tables...")
-  cursor.execute('DROP TABLE NordstromRackMen, NordstromRackWomen, NikeMen, NikeWomen;')
+  cursor.execute('DROP TABLE IF EXISTS NordstromRackMen, NordstromRackWomen, NikeMen, NikeWomen;')
   print("Swapping in new tables...")
   cursor.execute('ALTER TABLE NordstromRackMenTemp RENAME TO NordstromRackMen;')
   cursor.execute('ALTER TABLE NordstromRackWomenTemp RENAME TO NordstromRackWomen;')
