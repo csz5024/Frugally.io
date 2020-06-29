@@ -1,0 +1,2201 @@
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 266, in execute
+    raw_as_string=self._raw_as_string)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 504, in cmd_query
+    return self.fetch_eof_status()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 432, in fetch_eof_status
+    'insert_id': self._cmysql.insert_id(),
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 44, in getSQLNordstrom
+    cursor.execute('SELECT * FROM NordstromRackMen')
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 269, in execute
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.OperationalError: 2013 (HY000): Lost connection to MySQL server during query
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 332, in get_rows
+    else self._cmysql.fetch_row()
+_mysql_connector.MySQLInterfaceError: Commands out of sync; you can't run this command now
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 46, in getSQLNordstrom
+    item = cursor.fetchall()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 490, in fetchall
+    rows = self._cnx.get_rows()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 349, in get_rows
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2014 (HY000): Commands out of sync; you can't run this command now
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on /men/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 165, in men
+    nordstrom = getSQLNordstrom()
+NameError: name 'getSQLNordstrom' is not defined
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 489, in cmd_query
+    raw_as_string=raw_as_string)
+_mysql_connector.MySQLInterfaceError: Commands out of sync; you can't run this command now
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 44, in getSQLNordstrom
+    cursor.execute('SELECT * FROM NordstromRackMen')
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 266, in execute
+    raw_as_string=self._raw_as_string)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 492, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2014 (HY000): Commands out of sync; you can't run this command now
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 332, in get_rows
+    else self._cmysql.fetch_row()
+_mysql_connector.MySQLInterfaceError: Commands out of sync; you can't run this command now
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 46, in getSQLNordstrom
+    item = cursor.fetchall()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 490, in fetchall
+    rows = self._cnx.get_rows()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 349, in get_rows
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2014 (HY000): Commands out of sync; you can't run this command now
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 46, in getSQLNordstrom
+    item = cursor.fetchall()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 489, in fetchall
+    raise errors.InterfaceError("No result set to fetch from.")
+mysql.connector.errors.InterfaceError: No result set to fetch from.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 489, in cmd_query
+    raw_as_string=raw_as_string)
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 44, in getSQLNordstrom
+    cursor.execute('SELECT * FROM NordstromRackMen')
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 266, in execute
+    raw_as_string=self._raw_as_string)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 492, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.OperationalError: 2013 (HY000): Lost connection to MySQL server during query
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 489, in cmd_query
+    raw_as_string=raw_as_string)
+_mysql_connector.MySQLInterfaceError: Commands out of sync; you can't run this command now
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 44, in getSQLNordstrom
+    cursor.execute('SELECT * FROM NordstromRackMen')
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 266, in execute
+    raw_as_string=self._raw_as_string)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 492, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2014 (HY000): Commands out of sync; you can't run this command now
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 332, in get_rows
+    else self._cmysql.fetch_row()
+_mysql_connector.MySQLInterfaceError: Commands out of sync; you can't run this command now
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 46, in getSQLNordstrom
+    item = cursor.fetchall()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 490, in fetchall
+    rows = self._cnx.get_rows()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 349, in get_rows
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2014 (HY000): Commands out of sync; you can't run this command now
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 46, in getSQLNordstrom
+    item = cursor.fetchall()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 489, in fetchall
+    raise errors.InterfaceError("No result set to fetch from.")
+mysql.connector.errors.InterfaceError: No result set to fetch from.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 489, in cmd_query
+    raw_as_string=raw_as_string)
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 44, in getSQLNordstrom
+    cursor.execute('SELECT * FROM NordstromRackMen')
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/cursor_cext.py", line 266, in execute
+    raw_as_string=self._raw_as_string)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 492, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.OperationalError: 2013 (HY000): Lost connection to MySQL server during query
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on /men/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 165, in men
+    nordstrom = getSQLNordstrom()
+NameError: name 'getSQLNordstrom' is not defined
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on /men/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 165, in men
+    nordstrom = getSQLNordstrom()
+NameError: name 'getSQLNordstrom' is not defined
+ERROR:Frugally:Exception on /women/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 205, in women
+    nordstrom = getNordstromContent()
+NameError: name 'getNordstromContent' is not defined
+ERROR:Frugally:Exception on /men/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 165, in men
+    nordstrom = getSQLNordstrom()
+NameError: name 'getSQLNordstrom' is not defined
+ERROR:Frugally:Exception on /men/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 165, in men
+    nordstrom = getSQLNordstrom()
+NameError: name 'getSQLNordstrom' is not defined
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 539, in cursor
+    self.handle_unread_result(prepared)
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 712, in handle_unread_result
+    raise errors.InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+ERROR:Frugally:Exception on /men/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 165, in men
+    nordstrom = getSQLNordstrom()
+NameError: name 'getSQLNordstrom' is not defined
+ERROR:Frugally:Exception on /women/home [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 205, in women
+    nordstrom = getNordstromContent()
+NameError: name 'getNordstromContent' is not defined
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+ERROR:Frugally:Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/Frugally/Frugally/__init__.py", line 55, in index
+    nordstrom = DBqueries.getSQLNordstrom()
+  File "/var/www/Frugally/Frugally/DBqueries.py", line 43, in getSQLNordstrom
+    cursor = conn.cursor()
+  File "/usr/local/lib/python3.6/dist-packages/mysql/connector/connection_cext.py", line 541, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.

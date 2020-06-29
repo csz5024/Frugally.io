@@ -48,6 +48,7 @@
 						<nav id="nav">
 							<ul>
 								<li class="active"><a href="/">Homepage</a></li>
+								<li><a href="#">About</a></li>
 								<li><a href="#">Login</a></li>
 							</ul>
 						</nav>
@@ -62,24 +63,26 @@
 								<a href="/men/home" class="button small">Men's</a>
 								<a href="/women/home" class="button small">Women's</a>
 							</div>
-							<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">
+							<!--<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">-->
 							{% for i in range(pagination.per_page*(pagination.page-1), pagination.per_page*(pagination.page-1) + pagination.per_page) %}
 							<div class="row no-collapse-1">
 								{% for j in range(itemsinrow) %}
 								{% if (itemsinrow*i+j) < items %}
 								<section class="4u">
 									<div id="cardcontainer">
-										<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>
+										<!--<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>-->
 										<div id="triangle-topright"></div>
 										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
 										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j][7] }} alt=""></a>
-									</div>
-									<div class="box">
-										<div class="boxp">
-											<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j][2] }}</p>
+										<div class="box">
+											<div class="boxp">
+                                                                                        	<p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
+												<p>{{objects[i*itemsinrow+j][3] }} {{ objects[i*itemsinrow+j][2] }}</p>
+											</div>
+											<p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
+											<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank"<p><strong>${{ objects[i*itemsinrow+j][5] }}</strong></p></a>
+											<!--<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button">${{ objects[i*itemsinrow+j][5] }}</a>-->
 										</div>
-										<p style="color:red"><del>${{objects[i*itemsinrow+j][4]}}</del></p>
-										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button">${{ objects[i*itemsinrow+j][5] }}</a>
 									</div>
 								</section>
 								{% endif %}
@@ -128,11 +131,6 @@
 								</ul>
 							</div>
 						</div>
-                                                <div class="row half">
-							<div class="12u">
-								<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
-							</div>
-						</div>
 					</form>
 				</section>
 			</div>
@@ -141,6 +139,11 @@
 	<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
+				<div class="row half patreon">
+					<div class="12u">
+						<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
+					</div>
+				</div>
 				<div class="copyright">
 					<ul class="icons">
 						<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>

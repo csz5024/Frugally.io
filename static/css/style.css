@@ -227,7 +227,6 @@
 
 			.image.featured img {
 				position: relative;
-				display: block;
 				max-width: 100%;
 				height: auto;
 				left: 0px;
@@ -722,7 +721,8 @@
 		color: rgba(255, 255, 255, 0.2) !important;
 		text-align: center;
 		display: block;
-		padding: 3em 0em;
+		padding: 1em 0em 0em 0em;
+		margin: 2em 0em 0em 0em;
 	}
 
 		#copyright a {
@@ -739,12 +739,21 @@
 		text-align: center;
 		/*border: 1px solid #777776;*/
 		border-radius: 0px 0px 6px 6px;
-		/*box-shadow: 10px 10px 5px #aaaaaa;*/
+	}
+	.box a {
+		color: #0f1116;
+	}
+	.box p {
+		margin: 0;
 	}
 	.boxp {
 		/*line-height: 2em;*/
-		min-height:125px;
+		/*min-height:125px;*/
 	}
+        .boxp p {
+                margin: 0;
+                /*line-height: 0;*/
+        }
 	.img-top-left {
 		position: absolute;
 		z-index: 25;
@@ -790,7 +799,9 @@
 	div#cardcontainer {
 		position: relative;
 		text-align: center;
-		display: inline-block;
+		margin: 1em 0 1em 0;
+                /*box-shadow: 5px 10px 18px #ddd;*/
+                z-index: 10;
 	}
 	div#cardcontainer a {
 
@@ -804,6 +815,8 @@
 
 	div#pagination ul{
 		text-align: center;
+		padding: 40px 0 20px 0;
+		margin: 0 0 0 0;
 	}
 	div#pagination ul li{
 		display: inline-block;

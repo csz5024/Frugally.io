@@ -16,10 +16,10 @@ cursor = conn.cursor()
 
 def populateNordstromTables():
 
-  print('clearing tables')
-  cursor.execute('TRUNCATE TABLE NordstromRackMen')
-  cursor.execute('TRUNCATE TABLE NordstromRackWomen')
-  conn.commit()
+  #print('clearing tables')
+  #cursor.execute('TRUNCATE TABLE NordstromRackMen')
+  #cursor.execute('TRUNCATE TABLE NordstromRackWomen')
+  #conn.commit()
 
   with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRackMen.json') as f:
       data = json.load(f)
@@ -46,7 +46,7 @@ def populateNordstromTables():
           price = float(price)
       else:
           price = float(0)
-      sql = 'INSERT INTO NordstromRackMen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+      sql = 'INSERT INTO NordstromRackMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
       val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
 
       print("NordstromRackMen item number "+str(count))
@@ -77,7 +77,7 @@ def populateNordstromTables():
           price = float(price)
       else:
           price = float(0)
-      sql = 'INSERT INTO NordstromRackWomen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+      sql = 'INSERT INTO NordstromRackWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
       val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
 
       print("NordstromRackWomen item number "+str(count))
@@ -88,10 +88,10 @@ def populateNordstromTables():
 
 def populateNikeTables():
 
-  print('clearing tables')
-  cursor.execute('TRUNCATE TABLE NikeMen')
-  cursor.execute('TRUNCATE TABLE NikeWomen')
-  conn.commit()
+  #print('clearing tables')
+  #cursor.execute('TRUNCATE TABLE NikeMen')
+  #cursor.execute('TRUNCATE TABLE NikeWomen')
+  #conn.commit()
 
   with open('/var/www/Frugally/Frugally/nordstromracksales/NikeMen.json') as f:
     data = json.load(f)
@@ -110,7 +110,7 @@ def populateNikeTables():
             discount = round((1-(price/retail))*100)
     else:
             discount = 0
-    sql = 'INSERT INTO NikeMen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+    sql = 'INSERT INTO NikeMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
     link = item['link'].strip("https://") 
     val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
 
@@ -134,7 +134,7 @@ def populateNikeTables():
             discount = round((1-(price/retail))*100)
     else:
             discount = 0
-    sql = 'INSERT INTO NikeWomen(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+    sql = 'INSERT INTO NikeWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
     link = item['link'].strip("https://") 
     val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
 
@@ -143,8 +143,26 @@ def populateNikeTables():
   conn.commit()
   return 0
 
+def swapTables():
+  print("Dropping old tables...")
+  cursor.execute('DROP TABLE NordstromRackMen, NordstromRackWomen, NikeMen, NikeWomen;')
+  print("Swapping in new tables...")
+  cursor.execute('ALTER TABLE NordstromRackMenTemp RENAME TO NordstromRackMen;')
+  cursor.execute('ALTER TABLE NordstromRackWomenTemp RENAME TO NordstromRackWomen;')
+  cursor.execute('ALTER TABLE NikeMenTemp RENAME TO NikeMen;')
+  cursor.execute('ALTER TABLE NikeWomenTemp RENAME TO NikeWomen;')
+  print("Adding new temp tables...")
+  cursor.execute('CREATE TABLE NordstromRackMenTemp LIKE NordstromRackMen;')
+  cursor.execute('CREATE TABLE NordstromRackWomenTemp LIKE NordstromRackWomen;')
+  cursor.execute('CREATE TABLE NikeMenTemp LIKE NikeMen;')
+  cursor.execute('CREATE TABLE NikeWomenTemp LIKE NikeWomen;')
+  print("Done!")
+  conn.commit()
+  return 0
+
 if __name__=='__main__':
   populateNordstromTables()
   populateNikeTables()
+  swapTables()
   cursor.close()
   conn.close()
