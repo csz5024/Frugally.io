@@ -4,7 +4,6 @@
 		<title>Frugally</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="Frugally is a comprehensive deal-finding website that uses an interactive learning algorithm to curate deals for you." />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--[if lte IE 8]><script src="static/css/ie/html5shiv.js"></script><![endif]-->
 		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}"></script>
@@ -123,6 +122,7 @@
 						<nav id="nav">
 							<ul>
 								<li class="active"><a href="/">Homepage</a></li>
+								<li><a href="#">About</a></li>
 								<li><a href="#">Login</a></li>
 							</ul>
 						</nav>
@@ -156,18 +156,22 @@
 								{% if (itemsinrow*i+j) < items %}
 								<section class="4u">
 									<div id="cardcontainer">
-										<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j].vendor }}</h1></div>
-										<div id="triangle-topright"></div>
-										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j].discount }}</h1></div>
-										<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j].img }} alt=""></a>
-									</div>
-									<div class="box">
-										<div class="boxp">
-											<p>{{objects[i*itemsinrow+j].brand}} {{ objects[i*itemsinrow+j].name }}</p>
-										</div>
-										<p style="color:red"><del>{{objects[i*itemsinrow+j].original}}</del></p>
-										<a href="https://{{ objects[i*itemsinrow+j].link }}" target="_blank" class="button">{{ objects[i*itemsinrow+j].price }}</a>
-									</div>
+                                                                                <!--<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>-->
+                                                                                <div id="triangle-topright"></div>
+                                                                                <div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
+                                                                                <a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="image featured"><img src={{ objects[i*itemsinrow+j][7] }} alt=""></a>
+                                                                                <div class="box">
+                                                                                        <div class="boxp">
+                                                                                                <p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
+                                                                                                <p><strong>{{ objects[i*itemsinrow+j][3] }}</strong></p>
+                                                                                                <p>{{ objects[i*itemsinrow+j][2] }}</p>
+                                                                                        </div>
+                                                                                        <p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
+                                                                                        <!--<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank"<p><strong>${{ objects[i*itemsinrow+j][5] }}</strong></p></a>-->
+                                                                                        <a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
+                                                                                </div>
+                                                                        </div>
+
 								</section>
 								{% endif %}
 								{% endfor %}
@@ -223,6 +227,11 @@
 	<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
+				<div class="row half patreon">
+					<div class="12u">
+						<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
+					</div>
+				</div>
 				<div class="copyright">
 					<ul class="icons">
 						<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>

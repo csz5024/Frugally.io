@@ -16,11 +16,6 @@ cursor = conn.cursor()
 
 def populateNordstromTables():
 
-  #print('clearing tables')
-  #cursor.execute('TRUNCATE TABLE NordstromRackMen')
-  #cursor.execute('TRUNCATE TABLE NordstromRackWomen')
-  #conn.commit()
-
   with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRackMen.json') as f:
       data = json.load(f)
 
@@ -46,8 +41,9 @@ def populateNordstromTables():
           price = float(price)
       else:
           price = float(0)
+      vendor = "Nordstrom Rack"
       sql = 'INSERT INTO NordstromRackMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
+      val =  (vendor, str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
 
       print("NordstromRackMen item number "+str(count))
       cursor.execute(sql, val)
@@ -77,8 +73,9 @@ def populateNordstromTables():
           price = float(price)
       else:
           price = float(0)
+      vendor = "Nordstrom Rack"
       sql = 'INSERT INTO NordstromRackWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-      val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
+      val =  (vendor, str(item['gender']), str(item['title']), str(item['brand']), rprice, price, disc, str(item['image-link']), str("nordstromrack.com" + item['link']))
 
       print("NordstromRackWomen item number "+str(count))
       cursor.execute(sql, val)
@@ -87,11 +84,6 @@ def populateNordstromTables():
 
 
 def populateNikeTables():
-
-  #print('clearing tables')
-  #cursor.execute('TRUNCATE TABLE NikeMen')
-  #cursor.execute('TRUNCATE TABLE NikeWomen')
-  #conn.commit()
 
   with open('/var/www/Frugally/Frugally/nordstromracksales/NikeMen.json') as f:
     data = json.load(f)
@@ -139,7 +131,7 @@ def populateNikeTables():
     title = str(item['title'].strip("Nike "))
     sql = 'INSERT INTO NikeWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
     link = item['link'].strip("https://") 
-    val =  (str(item['vendor']), str(item['gender']), str(item['title']), str(item['brand']), retail, price, discount, str(item['image-link']), link)
+    val =  (str(item['vendor']), str(item['gender']), title, str(item['brand']), retail, price, discount, str(item['image-link']), link)
 
     print("NikeWomen item number "+str(count))
     cursor.execute(sql, val)
@@ -147,6 +139,23 @@ def populateNikeTables():
   return 0
 
 def swapTables():
+  print("Removing Duplicate Rows...")
+  cursor.execute("CREATE TABLE temp SELECT DISTINCT * FROM NordstromRackMenTemp;")
+  cursor.execute("ALTER TABLE NordstromRackMenTemp RENAME junk;")
+  cursor.execute("ALTER TABLE temp RENAME NordstromRackMenTemp;")
+  cursor.execute("DROP TABLE junk;")
+  cursor.execute("CREATE TABLE temp SELECT DISTINCT * FROM NordstromRackWomenTemp;")
+  cursor.execute("ALTER TABLE NordstromRackWomenTemp RENAME junk;")
+  cursor.execute("ALTER TABLE temp RENAME NordstromRackWomenTemp;")
+  cursor.execute("DROP TABLE junk;")
+  cursor.execute("CREATE TABLE temp SELECT DISTINCT * FROM NikeMenTemp;")
+  cursor.execute("ALTER TABLE NikeMenTemp RENAME junk;")
+  cursor.execute("ALTER TABLE temp RENAME NikeMenTemp;")
+  cursor.execute("DROP TABLE junk;")
+  cursor.execute("CREATE TABLE temp SELECT DISTINCT * FROM NikeWomenTemp;")
+  cursor.execute("ALTER TABLE NikeWomenTemp RENAME junk;")
+  cursor.execute("ALTER TABLE temp RENAME NikeWomenTemp;")
+  cursor.execute("DROP TABLE junk;")
   print("Dropping old tables...")
   cursor.execute('DROP TABLE IF EXISTS NordstromRackMen, NordstromRackWomen, NikeMen, NikeWomen;')
   print("Swapping in new tables...")

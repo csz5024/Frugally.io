@@ -77,11 +77,12 @@
 										<div class="box">
 											<div class="boxp">
                                                                                         	<p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
-												<p>{{objects[i*itemsinrow+j][3] }} {{ objects[i*itemsinrow+j][2] }}</p>
+												<p><strong>{{ objects[i*itemsinrow+j][3] }}</strong></p>
+												<p>{{ objects[i*itemsinrow+j][2] }}</p>
 											</div>
 											<p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
-											<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank"<p><strong>${{ objects[i*itemsinrow+j][5] }}</strong></p></a>
-											<!--<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button">${{ objects[i*itemsinrow+j][5] }}</a>-->
+											<!--<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank"<p><strong>${{ objects[i*itemsinrow+j][5] }}</strong></p></a>-->
+											<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
 										</div>
 									</div>
 								</section>

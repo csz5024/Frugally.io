@@ -28,8 +28,22 @@ All code is original and written by Casey Zduniak, 2020
 
 Use app.logger.info() to log information to the flask.log file in the same directory. use like a normal print statement
 
+This file is organized into APP ROUTES, FILTERS, and MAIL SENDER subheadings
 
 '''
+'''
+
+:::'###::::'########::'########:::::'########:::'#######::'##::::'##:'########:'########::'######::
+::'## ##::: ##.... ##: ##.... ##:::: ##.... ##:'##.... ##: ##:::: ##:... ##..:: ##.....::'##... ##:
+:'##:. ##:: ##:::: ##: ##:::: ##:::: ##:::: ##: ##:::: ##: ##:::: ##:::: ##:::: ##::::::: ##:::..::
+'##:::. ##: ########:: ########::::: ########:: ##:::: ##: ##:::: ##:::: ##:::: ######:::. ######::
+ #########: ##.....::: ##.....:::::: ##.. ##::: ##:::: ##: ##:::: ##:::: ##:::: ##...:::::..... ##:
+ ##.... ##: ##:::::::: ##::::::::::: ##::. ##:: ##:::: ##: ##:::: ##:::: ##:::: ##:::::::'##::: ##:
+ ##:::: ##: ##:::::::: ##::::::::::: ##:::. ##:. #######::. #######::::: ##:::: ########:. ######::
+..:::::..::..:::::::::..::::::::::::..:::::..:::.......::::.......::::::..:::::........:::......:::
+
+'''
+
 
 
 # This section upgrades http requests to https
@@ -67,38 +81,6 @@ def index():
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
     return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
-
-
-#this is for google only
-@app.route('/google5e9dcfe4850ad995.html')
-def google():
-    return render_template('google5e9dcfe4850ad995.html')
-
-
-#robots.txt
-@app.route('/robots.txt', methods=['GET'])
-def robots():
-    with open('/var/www/Frugally/Frugally/templates/robots.txt', 'r') as f:
-        content = f.read()
-    return Response(content, mimetype='text')
-
-
-#sitemap
-@app.route('/sitemap.xml', methods=['GET'])
-def sitemap():
-    pages = []
-    deltadays = datetime.now() - timedelta(days=7)
-    deltadays = deltadays.strftime("%Y-%m-%d")
-
-    for rule in app.url_map.iter_rules():
-        if 'GET' in rule.methods and len(rule.arguments) == 0 and not rule.rule.startswith('/admin'):
-            pages.append([ url_for('index', _external=True) + rule.rule, deltadays])
-
-    sitemap_template = render_template('sitemap.xml', pages=pages)
-    response = Response(sitemap_template)
-    response.headers["Content-Type"] = "application/xml"
-    return response
-
 
 
 # post methods for homepage
@@ -154,23 +136,18 @@ def men(filters):
 
         elif(formid == "1"):
             radio = request.form.get('radio')
-            #gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
             brands = request.form.getlist('brandsBox')
             return returnFilter(radio, vendorfilter, brands)
     else:
         options = parseFilter(filters)
-        #nordstrom = getNordstromContent()
-        #nike = getNikeContent()
-        nordstrom = getSQLNordstrom()
-        nike = getSQLNike()
-        #objects = getSort(nordstrom+nike, options, gender='men')
+        objects = DBqueries.getSQLsort(options, gender='men')
         itemsinrow = 3
         items = len(objects)
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
-        vendors = ["Nordstrom", "Nike"]
+        vendors = ["Nordstrom Rack", "Nike"]
 
         page = request.args.get(get_page_parameter(), type=int, default=1)
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
@@ -184,7 +161,7 @@ def women(filters):
     if(request.method == 'POST'):
         formid = request.form.get("homepage","")
 
-        # Send email (gmail disabled our account for some reason)
+        # Send email
         if(formid == "2"):
 
             name = request.form['name']
@@ -202,15 +179,13 @@ def women(filters):
             return returnFilter(radio, vendorfilter, brands)
     else:
         options = parseFilter(filters)
-        nordstrom = getNordstromContent()
-        nike = getNikeContent()
-        objects = getSort(nordstrom+nike, options, gender='women')
+        objects = DBqueries.getSQLsort(options, gender='women')
         items = len(objects)
         itemsinrow = 3
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
-        vendors = ["Nordstrom", "Nike"]
+        vendors = ["Nordstrom Rack", "Nike"]
 
         page = request.args.get(get_page_parameter(), type=int, default=1)
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
@@ -223,6 +198,54 @@ def women(filters):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+
+#about page (unused at the moment)
+@app.route('/about', methods=['GET', 'POST'])
+def about():
+    return render_template('about.html')
+
+#this is for google only
+@app.route('/google5e9dcfe4850ad995.html')
+def google():
+    return render_template('google5e9dcfe4850ad995.html')
+
+#robots.txt
+@app.route('/robots.txt', methods=['GET'])
+def robots():
+    with open('/var/www/Frugally/Frugally/templates/robots.txt', 'r') as f:
+        content = f.read()
+    return Response(content, mimetype='text')
+
+#sitemap
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    pages = []
+    deltadays = datetime.now() - timedelta(days=7)
+    deltadays = deltadays.strftime("%Y-%m-%d")
+
+    for rule in app.url_map.iter_rules():
+        if 'GET' in rule.methods and len(rule.arguments) == 0 and not rule.rule.startswith('/admin'):
+            pages.append([ url_for('index', _external=True) + rule.rule, deltadays])
+
+    sitemap_template = render_template('sitemap.xml', pages=pages)
+    response = Response(sitemap_template)
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+
+
+'''
+'########:'####:'##:::::::'########:'########:'########:::'######::
+ ##.....::. ##:: ##:::::::... ##..:: ##.....:: ##.... ##:'##... ##:
+ ##:::::::: ##:: ##:::::::::: ##:::: ##::::::: ##:::: ##: ##:::..::
+ ######:::: ##:: ##:::::::::: ##:::: ######::: ########::. ######::
+ ##...::::: ##:: ##:::::::::: ##:::: ##...:::: ##.. ##::::..... ##:
+ ##:::::::: ##:: ##:::::::::: ##:::: ##::::::: ##::. ##::'##::: ##:
+ ##:::::::'####: ########:::: ##:::: ########: ##:::. ##:. ######::
+..::::::::....::........:::::..:::::........::..:::::..:::......:::
+
+'''
+
 
 
 # The packing and unpacking URL filters
@@ -280,22 +303,21 @@ def getBrands(objects):
     brands.sort()
     return brands
 
-'''
-#wrapper function for getDiscount and getPrice
-def getSort(products, options, gender):
-    app.logger.info(options)
-    sortmethod = options.pop(0)
-    sortmethod = sortmethod[1]
-    options.insert(0,['gender', str(gender)])
-    app.logger.info(options)
-    if(sortmethod == 'discount'):
-        objects = getDiscount(products, options)
-    elif(sortmethod == 'low'):
-        objects = getPrice(products, options, highlow=False)
-    else:
-        objects = getPrice(products, options, highlow=True)
-    return objects
 
+'''
+'##::::'##::::'###::::'####:'##:::::::::::'######::'########:'##::: ##:'########::'########:'########::
+ ###::'###:::'## ##:::. ##:: ##::::::::::'##... ##: ##.....:: ###:: ##: ##.... ##: ##.....:: ##.... ##:
+ ####'####::'##:. ##::: ##:: ##:::::::::: ##:::..:: ##::::::: ####: ##: ##:::: ##: ##::::::: ##:::: ##:
+ ## ### ##:'##:::. ##:: ##:: ##::::::::::. ######:: ######::: ## ## ##: ##:::: ##: ######::: ########::
+ ##. #: ##: #########:: ##:: ##:::::::::::..... ##: ##...:::: ##. ####: ##:::: ##: ##...:::: ##.. ##:::
+ ##:.:: ##: ##.... ##:: ##:: ##::::::::::'##::: ##: ##::::::: ##:. ###: ##:::: ##: ##::::::: ##::. ##::
+ ##:::: ##: ##:::: ##:'####: ########::::. ######:: ########: ##::. ##: ########:: ########: ##:::. ##:
+..:::::..::..:::::..::....::........::::::......:::........::..::::..::........:::........::..:::::..::
+
+'''
+
+
+'''
 # This function ultimatley gets the best discounts with the specified filters
 def getDiscount(products, filters):
     #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, ...]]]

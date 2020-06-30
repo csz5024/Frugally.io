@@ -481,12 +481,12 @@
 		input[type="reset"].small,
 		input[type="button"].small,
 		.button.small {
-			font-size: 0.8em;
+			font-size: 1em;
 			display: inline-block;
 			margin-left: 10px;
 			margin-right: 10px;
 			margin-top: 5px;
-			margin-bottom: 5px;
+			/*margin-bottom: 5px;*/
   			width: 150px;
 	                /*color: #777776;
         	        background-color: white;
@@ -748,7 +748,7 @@
 	}
 	.boxp {
 		/*line-height: 2em;*/
-		/*min-height:125px;*/
+		min-height:130px;
 	}
         .boxp p {
                 margin: 0;

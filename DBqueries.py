@@ -9,10 +9,35 @@ conn = mysql.connector.connect(
 )
 cursor = conn.cursor()
 
+# Root of the filters tree
+# Makes a nested function call
+def getSQLsort(filters, gender):
+
+    sortmethod = filters.pop(0)
+    sortmethod = sortmethod[1]
+    filters.insert(0,['gender', str(gender)])
+
+    if(sortmethod == 'discount'):
+        objects = getSQLdiscount(filters)
+    elif(sortmethod == 'low'):
+        objects = getSQLprice(filters, highlow=False)
+    else:
+        objects = getSQLprice(filters, highlow=True)
+
+    return objects
+
+
 # The goal of this function is to return a set of products
 # whose attributes match that of the filters
 # and are sorted in order of highest discount to lowest
 def getSQLdiscount(filters):
+
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas",
+        database="Frugally"
+    )
 
     # Parse out the filters
     if(filters!=None):
@@ -24,10 +49,26 @@ def getSQLdiscount(filters):
         filtervendor = "all"
         filterbrands = "all"
 
+    #only filters gender and sorts by discount
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM NordstromRackMen WHERE', gender)
 
-    item = cursor.fetchall()
+    if(gender=='men'):
+
+        sql = "SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M ORDER BY discount DESC;"
+        #vars = (gender)
+        cursor.execute(sql)
+        item = cursor.fetchall()
+
+    else:
+
+        sql = "SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M ORDER BY discount DESC;"
+        #vars = (gender)
+        cursor.execute(sql)
+        item = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+    return item
 
 
 # The goal of this function is to return a set of products
