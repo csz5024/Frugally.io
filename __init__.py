@@ -62,7 +62,7 @@ def InternalError(e):
 
 
 # landing page
-@app.route('/', methods=['GET'])
+@app.route('/home', methods=['GET'])
 def index():
 
     #nordstrom = getNordstromContent()
@@ -84,7 +84,7 @@ def index():
 
 
 # post methods for homepage
-@app.route('/', methods=['POST'])
+@app.route('/home', methods=['POST'])
 def feedback():
 
     formid = request.form.get("homepage","")
@@ -98,18 +98,29 @@ def feedback():
 
         # sends to gmail
         sendMail(email, name, message)
-        return redirect('http://frugally.io', code=302)
-
-    elif(formid == "1"):
-        #radio = request.form.get('radio')
-        #gender = request.form.get('radio2')
-        #vendorfilter = request.form.getlist('vendorsBox')
-        #brands = request.form.getlist('brandsBox')
-        #app.logger.info(brands)
-        return returnFilter(radio='discount', vendorfilter='all', brands='all')
+        return redirect('http://frugally.io/home', code=302)
 
     else:
-    	return redirect("http://frugally.io", code=302)
+    	return redirect("http://frugally.io/home", code=302)
+
+@app.route('/', methods=["GET", "POST"])
+def about():
+
+    #POST
+    if(request.method == 'POST'):
+        formid = request.form.get("aboutpage","")
+
+        # Send email (gmail disabled our account for some reason)
+        if(formid == "2"):
+
+            name = request.form['name']
+            email = request.form['email']
+            message = request.form['message']
+
+            # sends to gmail
+            sendMail(email, name, message)
+
+    return render_template('about.html')
 
 
 '''
@@ -122,7 +133,7 @@ def men(filters):
 
     #POST
     if(request.method == 'POST'):
-        formid = request.form.get("homepage","")
+        formid = request.form.get("menspage","")
 
         # Send email (gmail disabled our account for some reason)
         if(formid == "2"):
@@ -155,13 +166,13 @@ def men(filters):
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
         return render_template('mens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors, prange=prange)
-    return redirect('https://frugally.io', code=302)
+    return redirect('https://frugally.io/home', code=302)
 
 @app.route('/women/<filters>', methods=["GET", "POST"])
 def women(filters):
     #POST
     if(request.method == 'POST'):
-        formid = request.form.get("homepage","")
+        formid = request.form.get("womenspage","")
 
         # Send email
         if(formid == "2"):
@@ -196,18 +207,13 @@ def women(filters):
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
         return render_template('womens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors, prange=prange)
-    return redirect('https://frugally.io', code=302)
+    return redirect('https://frugally.io/home', code=302)
 
 
 #login page (unused at the moment)
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
-
-#about page (unused at the moment)
-@app.route('/about', methods=['GET', 'POST'])
-def about():
-    return render_template('about.html')
 
 #this is for google only
 @app.route('/google5e9dcfe4850ad995.html')

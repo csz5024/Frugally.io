@@ -506,6 +506,13 @@
 		margin-bottom: 40px;
 		padding-bottom: 40px;
 	}
+	.enter-button {
+		width: 100%;
+		text-align: center;
+	}
+	.enter-button .button.small {
+		width: 200px;
+	}
 
 /* Wrapper */
 

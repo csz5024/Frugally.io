@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+                <title>Frugally</title>
+                <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+                <meta name="description" content="Frugally is a comprehensive deal-finding website that uses an interactive learning algorithm to curate deals for you." />
+                <!--[if lte IE 8]><script src="static/css/ie/html5shiv.js"></script><![endif]-->
+                <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='js/skel-layers.min.js') }}"></script>
+                <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+                <noscript>
+                        <link rel="stylesheet" href="static/css/skel.css" />
+                        <link rel="stylesheet" href="static/css/style.css" />
+                        <link rel="stylesheet" href="static/css/style-wide.css" />
+                </noscript>
+                        <!--            noscript tag-->
+                <!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
+                <!--Global Site Tag(gtag.js)-Google Analytics-->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169170066-1"></script>
+                <script>
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'UA-169170066-1');
+                </script>
+        </head>
+	<body>
+
+		<!-- Wrapper -->
+			<div class="wrapper style1">
+
+				<!-- Header -->
+					<div id="header" class="skel-panels-fixed">
+						<div id="logo">
+							<a href='/'><h1><em>Frugally</em></h1></a>
+						</div>
+						<nav id="nav">
+							<ul>
+								<li><a href="/home">Homepage</a></li>
+                                                                <li class="active"><a href="/">About</a></li>
+                                                                <li><a href="#">Login</a></li>
+							</ul>
+						</nav>
+					</div>
+				<!-- Header -->
+
+				<!-- Page -->
+					<div id="page" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+							<div id="content" class="8u skel-cell-important">
+								<section>
+									<header class="major">
+										<h2>Frugally.io</h2>
+										<span class="byline">Welcome to the Frugally.io beta!</span>
+									</header>
+									<p>Frugally is a smarter online shopping experience. Minimize your time spent staring at a screen by having all of the best deals from all of your favorite vendors in one convenient place. Whats more, we have our own algorithms set in place to recommend you deals based upon your previous purchases.</p>
+									<p>Frugally is a simple design that employs the use of Selenium's web scraping libraries to gather all of the best deals from a set list of vendors. By handing this data off to our full stack web server (Hardware owned!), we are able to create a truly unique shopping experience that is curated to the user. All of your personal data is stored at home, right here in Philadelphia Pennsylvania.</p>
+									<p>You have been selected to participate in the Frugally.io beta, congrats! Not only will you have early access to our catalog, but you will be instrumental in our conversion to a stable 1.0 build. At the bottom of each page, you will find a suggestions box that you can use to reach out to us with feedback based upon your experience; we will use this feedback to compile a more personalized user experience in the march towards 1.0... the suggestions box right above our patreon link... wink wink nudge nudge.</p>
+									<p><blockquote>And then came that girl who rowed in the dark. Each night she paused to relay her coordinates, how her body was performing, and the atmospheric conditions. Often she noted things-the outlines of birds migrating at night, a whale shark seining for krill off her bow. She had, she said, a growing ability to dream while she rowed.
+									<br>
+									<br>-The Orphan Master's Son by Adam Johnson</blockquote></p>
+								</section>
+								<div class="enter-button">
+									<a href="https://frugally.io/home" class="button small">Enter the Beta</a>
+								</div>
+							</div>
+		
+							<!-- Sidebar -->
+							<div id="sidebar" class="4u">
+								<section>
+									<header class="major">
+										<h2>Key links</h2>
+									</header>
+									<div class="row half">
+										<section class="6u">
+											<ul class="default">
+												<li><a href="#">Donec facilisis tempor</a></li>
+												<li><a href="#">Nulla convallis cursus</a></li>
+												<li><a href="#">Integer congue euis</a></li>
+												<li><a href="#">Venenatis vulputate</a></li>
+												<li><a href="#">Morbi ligula volutpat</a></li>
+											</ul>
+										</section>
+										<section class="6u">
+											<ul class="default small">
+												<li><a href="#">Donec facilisis tempor</a></li>
+												<li><a href="#">Nulla convallis cursus</a></li>
+												<li><a href="#">Integer congue euis</a></li>
+												<li><a href="#">Venenatis vulputate</a></li>
+												<li><a href="#">Morbi ligula volutpat</a></li>
+											</ul>
+										</section>
+									</div>
+								</section>
+								<section>
+									<header class="major">
+										<h2>Key links</h2>
+									</header>
+									<ul class="default">
+										<li><a href="#">Pellentesque lectus gravida blandit</a></li>
+										<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
+										<li><a href="#">Phasellus nibh pellentesque congue</a></li>
+										<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+										<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
+										<li><a href="#">Phasellus nibh pellentesque congue</a></li>
+										<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+									</ul>
+								</section>
+							</div>
+							
+						</div>
+					</div>
+				<!-- /Page -->
+
+	</div>
+
+	<!-- Footer -->
+		<div id="footer" class="wrapper style2">
+			<div class="container">
+				<section>
+					<header class="major">
+						<h2>Contact Us</h2>
+					</header>
+					<form method="post" action="#">
+						<input value="2" type="hidden" name="aboutpage">
+						<div class="row half">
+							<div class="12u">
+								<input class="text" type="text" name="name" id="name" placeholder="Name" />
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<input class="text" type="text" name="email" id="email" placeholder="Email" />
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<ul class="actions">
+									<li>
+										<input type="submit" value="Send Message" class="button alt" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				<div class="row half patreon">
+					<div class="12u">
+						<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
+					</div>
+				</div>
+				<ul class="icons">
+					<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+					<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+					<li><a href="#" class="fa fa-google-plus"><span>Google+</span></a></li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+</html>
