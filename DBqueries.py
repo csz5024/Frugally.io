@@ -78,6 +78,39 @@ def getSQLprice(filters, highlow):
     pass
 
 
+def getMaxPriceMen():
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas",
+        database="Frugally"
+    )
+    cursor = conn.cursor()
+
+    sql = "SELECT MAX(price) FROM (SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as F;"
+    cursor.execute(sql)
+    item = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return item[0][0]
+
+def getMaxPriceWomen():
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas",
+        database="Frugally"
+    )
+    cursor = conn.cursor()
+
+    sql = "SELECT MAX(price) FROM (SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as F;"
+    cursor.execute(sql)
+    item = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return item[0][0]
+
+
 #This function simply fetches all nordstromrack content
 def getSQLNordstrom():
 

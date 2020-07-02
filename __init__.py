@@ -142,17 +142,19 @@ def men(filters):
     else:
         options = parseFilter(filters)
         objects = DBqueries.getSQLsort(options, gender='men')
+        maxprice = round(DBqueries.getMaxPriceMen())
         itemsinrow = 3
         items = len(objects)
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
+        prange = getPrices(maxprice)
         vendors = ["Nordstrom Rack", "Nike"]
 
         page = request.args.get(get_page_parameter(), type=int, default=1)
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-        return render_template('mens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+        return render_template('mens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors, prange=prange)
     return redirect('https://frugally.io', code=302)
 
 @app.route('/women/<filters>', methods=["GET", "POST"])
@@ -180,17 +182,20 @@ def women(filters):
     else:
         options = parseFilter(filters)
         objects = DBqueries.getSQLsort(options, gender='women')
+        maxprice = round(DBqueries.getMaxPriceWomen())
+        #app.logger.info(maxprice)
         items = len(objects)
         itemsinrow = 3
         itemsperpage = 16
         page = 0
         brands = getBrands(objects)
+        prange = getPrices(maxprice)
         vendors = ["Nordstrom Rack", "Nike"]
 
         page = request.args.get(get_page_parameter(), type=int, default=1)
         pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
-        return render_template('womens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
+        return render_template('womens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors, prange=prange)
     return redirect('https://frugally.io', code=302)
 
 
@@ -302,6 +307,14 @@ def getBrands(objects):
                 brands.append(i[3])
     brands.sort()
     return brands
+
+# This gathers price ranges to be output in the filters menu
+def getPrices(maxprice):
+    mprices = ["$0-$100"]
+    for i in range((maxprice//100)):
+        mprices.append("$%s00-$%s00" % (str(i+1), str(i+2)))
+
+    return mprices
 
 
 '''

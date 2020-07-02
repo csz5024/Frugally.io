@@ -14,7 +14,6 @@
 			<link rel="stylesheet" href="static/css/skel.css" />
 			<link rel="stylesheet" href="static/css/style.css" />
 			<link rel="stylesheet" href="static/css/style-wide.css" />
-			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
 		</noscript>
 			<!--		noscript tag-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
@@ -67,7 +66,6 @@
 											  <input type="radio" name="radio" id="1" value="High">
 											  <span class="radioCheck"></span>
 											</label>
-
 											<label class="containerFilter">Lowest Price
 											  <input type="radio" name="radio" id="2" value="Low">
 											  <span class="radioCheck"></span>
@@ -144,19 +142,64 @@
 							<div class="dropdown">
 								<button onclick="myFunction()" class="dropbtn">Sort</button>
 								<div id="dropMenu" class="container small dropdown-content">
-									<h2>Sort</h2>
-									<label class="containerFilter">Highest Price
-									  <input type="radio" name="radio" id="1" value="High">
-									  <span class="radioCheck"></span>
-									</label>
-									<label class="containerFilter">Lowest Price
-									  <input type="radio" name="radio" id="2" value="Low">
-									  <span class="radioCheck"></span>
-									</label>
-									<label class="containerFilter">Best Discount
-									  <input type="radio" name="radio" id="3" value="Discount">
-									  <span class="radioCheck"></span>
-									</label>
+									<form method="post">
+                                                                        <input id="filter" value="1" type="hidden" name="womens"/>
+                                                                        <div class="rowD">
+                                                                                <div class="sortItem">
+                                                                                <h2>Brands</h2>
+                                                                                <div class="columnD">
+                                                                                        {% for i in brands %}
+                                                                                        <label class="containerFilter">{{ i }}
+                                                                                          <input type="checkbox" name="brandsBox" value="{{ i }}">
+                                                                                          <span class="checkBox"></span>
+                                                                                        </label>
+                                                                                        {% endfor %}
+                                                                                </div>
+                                                                                </div>
+                                                                                <div class="sortItem">
+                                                                                <h2>Vendors</h2>
+                                                                                <div class="columnD">
+                                                                                        {% for i in vendors %}
+                                                                                        <label class="containerFilter">{{ i }}
+                                                                                          <input type="checkbox" name="vendorsBox" value="{{ i }}">
+                                                                                          <span class="checkBox"></span>
+                                                                                        </label>
+                                                                                        {% endfor %}
+                                                                                </div>
+                                                                                </div>
+                                                                        </div>
+									<div class="rowD">
+                                                                                <div class="sortItem">
+                                                                                <h2>Sort</h2>
+                                                                                <div class="columnD">
+                                                                                        <label class="containerFilter">Highest Price
+                                                                                          <input type="radio" name="radio" id="1" value="High">
+                                                                                          <span class="radioCheck"></span>
+                                                                                        </label>
+                                                                                        <label class="containerFilter">Lowest Price
+                                                                                          <input type="radio" name="radio" id="2" value="Low">
+                                                                                          <span class="radioCheck"></span>
+                                                                                        </label>
+                                                                                        <label class="containerFilter">Best Discount
+                                                                                          <input type="radio" name="radio" id="3" value="Discount">
+                                                                                          <span class="radioCheck"></span>
+                                                                                        </label>
+                                                                                </div>
+                                                                                </div>
+                                                                                <div class="sortItem">
+                                                                                <h2>Price Range</h2>
+                                                                                <div class="columnD">
+                                                                                        {% for i in prange %}
+                                                                                        <label class="containerFilter">{{ i }}
+                                                                                          <input type="checkbox" name="rangeBox" value="{{ i }}">
+                                                                                          <span class="checkBox"></span>
+                                                                                        </label>
+                                                                                        {% endfor %}
+                                                                                </div>
+                                                                                </div>
+                                                                        </div>
+                                                                        <input type="submit" value="Filter" class="button small" />
+                                                                        </form>
 								</div>
 							</div>
 							<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">
