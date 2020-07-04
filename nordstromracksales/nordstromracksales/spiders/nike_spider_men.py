@@ -9,14 +9,24 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+import mysql.connector
+import json
+import sys
 
 
 class NikeMenSpider(scrapy.Spider):
     name = "NikeMen"
     start_urls = ["https://www.nike.com/w/mens-sale-3yaepznik1"]
 
-
     def parse(self, response):
+
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="frugally",
+            password="Shoelas",
+            database="Frugally"
+        )
+        cursor = conn.cursor()
 
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
@@ -56,14 +66,60 @@ class NikeMenSpider(scrapy.Spider):
         for i in range(0, len(scraplist)):
             article = scraplist[i]
             image = imlist[i].get_attribute('src')
-            yield {
-                'vendor': 'Nike',
-                'gender': 'Men',
-                'title': article.css('div.product-card__title ::text').get(),
-                'brand': 'Nike',
-                'retail-price': article.css('div.css-31z3ik ::text').get(),
-                'price': article.css('div.css-s56yt7 ::text').get(),
-                'discount': None,
-                'image-link': image,  # article.css('.product-grid-item__catalog-image img::attr(src)').get(),
-                'link': article.css('.product-card__body a::attr(href)').get()
-            }
+
+            vendor = 'Nike'
+            gender = 'Men'
+            title = article.css('div.product-card__title ::text').get()
+            brand = 'Nike'
+            retailprice = article.css('div.css-31z3ik ::text').get()
+            price = article.css('div.css-s56yt7 ::text').get()
+            discount = None
+            imagelink = image
+            link = article.css('.product-card__body a::attr(href)').get()
+
+            #This file is a script with no dependencies. It relays the content found in the json files to the database
+            #Now supports multiple processes
+
+
+            print('Adding NikeMens Content to Database, please wait...')
+
+            if((retailprice!=None) and (price!=None)):
+              if(len(retailprice)>4):
+                  retail = float(retailprice.strip("$").replace(',',''))
+              else:
+                  retail = float(retailprice.strip("$"))
+              if(len(price)>4):
+                  price = float(price.strip("$").replace(',',''))
+              else:
+                  price = float(price.strip("$"))
+              discount = round((1-(price/retail))*100)
+            else:
+              discount = 0
+            title = str(title.strip("Nike "))
+            sql = 'INSERT INTO NikeMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+            link = link.strip("https://")
+            val =  (str(vendor), str(gender), title, str(brand), retail, price, discount, str(imagelink), link)
+
+            #print("NikeMen item number "+str(count))
+            cursor.execute(sql, val)
+            conn.commit()
+
+        # Removes Duplicate Rows
+        cursor.execute("CREATE TABLE tempNM SELECT DISTINCT * FROM NikeMenTemp;")
+        cursor.execute("ALTER TABLE NikeMenTemp RENAME junk;")
+        cursor.execute("ALTER TABLE tempNM RENAME NikeMenTemp;")
+        cursor.execute("DROP TABLE junk;")
+
+        # Drops old table
+        cursor.execute("DROP TABLE IF EXISTS NikeMen;")
+
+        # Swaps in new table
+        cursor.execute('ALTER TABLE NikeMenTemp RENAME TO NikeMen;')
+
+        # Replaces old temp tables
+        cursor.execute('CREATE TABLE NikeMenTemp LIKE NikeMen;')
+        conn.commit()
+        print("NikeMens... Done!")
+
+        cursor.close()
+        conn.close()
