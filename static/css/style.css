@@ -732,6 +732,10 @@
 		#sidebar .major h2 {
 			font-size: 1.8em;
 		}
+	#sidebar .default li a {
+		color: #0f1116;
+	}
+
 
 /* Copyright */
 
@@ -826,6 +830,12 @@
 
 	}	
 	div#cardcontainer a img {
+
+	}
+	div#about {
+		
+	}
+	div#aboutcard {
 
 	}
 
