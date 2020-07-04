@@ -8,7 +8,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
-
+import mysql.connector
+import json
+import sys
 
 class NordstromRackMenSpider(scrapy.Spider):
     name = "NordstromRackMen"
@@ -16,6 +18,14 @@ class NordstromRackMenSpider(scrapy.Spider):
 
 
     def parse(self, response):
+
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="frugally",
+            password="Shoelas",
+            database="Frugally"
+        )
+        cursor = conn.cursor()
 
         #Loading a chrome window with specific settings
 
@@ -64,18 +74,65 @@ class NordstromRackMenSpider(scrapy.Spider):
                 discount = article.css('.product-grid-item__sale-price-discount ::text').get()
                 if discount is not None:
                     image = imlist[i*2].get_attribute('src')
-                    yield {
-                        'vendor': 'NordstromRack',
-                        'gender': 'Men',
-                        'title': article.css('.product-grid-item__title ::text').get(),
-                        'brand': article.css('.product-grid-item__brand ::text').get(),
-                        'retail-price': article.css('.product-grid-item__retail-price del::text').get(),
-                        'price': article.css('.product-grid-item__sale-price ::text').get(),
-                        'discount': discount,
-                        'image-link': image, #article.css('.product-grid-item__catalog-image img::attr(src)').get(),
-                        'link': 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
-                }
+                    vendor = 'NordstromRack'
+                    gender = 'Men'
+                    title = article.css('.product-grid-item__title ::text').get()
+                    brand = article.css('.product-grid-item__brand ::text').get()
+                    retailprice = article.css('.product-grid-item__retail-price del::text').get()
+                    price = article.css('.product-grid-item__sale-price ::text').get()
+                    discount = discount
+                    imagelink = image
+                    link = 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
+                    print('Adding NordstromRackMen Content to Database, please wait...')
+                    if (discount != None):
+                        disc = discount.split()
+                        disc = disc[0].strip('%')
+                        disc = int(disc)
+                    else:
+                        disc = int(0)
+                    if (retailprice != None):
+                        rprice = retailprice.strip('$')
+                        if (len(rprice) > 6):
+                            rprice = rprice.replace(',', '')
+                        rprice = float(rprice)
+                    else:
+                        rprice = float(0)
+                    if (price != None):
+                        price = price.strip('$')
+                        if (len(price) > 6):
+                            price = price.replace(',', '')
+                        price = float(price)
+                    else:
+                        price = float(0)
+                    vendor = "Nordstrom Rack"
+                    sql = 'INSERT INTO NordstromRackMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+                    val = (vendor, str(gender), str(title), str(brand), rprice, price, disc,
+                           str(imagelink), str("nordstromrack.com" + link))
+
+                    # print("NordstromRackMen item number "+str(count))
+                    cursor.execute(sql, val)
+                    conn.commit()
             iter += 1
 
             if element is None:
                 break
+        # Removes Duplicate Rows
+        cursor.execute("CREATE TABLE tempNRM SELECT DISTINCT * FROM NordstromRackMenTemp;")
+        cursor.execute("ALTER TABLE NordstromRackMenTemp RENAME junk;")
+        cursor.execute("ALTER TABLE tempNRM RENAME NordstromRackMenTemp;")
+        cursor.execute("DROP TABLE junk;")
+
+        # Drops old table
+        cursor.execute("DROP TABLE IF EXISTS NordstromRackMen;")
+
+        # Swaps in new table
+        cursor.execute('ALTER TABLE NordstromRackMenTemp RENAME TO NordstromRackMen;')
+
+        # Replaces old temp tables
+        cursor.execute('CREATE TABLE NordstromRackMenTemp LIKE NordstromRackMen;')
+        conn.commit()
+        print("NordstromRackMens... Done!")
+
+        cursor.close()
+        conn.close()
+
