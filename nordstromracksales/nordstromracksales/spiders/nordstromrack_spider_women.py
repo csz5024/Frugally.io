@@ -41,101 +41,101 @@ class NordstromRackWomenSpider(scrapy.Spider):
 
         iter = 1
 
-	        try:
-	        while True:
-	            #Loading each page to extract the data
-	            url = "https://www.nordstromrack.com/shop/Women/Clothing?page={0}&sort=most_popular"
-	            self.driver.get(url.format(iter))
+	    try:
+            while True:
+                #Loading each page to extract the data
+                url = "https://www.nordstromrack.com/shop/Women/Clothing?page={0}&sort=most_popular"
+                self.driver.get(url.format(iter))
 
-	            #Finding the next page button, and scrolling to it
+                #Finding the next page button, and scrolling to it
 
-	            element = self.driver.find_element_by_class_name('pagination__link')
+                element = self.driver.find_element_by_class_name('pagination__link')
 
-	            actions = ActionChains(self.driver)
+                actions = ActionChains(self.driver)
 
-	            actions.move_to_element(element).perform()
+                actions.move_to_element(element).perform()
 
-	            WebDriverWait(self.driver, 2)
+                WebDriverWait(self.driver, 2)
 
-	            scrapy_selector = Selector(text=self.driver.page_source)
+                scrapy_selector = Selector(text=self.driver.page_source)
 
-	            #Loading each product card
+                #Loading each product card
 
-	            scraplist = scrapy_selector.css('div.product-grid-item')
+                scraplist = scrapy_selector.css('div.product-grid-item')
 
-	            #Loading each image
+                #Loading each image
 
-	            data = self.driver.find_element_by_class_name('product-grid')
-	            imlist = data.find_elements_by_tag_name('img')
+                data = self.driver.find_element_by_class_name('product-grid')
+                imlist = data.find_elements_by_tag_name('img')
 
-	            for i in range(0,len(scraplist)):
-	                article = scraplist[i]
-	                #Finding the discount of each article and yielding all the data
-	                discount = article.css('.product-grid-item__sale-price-discount ::text').get()
-	                if discount is not None:
-	                    try:
-	                        image = imlist[i*2].get_attribute('src')
-	                    except:
-	                        break
-	                    vendor = 'NordstromRack'
-	                    gender = 'Women'
-	                    title = article.css('.product-grid-item__title ::text').get()
-	                    brand = article.css('.product-grid-item__brand ::text').get()
-	                    retailprice = article.css('.product-grid-item__retail-price del::text').get()
-	                    price = article.css('.product-grid-item__sale-price ::text').get()
-	                    discount = discount
-	                    imagelink = image
-	                    link = 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
-	                    print('Adding NordstromRackWomen Content to Database, please wait...')
-	                    if (discount != None):
-	                        disc = discount.split()
-	                        disc = disc[0].strip('%')
-	                        disc = int(disc)
-	                    else:
-	                        disc = int(0)
-	                    if (retailprice != None):
-	                        rprice = retailprice.strip('$')
-	                        if (len(rprice) > 6):
-	                            rprice = rprice.replace(',', '')
-	                        rprice = float(rprice)
-	                    else:
-	                        rprice = float(0)
-	                    if (price != None):
-	                        price = price.strip('$')
-	                        if (len(price) > 6):
-	                            price = price.replace(',', '')
-	                        price = float(price)
-	                    else:
-	                        price = float(0)
-	                    vendor = "Nordstrom Rack"
-	                    sql = 'INSERT INTO NordstromRackWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-	                    val = (vendor, str(gender), str(title), str(brand), rprice, price, disc,
-	                           str(imagelink), str("nordstromrack.com" + link))
+                for i in range(0,len(scraplist)):
+                    article = scraplist[i]
+                    #Finding the discount of each article and yielding all the data
+                    discount = article.css('.product-grid-item__sale-price-discount ::text').get()
+                    if discount is not None:
+                        try:
+                            image = imlist[i*2].get_attribute('src')
+                        except:
+                            break
+                        vendor = 'NordstromRack'
+                        gender = 'Women'
+                        title = article.css('.product-grid-item__title ::text').get()
+                        brand = article.css('.product-grid-item__brand ::text').get()
+                        retailprice = article.css('.product-grid-item__retail-price del::text').get()
+                        price = article.css('.product-grid-item__sale-price ::text').get()
+                        discount = discount
+                        imagelink = image
+                        link = 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
+                        print('Adding NordstromRackWomen Content to Database, please wait...')
+                        if (discount != None):
+                            disc = discount.split()
+                            disc = disc[0].strip('%')
+                            disc = int(disc)
+                        else:
+                            disc = int(0)
+                        if (retailprice != None):
+                            rprice = retailprice.strip('$')
+                            if (len(rprice) > 6):
+                                rprice = rprice.replace(',', '')
+                            rprice = float(rprice)
+                        else:
+                            rprice = float(0)
+                        if (price != None):
+                            price = price.strip('$')
+                            if (len(price) > 6):
+                                price = price.replace(',', '')
+                            price = float(price)
+                        else:
+                            price = float(0)
+                        vendor = "Nordstrom Rack"
+                        sql = 'INSERT INTO NordstromRackWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+                        val = (vendor, str(gender), str(title), str(brand), rprice, price, disc,
+                               str(imagelink), str("nordstromrack.com" + link))
 
-	                    # print("NordstromRackMen item number "+str(count))
-	                    cursor.execute(sql, val)
-	                    conn.commit()
-	            iter += 1
+                        # print("NordstromRackMen item number "+str(count))
+                        cursor.execute(sql, val)
+                        conn.commit()
+                iter += 1
 
-	            if element is None:
-	                break
+                if element is None:
+                    break
         finally:
-	        # Removes Duplicate Rows
-	        cursor.execute("CREATE TABLE tempNRW SELECT DISTINCT * FROM NordstromRackWomenTemp;")
-	        cursor.execute("ALTER TABLE NordstromRackWomenTemp RENAME junk;")
-	        cursor.execute("ALTER TABLE tempNRW RENAME NordstromRackWomenTemp;")
-	        cursor.execute("DROP TABLE junk;")
+            # Removes Duplicate Rows
+            cursor.execute("CREATE TABLE tempNRW SELECT DISTINCT * FROM NordstromRackWomenTemp;")
+            cursor.execute("ALTER TABLE NordstromRackWomenTemp RENAME junk;")
+            cursor.execute("ALTER TABLE tempNRW RENAME NordstromRackWomenTemp;")
+            cursor.execute("DROP TABLE junk;")
 
-	        # Drops old table
-	        cursor.execute("DROP TABLE IF EXISTS NordstromRackWomen;")
+            # Drops old table
+            cursor.execute("DROP TABLE IF EXISTS NordstromRackWomen;")
 
-	        # Swaps in new table
-	        cursor.execute('ALTER TABLE NordstromRackWomenTemp RENAME TO NordstromRackWomen;')
+            # Swaps in new table
+            cursor.execute('ALTER TABLE NordstromRackWomenTemp RENAME TO NordstromRackWomen;')
 
-	        # Replaces old temp tables
-	        cursor.execute('CREATE TABLE NordstromRackWomenTemp LIKE NordstromRackWomen;')
-	        conn.commit()
-	        print("NordstromRackWomen... Done!")
+            # Replaces old temp tables
+            cursor.execute('CREATE TABLE NordstromRackWomenTemp LIKE NordstromRackWomen;')
+            conn.commit()
+            print("NordstromRackWomen... Done!")
 
-	        cursor.close()
-	        conn.close()
+            cursor.close()
+            conn.close()
