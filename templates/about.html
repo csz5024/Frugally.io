@@ -4,16 +4,17 @@
                 <title>Frugally</title>
                 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
                 <meta name="description" content="Frugally is a comprehensive deal-finding website that uses an interactive learning algorithm to curate deals for you." />
-                <!--[if lte IE 8]><script src="static/css/ie/html5shiv.js"></script><![endif]-->
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+		<!--[if lte IE 8]><script src="static/css/ie/html5shiv.js"></script><![endif]-->
                 <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
                 <script src="{{ url_for('static', filename='js/jquery.dropotron.min.js') }}"></script>
                 <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
                 <script src="{{ url_for('static', filename='js/skel-layers.min.js') }}"></script>
                 <script src="{{ url_for('static', filename='js/init.js') }}"></script>
                 <noscript>
-                        <link rel="stylesheet" href="static/css/skel.css" />
-                        <link rel="stylesheet" href="static/css/style.css" />
-                        <link rel="stylesheet" href="static/css/style-wide.css" />
+                        <link rel="stylesheet" href="static/css/skel.css">
+                        <link rel="stylesheet" href="static/css/style.css">
+                        <link rel="stylesheet" href="static/css/style-wide.css">
                 </noscript>
                         <!--            noscript tag-->
                 <!--[if lte IE 8]><link rel="stylesheet" href="static/css/ie/v8.css" /><![endif]-->
@@ -35,7 +36,7 @@
 				<!-- Header -->
 					<div id="header" class="skel-panels-fixed">
 						<div id="logo">
-							<a href='/'><h1><em>Frugally</em></h1></a>
+							<a href="/"><h1><em>Frugally</em></h1></a>
 						</div>
 						<nav id="nav">
 							<ul>
@@ -49,10 +50,8 @@
 
 				<!-- Page -->
 					<div id="page" class="container">
-						<div class="row">
-						
 							<!-- Content -->
-							<div id="content" class="8u skel-cell-important">
+							<div id="content" class="testcell">
 								<section>
 									<header class="major">
 										<h2>Frugally.io</h2>
@@ -60,7 +59,9 @@
 									</header>
 									<p>Frugally is a smarter online shopping experience. Minimize your time spent staring at a screen by having all of the best deals from all of your favorite vendors in one convenient place. Whats more, we have our own algorithms set in place to recommend you deals based upon your previous purchases.</p>
 									<p>Frugally is a simple design that employs the use of Selenium's web scraping libraries to gather all of the best deals from a set list of vendors. By handing this data off to our full stack web server (Hardware owned!), we are able to create a truly unique shopping experience that is curated to the user. All of your personal data is stored at home, right here in Philadelphia Pennsylvania.</p>
-									<p>You have been selected to participate in the Frugally.io beta, congrats! Not only will you have early access to our catalog, but you will be instrumental in our conversion to a stable 1.0 build. At the bottom of each page, you will find a suggestions box that you can use to reach out to us with feedback based upon your experience; we will use this feedback to compile a more personalized user experience in the march towards 1.0... the suggestions box right above our patreon link... wink wink nudge nudge.</p>
+									<p>You have been selected to participate in the Frugally.io beta, congrats! Not only will you have early access to our catalog, but you will be instrumental in our conversion to a stable 1.0 build. At the bottom of each page, you will find a suggestions box that you can use to leave us feedback based upon your user experience; we will then use this feedback to compile a more personalized user experience in the march towards 1.0... the suggestions box right above our patreon link... wink wink nudge nudge.</p>
+									<p>Cheers!
+									<br>Team Frugally.io</p>
 									<p><blockquote>And then came that girl who rowed in the dark. Each night she paused to relay her coordinates, how her body was performing, and the atmospheric conditions. Often she noted things-the outlines of birds migrating at night, a whale shark seining for krill off her bow. She had, she said, a growing ability to dream while she rowed.
 									<br>
 									<br>-The Orphan Master's Son by Adam Johnson</blockquote></p>
@@ -70,119 +71,67 @@
 								</div>
 							</div>
 		
-							<!-- Sidebar -->
-							<div id="sidebar" class="4u">
-								<section>
-									<header class="major">
-										<h2>Key links</h2>
-									</header>
-									<div class="row half">
-										<section class="6u">
-											<ul class="default">
-												<li><a href="#">Donec facilisis tempor</a></li>
-												<li><a href="#">Nulla convallis cursus</a></li>
-												<li><a href="#">Integer congue euis</a></li>
-												<li><a href="#">Venenatis vulputate</a></li>
-												<li><a href="#">Morbi ligula volutpat</a></li>
-											</ul>
-										</section>
-										<section class="6u">
-											<ul class="default small">
-												<li><a href="#">Donec facilisis tempor</a></li>
-												<li><a href="#">Nulla convallis cursus</a></li>
-												<li><a href="#">Integer congue euis</a></li>
-												<li><a href="#">Venenatis vulputate</a></li>
-												<li><a href="#">Morbi ligula volutpat</a></li>
-											</ul>
-										</section>
-									</div>
-								</section>
-								<section>
-									<header class="major">
-										<h2>Key links</h2>
-									</header>
-									<ul class="default">
-										<li><a href="#">Pellentesque lectus gravida blandit</a></li>
-										<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
-										<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-										<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-										<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
-										<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-										<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-									</ul>
-								</section>
-							</div>
 							<!-- About -->
-							<div class="row">
-							  <div class="column">
+							<div id="about">
+							<!--<h2>Meet the Team</h2>-->
+							<hr style="height:1px;border-width:0;width:75%;padding:3em,0em,3em,0em;color:#777776;background-color:#777776">
+							<div class="aboutrow">
 							    <div class="card">
-							      <img src="img1.jpg" alt="Jane" style="width:100%">
+							      <img src="{{ url_for('static', filename='images/leo.jpg') }}" alt="" style="max-width:100%">
 							      <div class="container">
 							        <h2>Leonardo Petit</h2>
-							        <p class="title">CEO &amp; Founder</p>
-							        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-							        <p>example@example.com</p>
-							        <p><button class="button">Contact</button></p>
+							        <p class="title">Economics</p>
+							        <!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+							        <!--<p>example@example.com</p>-->
+							        <p><a href="https://www.linkedin.com/in/leonardo-j-petit-735157122/" target="_blank" class="button small">LinkedIn</a></p>
 							      </div>
-							    </div>
 							  </div>
-
-							  <div class="column">
 							    <div class="card">
-							      <img src="img2.jpg" alt="Mike" style="width:100%">
-							      <div class="container">
-							        <h2>Roger Balcells Sanchez</h2>
-							        <p class="title">Art Director</p>
-							        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-							        <p>example@example.com</p>
-							        <p><button class="button">Contact</button></p>
-							      </div>
-							    </div>
-							  </div>
-
-							  <div class="column">
-							    <div class="card">
-							      <img src="img3.jpg" alt="John" style="width:100%">
+							      <img src="{{ url_for('static', filename='images/jad.jpg') }}" alt="" style="max-width:100%">
 							      <div class="container">
 							        <h2>Jad Blaik</h2>
-							        <p class="title">Designer</p>
-							        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-							        <p>example@example.com</p>
-							        <p><button class="button">Contact</button></p>
+							        <p class="title">Economics, Political Science, Philosophy</p>
+							        <!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+							        <!--<p>example@example.com</p>-->
+							        <p><a href="https://www.linkedin.com/in/jadblaik/" target="_blank" class="button small">LinkedIn</a></p>
 							      </div>
-							    </div>
 							  </div>
-							</div>
-							<div class="row">
-							   <div class="column">
-                                                            <div class="card">
-                                                              <img src="img2.jpg" alt="Mike" style="width:100%">
-                                                              <div class="container">
-                                                                <h2>Casey Zduniak</h2>
-                                                                <p class="title">Art Director</p>
-                                                                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                                                                <p>example@example.com</p>
-                                                                <p><button class="button">Contact</button></p>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-
-                                                          <div class="column">
-                                                            <div class="card">
-                                                              <img src="img3.jpg" alt="John" style="width:100%">
+							  <div class="card">
+                                                              <img src="{{ url_for('static', filename='images/steve.jpg') }}" alt="" style="max-width:100%">
                                                               <div class="container">
                                                                 <h2>Steven Madias</h2>
-                                                                <p class="title">Designer</p>
-                                                                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                                                                <p>example@example.com</p>
-                                                                <p><button class="button">Contact</button></p>
+                                                                <p class="title">Electrical Engineering</p>
+                                                                <!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+                                                                <!--<p>example@example.com</p>-->
+                                                                <p><a href="https://www.linkedin.com/in/steven-madias-0b4235171/" target="_blank" class="button small">LinkedIn</a></p>
                                                               </div>
-                                                            </div>
                                                           </div>
+							</div>
+							<div class="aboutrow">
+                                                            <div class="card">
+                                                              <img src="{{ url_for('static', filename='images/me.jpg') }}" alt="" style="max-width:100%">
+                                                              <div class="container">
+                                                                <h2>Casey Zduniak</h2>
+                                                                <p class="title">Computer Science</p>
+                                                                <!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+                                                                <!--<p>example@example.com</p>-->
+                                                                <p><a href="https://www.linkedin.com/in/casey-zduniak-858764169/" target="_blank" class="button small">LinkedIn</a></p>
+                                                              </div>
+                                                          </div>
+							    <div class="card">
+							      <img src="{{ url_for('static', filename='images/roger.jpg') }}" alt="" style="max-width:100%">
+							      <div class="container">
+							        <h2>Roger Balcells Sanchez</h2>
+							        <p class="title">Electrical Engineering and Applied Mathematics</p>
+							        <!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+							        <!--<p>example@example.com</p>-->
+							        <p><a href="https://www.linkedin.com/in/roger-balcells-sanchez-434666b9/" target="_blank" class="button small">LinkedIn</a></p>
+							      </div>
+							  </div>
                                                         </div>
 							</div>
+							</div>
 
-						</div>
 					</div>
 				<!-- /Page -->
 
@@ -232,13 +181,13 @@
 			<div class="container">
 				<div class="row half patreon">
 					<div class="12u">
-						<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
+					<a href="https://www.patreon.com/bePatron?u=37408218" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>	
 					</div>
 				</div>
 				<ul class="icons">
-					<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+					<li><a href="https://www.linkedin.com/company/frugallyio" class="fa fa-linkedin"><span>LinkedIn</span></a></li>
 					<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
-					<li><a href="#" class="fa fa-google-plus"><span>Google+</span></a></li>
+					<li><a href="https://www.instagram.com/frugallydotio/" class="fa fa-instagram"><span>Instagram</span></a></li>
 				</ul>
 			</div>
 		</div>

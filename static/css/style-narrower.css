@@ -306,7 +306,7 @@
 		display: block;
 		margin-left: auto;
  		margin-right: auto;
-		width: 75%;
+		/*width: 75%;*/
 	}
 	.box {
 		padding: 0px;
@@ -325,3 +325,10 @@
 		margin: auto;
 	}
 	
+	.card {
+		width: 100%;
+	}
+	div#content {
+		padding-left: 5%;
+		padding-right: 5%;
+	}

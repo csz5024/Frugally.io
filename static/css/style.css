@@ -1,4 +1,5 @@
 
+
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,500,600,700,800,900");
 
@@ -719,7 +720,7 @@
 	#page {
 		position: relative;
 		background: #FFF;
-		padding: 6em 4em 6em 4em;
+		/*padding: 6em 4em 6em 4em;*/
 		border-radius: 6px;
 	}
 
@@ -826,19 +827,45 @@
                 /*box-shadow: 5px 10px 18px #ddd;*/
                 z-index: 10;
 	}
-	div#cardcontainer a {
-
-	}	
-	div#cardcontainer a img {
-
+	div#content {
+		padding-left: 15%;
+		padding-right: 15%;
 	}
 	div#about {
-		
+		padding: 0px;	
+		margin-top: 120px;
 	}
-	div#aboutcard {
-
+	.aboutrow{
+		padding: 0;
+		margin: 0;
+		text-align: center;
 	}
-
+	.card {
+		text-align: center;
+		width: 33%;
+		padding-left: 0;
+		display: inline-block;
+	}
+	.card .container {
+		width: 100%;
+	}
+	.card .container h2 {
+		margin-bottom: 0 !important;
+	}
+	.card img {
+		width: 66%;
+		text-align: center;
+	}
+	.card .container p a{
+		width: 66%;
+	}
+	.title {
+		min-height: 65px;
+		margin: 0;
+	}
+	.row.half.patreon {
+		padding-bottom: 20px;
+	}
 
 /* Pagination */
 
