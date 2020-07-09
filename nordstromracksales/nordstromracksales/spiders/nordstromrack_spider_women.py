@@ -41,7 +41,7 @@ class NordstromRackWomenSpider(scrapy.Spider):
 
         iter = 1
 
-	    try:
+        try:
             while True:
                 #Loading each page to extract the data
                 url = "https://www.nordstromrack.com/shop/Women/Clothing?page={0}&sort=most_popular"
@@ -73,10 +73,7 @@ class NordstromRackWomenSpider(scrapy.Spider):
                     #Finding the discount of each article and yielding all the data
                     discount = article.css('.product-grid-item__sale-price-discount ::text').get()
                     if discount is not None:
-                        try:
-                            image = imlist[i*2].get_attribute('src')
-                        except:
-                            break
+                        image = imlist[i*2].get_attribute('src')
                         vendor = 'NordstromRack'
                         gender = 'Women'
                         title = article.css('.product-grid-item__title ::text').get()
@@ -110,7 +107,7 @@ class NordstromRackWomenSpider(scrapy.Spider):
                         vendor = "Nordstrom Rack"
                         sql = 'INSERT INTO NordstromRackWomenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
                         val = (vendor, str(gender), str(title), str(brand), rprice, price, disc,
-                               str(imagelink), str("nordstromrack.com" + link))
+                               str(imagelink), str(link))
 
                         # print("NordstromRackMen item number "+str(count))
                         cursor.execute(sql, val)

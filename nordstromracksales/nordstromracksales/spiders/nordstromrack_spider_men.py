@@ -107,7 +107,7 @@ class NordstromRackMenSpider(scrapy.Spider):
                         vendor = "Nordstrom Rack"
                         sql = 'INSERT INTO NordstromRackMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
                         val = (vendor, str(gender), str(title), str(brand), rprice, price, disc,
-                               str(imagelink), str("nordstromrack.com" + link))
+                               str(imagelink), str(link))
 
                         # print("NordstromRackMen item number "+str(count))
                         cursor.execute(sql, val)
