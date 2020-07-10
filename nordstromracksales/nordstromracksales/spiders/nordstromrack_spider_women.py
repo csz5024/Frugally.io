@@ -82,7 +82,7 @@ class NordstromRackWomenSpider(scrapy.Spider):
                         price = article.css('.product-grid-item__sale-price ::text').get()
                         discount = discount
                         imagelink = image
-                        link = 'https://nordstormrack.com' + article.css('.product-grid-item a::attr(href)').get()
+                        link = article.css('.product-grid-item a::attr(href)').get()
                         print('Adding NordstromRackWomen Content to Database, please wait...')
                         if (discount != None):
                             disc = discount.split()

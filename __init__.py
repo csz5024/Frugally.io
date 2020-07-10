@@ -51,11 +51,11 @@ This file is organized into APP ROUTES, FILTERS, and MAIL SENDER subheadings
 def before_request():
     if(request.url.startswith('http://')):
         url = request.url.replace('http://', 'https://', 1)
-        #app.logger.info("HTTPS redirect")
+        app.logger.info("HTTPS redirect")
         return redirect(url,code=301)
 
 
-# Custom Internal Server Error Page 
+# Custom Internal Server Error Page
 @app.errorhandler(500)
 def InternalError(e):
     return render_template('500.html'), 500
@@ -65,9 +65,8 @@ def InternalError(e):
 @app.route('/home', methods=['GET'])
 def index():
 
-    #nordstrom = getNordstromContent()
+    app.logger.info("Index")
     nordstrom = DBqueries.getSQLNordstrom()
-    #nike = getNikeContent()
     nike = DBqueries.getSQLNike()
     fullList = nordstrom + nike
     items = len(fullList)
@@ -102,6 +101,7 @@ def feedback():
 
     else:
     	return redirect("http://frugally.io/home", code=302)
+
 
 @app.route('/', methods=["GET", "POST"])
 def about():
@@ -167,6 +167,7 @@ def men(filters):
 
         return render_template('mens.html', objects=objects, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors, prange=prange)
     return redirect('https://frugally.io/home', code=302)
+
 
 @app.route('/women/<filters>', methods=["GET", "POST"])
 def women(filters):
@@ -257,7 +258,7 @@ def sitemap():
 
 '''
 
-
+# https://frugally.io/men/sort=discout+vendors=nordstromrack+brands=asics_guess+pr=
 
 # The packing and unpacking URL filters
 def returnFilter(radio, vendors, brands):
@@ -279,6 +280,7 @@ def returnFilter(radio, vendors, brands):
         return redirect(("http://frugally.io/"+filterstring), code=302)
     except:
         return redirect("http://frugally.io", code=302)
+
 
 def parseFilter(filter):
     options = filter.split('+')
@@ -672,4 +674,4 @@ class listing:
 '''
 
 if __name__ == '__main__':
-    app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'), debug=True)
+    app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'))
