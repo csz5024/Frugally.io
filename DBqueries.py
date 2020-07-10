@@ -54,96 +54,93 @@ def getSQLdiscount(filters):
 
     if(gender=='men'):
 
-	if(filtervendor == 'all'):
-
+        if(filtervendor == 'all'):
+            
 	        sql = "SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M ORDER BY discount DESC;"
         	#vars = (gender)
        		cursor.execute(sql)
         	item = cursor.fetchall()
-		if(filterbrands!="all" and ("Nike" not in filterbrands)):
-           		temp = ""
-            		for i in filterbrands:
-            		temp += "brand='%s' OR " % i
-           		temp = temp.strip("OR ")
-           		sql = "SELECT * FROM NordstromRackMen WHERE "+temp+"ORDER BY discount DESC"
+            if(filterbrands!="all" and ("Nike" not in filterbrands)):
+                temp = ""
+                for i in filterbrands:
+                    temp += "brand='%s' OR " % i
+                    temp = temp.strip("OR ")
+                    sql = "SELECT * FROM NordstromRackMen WHERE "+temp+"ORDER BY discount DESC"
             		cursor.execute(sql)
-           		item = cursor.fetchall()
+                    item = cursor.fetchall()
         else:
        		 #filters vendor  (only accounts for Nike and Nordstrom Rack right now)
-       		 if(filtervendor=='NordstromRack'):
-			sql = "SELECT * FROM NordstromRackMen ORDER BY discount DESC;"
-        		cursor.execute(sql)
-		        item = cursor.fetchall()
-
-                	 if(filterbrands!="all" and ("Nike" not in filterbrands)):
-                        	temp = ""
-                        	for i in filterbrands:
-                        	temp += "brand='%s' OR " % i
-                        	temp = temp.strip("OR ")
-                        	sql = "SELECT * FROM NordstromRackMen WHERE "+temp+"ORDER BY discount DESC"
-                        	cursor.execute(sql)
-                        	item = cursor.fetchall()
+                if(filtervendor=='NordstromRack'):
+                    sql = "SELECT * FROM NordstromRackMen ORDER BY discount DESC;"
+                    cursor.execute(sql)
+                    item = cursor.fetchall()
+                    
+                if(filterbrands!="all" and ("Nike" not in filterbrands)):
+                    temp = ""
+                    for i in filterbrands:
+                    temp += "brand='%s' OR " % i
+                    temp = temp.strip("OR ")
+                    sql = "SELECT * FROM NordstromRackMen WHERE "+temp+"ORDER BY discount DESC"
+                    cursor.execute(sql)
+                    item = cursor.fetchall()
 
 
 	         else:
-			sql ="SELECT * FROM NikeMen ORDER BY discount DESC;"
-               		cursor.execute(sql)
-               		item = cursor.fetchall()
-
-                         if(filterbrands!="all"):
-                                temp = ""
-                                for i in filterbrands:
-                                temp += "brand='%s' OR " % i
-                                temp = temp.strip("OR ")
-                                sql = "SELECT * FROM NikeMen WHERE "+temp+"ORDER BY discount DESC"
-                                cursor.execute(sql)
-                                item = cursor.fetchall()
+                sql ="SELECT * FROM NikeMen ORDER BY discount DESC;"
+                cursor.execute(sql)
+                item = cursor.fetchall()
+                if(filterbrands!="all"):
+                    temp = ""
+                    for i in filterbrands:
+                        temp += "brand='%s' OR " % i
+                        temp = temp.strip("OR ")
+                        sql = "SELECT * FROM NikeMen WHERE "+temp+"ORDER BY discount DESC"
+                        cursor.execute(sql)
+                        item = cursor.fetchall()
 
 
     else:
-	if(filtervendor=='all'):
-
-       		 sql = "SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M ORDER BY discount DESC;"
-       		 #vars = (gender)
-     		 cursor.execute(sql)
-       		 item = cursor.fetchall()
-                        if(filterbrands!="all" and ("Nike" not in filterbrands)):
-                                temp = ""
-                                for i in filterbrands:
-                                temp += "brand='%s' OR " % i
-                                temp = temp.strip("OR ")
-                                sql = "SELECT * FROM NordstromRackWomen WHERE "+temp+"ORDER BY discount DESC"
-                                cursor.execute(sql)
-                                item = cursor.fetchall()
+        if(filtervendor=='all'):
+            sql = "SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M ORDER BY discount DESC;"
+            #vars = (gender)
+            cursor.execute(sql)
+            item = cursor.fetchall()
+            if(filterbrands!="all" and ("Nike" not in filterbrands)):
+                temp = ""
+                for i in filterbrands:
+                temp += "brand='%s' OR " % i
+                temp = temp.strip("OR ")
+                sql = "SELECT * FROM NordstromRackWomen WHERE "+temp+"ORDER BY discount DESC"
+                cursor.execute(sql)
+                item = cursor.fetchall()
 
 	else:
-		#filters vendor (only accounts for Nike and Nordstrom Rack right now)
-        	if(filtervendor=='NordstromRack'):
-                	sql = "SELECT * FROM NordstromRackWomen ORDER BY discount DESC;"
-                	cursor.execute(sql)
-                	item = cursor.fetchall()
-                        if(filterbrands!="all" and ("Nike" not in filterbrands)):
-                                temp = ""
-                                for i in filterbrands:
-                                temp += "brand='%s' OR " % i
-                                temp = temp.strip("OR ")
-                                sql = "SELECT * FROM NordstromRackWomen WHERE "+temp+"ORDER BY discount DESC"
-                                cursor.execute(sql)
-                                item = cursor.fetchall()
-
-
-      		 else:
-                	sql ="SELECT * FROM NikeWomen ORDER BY discount DESC;"
-                	cursor.execute(sql)
-                	item = cursor.fetchall()
-                        if(filterbrands!="all"):
-                                temp = ""
-                                for i in filterbrands:
-                                temp += "brand='%s' OR " % i
-                                temp = temp.strip("OR ")
-                                sql = "SELECT * FROM NordstromRackWomen WHERE "+temp+"ORDER BY discount DESC"
-                                cursor.execute(sql)
-                                item = cursor.fetchall()
+        #filters vendor (only accounts for Nike and Nordstrom Rack right now)
+        if(filtervendor=='NordstromRack'):
+            sql = "SELECT * FROM NordstromRackWomen ORDER BY discount DESC;"
+            cursor.execute(sql)
+            item = cursor.fetchall()
+            if(filterbrands!="all" and ("Nike" not in filterbrands)):
+            temp = ""
+            for i in filterbrands:
+            temp += "brand='%s' OR " % i
+            temp = temp.strip("OR ")
+            sql = "SELECT * FROM NordstromRackWomen WHERE "+temp+"ORDER BY discount DESC"
+            cursor.execute(sql)
+            item = cursor.fetchall()
+            
+            else:
+                sql ="SELECT * FROM NikeWomen ORDER BY discount DESC;"
+                cursor.execute(sql)
+                item = cursor.fetchall()
+                if(filterbrands!="all"):
+                    temp = ""
+                    for i in filterbrands:
+                    temp += "brand='%s' OR " % i
+                    temp = temp.strip("OR ")
+                    sql = "SELECT * FROM NordstromRackWomen WHERE "+temp+"ORDER BY discount DESC"
+                    cursor.execute(sql)
+                    item = item + cursor.fetchall()
 
 
     cursor.close()
