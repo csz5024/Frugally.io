@@ -51,7 +51,7 @@ This file is organized into APP ROUTES, FILTERS, and MAIL SENDER subheadings
 def before_request():
     if(request.url.startswith('http://')):
         url = request.url.replace('http://', 'https://', 1)
-        app.logger.info("HTTPS redirect")
+        #app.logger.info("HTTPS redirect")
         return redirect(url,code=301)
 
 
@@ -65,7 +65,7 @@ def InternalError(e):
 @app.route('/home', methods=['GET'])
 def index():
 
-    app.logger.info("Index")
+    #app.logger.info("Index")
     nordstrom = DBqueries.getSQLNordstrom()
     nike = DBqueries.getSQLNike()
     fullList = nordstrom + nike
@@ -135,7 +135,7 @@ def men(filters):
     if(request.method == 'POST'):
         formid = request.form.get("menspage","")
 
-        # Send email (gmail disabled our account for some reason)
+        # Send email
         if(formid == "2"):
 
             name = request.form['name']
@@ -149,10 +149,14 @@ def men(filters):
             radio = request.form.get('radio')
             vendorfilter = request.form.getlist('vendorsBox')
             brands = request.form.getlist('brandsBox')
-            return returnFilter(radio, vendorfilter, brands)
+            prange = request.form.getlist('rangeBox')
+            return returnFilter(radio, vendorfilter, brands, prange, "men")
+    #GET
     else:
         options = parseFilter(filters)
+        #app.logger.info(options)
         objects = DBqueries.getSQLsort(options, gender='men')
+        #app.logger.info(objects)
         maxprice = round(DBqueries.getMaxPriceMen())
         itemsinrow = 3
         items = len(objects)
@@ -190,7 +194,8 @@ def women(filters):
             #gender = request.form.get('radio2')
             vendorfilter = request.form.getlist('vendorsBox')
             brands = request.form.getlist('brandsBox')
-            return returnFilter(radio, vendorfilter, brands)
+            prange = request.form.getlist('rangeBox')
+            return returnFilter(radio, vendorfilter, brands, prange, "women")
     else:
         options = parseFilter(filters)
         objects = DBqueries.getSQLsort(options, gender='women')
@@ -261,7 +266,7 @@ def sitemap():
 # https://frugally.io/men/sort=discout+vendors=nordstromrack+brands=asics_guess+pr=
 
 # The packing and unpacking URL filters
-def returnFilter(radio, vendors, brands):
+def returnFilter(radio, vendors, brands, prange, gender):
     try:
         if(radio == None):
             radio = 'discount'
@@ -277,7 +282,12 @@ def returnFilter(radio, vendors, brands):
            filterstring = filterstring+str(i)+"_"
         if(filterstring[-1] != "="):
             filterstring = filterstring[:-1]
-        return redirect(("http://frugally.io/"+filterstring), code=302)
+        filterstring = filterstring+"+range="
+        for i in prange:
+           filterstring = filterstring+str(i)+"_"
+        if(filterstring[-1] != "="):
+            filterstring = filterstring[:-1]
+        return redirect(("http://frugally.io/"+gender+"/"+filterstring), code=302)
     except:
         return redirect("http://frugally.io", code=302)
 
@@ -285,9 +295,9 @@ def returnFilter(radio, vendors, brands):
 def parseFilter(filter):
     options = filter.split('+')
     if((len(options) <= 1) or (filter == 'home')):
-        return [['sort', 'discount'], ['vendors', 'all'], ['brands', 'all']]
+        return [['sort', 'discount'], ['vendors', 'all'], ['brands', 'all'], ['range', 'all']]
     values = []
-    #app.logger.info(options)
+    app.logger.info(options)
     for i in options:
         values.append(i.split('='))
         if(values[-1][0] == 'vendors'):
@@ -302,7 +312,13 @@ def parseFilter(filter):
             else:
                 brands = values[-1].pop(-1)
                 values[-1].append(brands.split('_'))
-        #app.logger.info(values)
+        if(values[-1][0] == 'range'):
+            if(len(values[-1][1]) <= 1):
+                values[-1][1] = "all"
+            else:
+                brands = values[-1].pop(-1)
+                values[-1].append(brands.split('_'))
+        app.logger.info(values)
     return values
 
 

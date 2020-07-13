@@ -629,7 +629,8 @@
                 margin: 0 auto;
 		padding: 5px;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		z-index: 100;
+		z-index: 400;
+                position: relative;
 	}
 	.dropdown-content h2 {
 		font-size: 12px;
