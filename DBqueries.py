@@ -456,3 +456,20 @@ def getSQLNike():
     conn.close()
     return item
 
+
+def collect(link, userid):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas",
+        database="BigData"
+    )
+    cursor = conn.cursor()
+
+    cursor.execute('INSERT INTO LinksClicked(PID, UserID, url) VALUES(%s, %s, %s);', (NULL, str(userid), link))
+
+    item = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+    return item

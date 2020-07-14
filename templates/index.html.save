@@ -75,8 +75,7 @@
 										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
 										<form method="post" action="#">
 										<input value="3" type="hidden" name="homepage">
-										<input name="btnlink" value="https://{{ objects[i*itemsinrow+j][8] }}" type="hidden">
-										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" type="submit" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
+										<a href="https://{{ objects[i*itemsinrow+j][8] }}" type="button" target="_blank" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
 										<div class="box">
 											<div class="boxp">
                                                                                         	<p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
@@ -84,7 +83,7 @@
 												<p>{{ objects[i*itemsinrow+j][2] }}</p>
 											</div>
 											<p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
-											<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" type="submit" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
+											<a href="https://{{ objects[i*itemsinrow+j][8] }}" type="button" target="_blank" class="button small" name="btnlink" value="">${{ objects[i*itemsinrow+j][5] }}</a>
 										</div>
 										</form>
 									</div>

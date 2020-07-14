@@ -98,7 +98,12 @@ def feedback():
         # sends to gmail
         sendMail(email, name, message)
         return redirect('http://frugally.io/home', code=302)
-
+    # collect data on product link
+    elif(formid == "3"):
+        link = request.form.get("imglink", "")
+        userid = request.remote_addr
+        app.logger.info(link, userid)
+        DBqueries.collect(link, userid)
     else:
     	return redirect("http://frugally.io/home", code=302)
 
