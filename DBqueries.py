@@ -154,6 +154,8 @@ def getSQLdiscount(filters):
     )
     cursor = conn.cursor()
 
+    errorlogger=""
+
     # Parse out the filters
     if(filters!=None):
         gender = str(filters[0][1]).lower()
@@ -162,24 +164,26 @@ def getSQLdiscount(filters):
         filterrange = filters[3][1]
 
         try:
-            prange = "WHERE "
+            prange = "WHERE ("
             for i in filterrange:
                 i = i.split("-")
                 i[0] = i[0].strip("$")
                 i[1] = i[1].strip("$")
                 prange += "price>=%.2f AND price<=%.2f OR " % (float(i[0]), float(i[1]))
             prange = prange.strip("OR ")
+            prange += ")"
         except:
             prange = ""
 
         if(len(filterbrands)>=1):
             if(len(prange)>1):
-                temp = " AND "
+                temp = "AND("
             else:
-                temp = "WHERE "
+                temp = "WHERE ("
             for i in filterbrands:
                 temp += "brand='%s' OR " % i
             temp = temp.strip("OR ")
+            temp += ")"
         else:
             temp = ""
 
@@ -188,58 +192,54 @@ def getSQLdiscount(filters):
         temp = ""
         prange = ""
 
+    #errorlogger = "gender: %s, filtervendor:%s, prange:%s, temp:%s" % (gender, filtervendor, prange, temp)
 
     if(gender == 'men'):
         if(filterbrands!="all" and ("Nike" not in filterbrands)):
-            sql = "SELECT * FROM NordstromRackMen "+prange+temp+"ORDER BY discount DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            sql = "SELECT * FROM NordstromRackMen "+prange+temp+" ORDER BY discount DESC"
+            #errorlogger = sql
         elif(filterbrands!="all"):
-            sql = "SELECT * FROM NordstromRackMen "+prange+temp+"UNION ALL SELECT * FROM NikeMen WHERE "+prange+"ORDER BY discount DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
+                sql = "SELECT * FROM NikeMen "+prange+temp+" ORDER BY discount DESC"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackMen "+prange+temp+" ORDER BY discount DESC"
+            else:
+                sql = "SELECT * FROM NordstromRackMen "+prange+temp+" UNION ALL SELECT * FROM NikeMen "+prange+" ORDER BY discount DESC"
+            #errorlogger = sql
         else:
             if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
-                sql = "SELECT * FROM NikeMen "+prange+"ORDER BY discount DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
-            elif(len(filtervendor)==1):
-                sql = "SELECT * FROM NordstromRackMen "+prange+"ORDER BY discount DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NikeMen "+prange+" ORDER BY discount DESC"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackMen "+prange+" ORDER BY discount DESC"
             else:
-                sql = "SELECT * FROM NordstromRackMen "+prange+"UNION ALL SELECT * FROM NikeMen "+prange+"ORDER BY discount DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NordstromRackMen "+prange+" UNION ALL SELECT * FROM NikeMen "+prange+" ORDER BY discount DESC"
 
     # Women
     else:
         if(filterbrands!="all" and ("Nike" not in filterbrands)):
-            sql = "SELECT * FROM NordstromRackWomen "+prange+temp+"ORDER BY discount DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            sql = "SELECT * FROM NordstromRackWomen "+prange+temp+" ORDER BY discount DESC"
         elif(filterbrands!="all"):
-            sql = "SELECT * FROM NordstromRackWomen "+prange+temp+"UNION ALL SELECT * FROM NikeWomen "+prange+"ORDER BY discount DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
+                sql = "SELECT * FROM NikeWomen "+prange+temp+" ORDER BY discount DESC"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackWomen "+prange+temp+" ORDER BY discount DESC"
+            else:
+                sql = "SELECT * FROM NordstromRackWomen "+prange+temp+" UNION ALL SELECT * FROM NikeWomen "+prange+" ORDER BY discount DESC"
         else:
             if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
-                sql = "SELECT * FROM NikeWomen "+prange+"ORDER BY discount DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
-            elif(len(filtervendor)==1):
-                sql = "SELECT * FROM NordstromRackWomen "+prange+"ORDER BY discount DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NikeWomen "+prange+" ORDER BY discount DESC"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackWomen "+prange+" ORDER BY discount DESC"
             else:
-                sql = "SELECT * FROM NordstromRackWomen "+prange+"UNION ALL SELECT * FROM NikeWomen "+prange+"ORDER BY discount DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NordstromRackWomen "+prange+"UNION ALL SELECT * FROM NikeWomen "+prange+" ORDER BY discount DESC" 
+
+    cursor.execute(sql)
+    item = cursor.fetchall()
 
 
     cursor.close()
     conn.close()
-    return item
+    return item, errorlogger
 
 
 # The goal of this function is to return a set of products
@@ -254,7 +254,7 @@ def getSQLprice(filters, highlow):
     )
     cursor = conn.cursor()
 
-    # [[sort, high], [vendors,""], [brands,[asics, barney cools, brooks brothers]], [range, $0-$100]]
+    errorlogger = ""
 
     # Parse out the filters
     if(filters!=None):
@@ -264,24 +264,26 @@ def getSQLprice(filters, highlow):
         filterrange = filters[3][1]
 
         try:
-            prange = "WHERE "
+            prange = "WHERE ("
             for i in filterrange:
                 i = i.split("-")
                 i[0] = i[0].strip("$")
                 i[1] = i[1].strip("$")
                 prange += "price>=%.2f AND price<=%.2f OR " % (float(i[0]), float(i[1]))
             prange = prange.strip("OR ")
+            prange += ")"
         except:
             prange = ""
 
         if(len(filterbrands)>=1):
             if(len(prange)>1):
-                temp = " AND "
+                temp = "AND("
             else:
-                temp = "WHERE "
+                temp = "WHERE ("
             for i in filterbrands:
                 temp += "brand='%s' OR " % i
             temp = temp.strip("OR ")
+            temp += ")"
         else:
             temp = ""
 
@@ -289,81 +291,55 @@ def getSQLprice(filters, highlow):
             filtervendor="all"
     else:
         filtervendor="all"
-        filterbrands="all"
         prange=""
         temp=""
 
 
     if(gender == 'men'):
         if(filterbrands!="all" and ("Nike" not in filterbrands)):
-            sql = "SELECT * FROM NordstromRackMen "+prange+temp+"ORDER BY price"
-            if(highlow):
-                sql = sql+" DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            sql = "SELECT * FROM NordstromRackMen "+prange+temp+" ORDER BY price"
         elif(filterbrands!="all"):
-            sql = "SELECT * FROM NordstromRackMen "+prange+temp+"UNION ALL SELECT * FROM NikeMen "+prange+"ORDER BY price"
-            if(highlow):
-                sql = sql+" DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
+                sql = "SELECT * FROM NikeMen "+prange+temp+" ORDER BY price"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackMen "+prange+temp+" ORDER BY price"
+            else:
+                sql = "SELECT * FROM NordstromRackMen "+prange+temp+" UNION ALL SELECT * FROM NikeMen "+prange+" ORDER BY price"
         else:
             if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
-                sql = "SELECT * FROM NikeMen "+prange+"ORDER BY price"
-                if(highlow):
-                    sql = sql+" DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
-            elif(len(filtervendor)==1):
-                sql = "SELECT * FROM NordstromRackMen "+prange+"ORDER BY price"
-                if(highlow):
-                    sql = sql+" DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NikeMen "+prange+" ORDER BY price"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackMen "+prange+" ORDER BY price"
             else:
-                sql = "SELECT * FROM NordstromRackMen "+prange+"UNION ALL SELECT * FROM NikeMen "+prange+"ORDER BY price"
-                if(highlow):
-                    sql = sql+" DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NordstromRackMen "+prange+" UNION ALL SELECT * FROM NikeMen "+prange+" ORDER BY price"
 
     # Women
     else:
         if(filterbrands!="all" and ("Nike" not in filterbrands)):
-            sql = "SELECT * FROM NordstromRackWomen "+prange+temp+"ORDER BY price"
-            if(highlow):
-                sql = sql+" DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            sql = "SELECT * FROM NordstromRackWomen "+prange+temp+" ORDER BY price"
         elif(filterbrands!="all"):
-            sql = "SELECT * FROM NordstromRackWomen "+prange+temp+"UNION ALL SELECT * FROM NikeWomen "+prange+"ORDER BY price"
-            if(highlow):
-                sql = sql+" DESC"
-            cursor.execute(sql)
-            item = cursor.fetchall()
+            if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
+                sql = "SELECT * FROM NikeWomen "+prange+temp+" ORDER BY price"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackWomen "+prange+temp+" ORDER BY price"
+            else:
+                sql = "SELECT * FROM NordstromRackWomen "+prange+temp+" UNION ALL SELECT * FROM NikeWomen "+prange+" ORDER BY price"
         else:
             if(len(filtervendor)==1 and filtervendor[0] == "Nike"):
-                sql = "SELECT * FROM NikeWomen "+prange+"ORDER BY price"
-                if(highlow):
-                    sql = sql+" DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
-            elif(len(filtervendor)==1):
-                sql = "SELECT * FROM NordstromRackWomen "+prange+"ORDER BY price"
-                if(highlow):
-                    sql = sql+" DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NikeWomen "+prange+" ORDER BY price"
+            elif(len(filtervendor)==1 and filtervendor != "all"):
+                sql = "SELECT * FROM NordstromRackWomen "+prange+" ORDER BY price"
             else:
-                sql = "SELECT * FROM NordstromRackWomen "+prange+"UNION ALL SELECT * FROM NikeWomen "+prange+"ORDER BY price"
-                if(highlow):
-                    sql = sql+" DESC"
-                cursor.execute(sql)
-                item = cursor.fetchall()
+                sql = "SELECT * FROM NordstromRackWomen "+prange+" UNION ALL SELECT * FROM NikeWomen "+prange+" ORDER BY price"
+
+    if(highlow):
+        sql = sql+" DESC"
+    cursor.execute(sql)
+    item = cursor.fetchall()
 
     cursor.close()
     conn.close()
-    return item
+    return item, errorlogger
 
 
 def getMaxPriceMen():

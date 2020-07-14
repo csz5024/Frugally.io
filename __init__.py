@@ -159,9 +159,8 @@ def men(filters):
     #GET
     else:
         options = parseFilter(filters)
-        #app.logger.info(options)
-        objects = DBqueries.getSQLsort(options, gender='men')
-        #app.logger.info(objects)
+        objects, errorlogger = DBqueries.getSQLsort(options, gender='men')
+        #app.logger.info(errorlogger)
         maxprice = round(DBqueries.getMaxPriceMen())
         itemsinrow = 3
         items = len(objects)
@@ -203,9 +202,9 @@ def women(filters):
             return returnFilter(radio, vendorfilter, brands, prange, "women")
     else:
         options = parseFilter(filters)
-        objects = DBqueries.getSQLsort(options, gender='women')
+        objects, errorlogger = DBqueries.getSQLsort(options, gender='women')
+        #app.logger.info(errorlogger)
         maxprice = round(DBqueries.getMaxPriceWomen())
-        #app.logger.info(maxprice)
         items = len(objects)
         itemsinrow = 3
         itemsperpage = 16
@@ -302,7 +301,7 @@ def parseFilter(filter):
     if((len(options) <= 1) or (filter == 'home')):
         return [['sort', 'discount'], ['vendors', 'all'], ['brands', 'all'], ['range', 'all']]
     values = []
-    app.logger.info(options)
+    #app.logger.info(options)
     for i in options:
         values.append(i.split('='))
         if(values[-1][0] == 'vendors'):
@@ -323,7 +322,7 @@ def parseFilter(filter):
             else:
                 brands = values[-1].pop(-1)
                 values[-1].append(brands.split('_'))
-        app.logger.info(values)
+        #app.logger.info(values)
     return values
 
 
