@@ -296,4 +296,4 @@ If you want to test your query before putting it in the DBqueries.py file (which
    - Ex. ```SELECT * FROM NordstromRackMen WHERE gender='male', brand='burberry' OR brand='guess' OR brand='zara' ORDER BY discount;```
 
 
-
+Machine Learning link: https://amulyayadav.github.io/DS442/
