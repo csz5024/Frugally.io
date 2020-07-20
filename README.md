@@ -130,7 +130,10 @@ list crontab configurations ```sudo crontab -e```
 
 Need to update SSL certificates every 60 days
 
-frugally.wsgi
+This whole process is the biggest pain. be patient and methodical when configuring apache settings, debugging is limited.
+make sure the development server is ready for production first, then place the whole thing ontop of apache to minimize the possible number of errors going forward. good luck.
+
+frugally.wsgi (make sure you install wsgi for python3)
 ```
 #!/usr/bin/python3
 import sys
@@ -145,11 +148,14 @@ from Frugally import app as application
 /etc/apache2/sites-available/Frugally.conf
 ```
 <VirtualHost *:80>
-  ServerName 192.168.1.xxx
+  #ServerName 192.168.1.235
+  ServerName frugally.io
   ServerAdmin caseyzduniak@gmail.com
+
   ErrorLog /var/www/Frugally/logs/error.log
   CustomLog /var/www/Frugally/logs/access.log combined
-  
+  LogLevel info
+
   WSGIDaemonProcess frugally user=www-data group=www-data threads=5
   WSGIProcessGroup frugally
   WSGIScriptAlias / /var/www/Frugally/frugally.wsgi
@@ -158,12 +164,41 @@ from Frugally import app as application
     AllowOverride None
     Require all granted
   </Directory>
-  
+
   Alias /static /var/www/Frugally/Frugally/static
   <Directory /var/www/Frugally/Frugally/static/>
     Require all granted
   </Directory>
 </VirtualHost>
+
+<VirtualHost *:443>
+  #ServerName 192.168.1.235
+  ServerName frugally.io
+  ServerAdmin caseyzduniak@gmail.com
+
+  ErrorLog /var/www/Frugally/logs/ssl_error.log
+  CustomLog /var/www/Frugally/logs/ssl_access.log combined
+  LogLevel info
+
+  SSLEngine on
+  SSLCertificateFile /var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem
+  SSLCertificateKeyFile /var/www/Frugally/frugally.io-ssl-bundle/private.key.pem
+  SSLCertificateChainFile /var/www/Frugally/frugally.io-ssl-bundle/intermediate.$
+
+  WSGIProcessGroup frugally
+  WSGIScriptAlias / /var/www/Frugally/frugally.wsgi
+  <Directory /var/www/Frugally/Frugally/>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+
+  Alias /static /var/www/Frugally/Frugally/static
+  <Directory /var/www/Frugally/Frugally/static/>
+    Require all granted
+  </Directory>
+</VirtualHost>
+
 ```
 
 
