@@ -1,14 +1,14 @@
 # This file will be used as an import for __init__.py containing all of the SQL queries
 import mysql.connector
-
+'''
 conn = mysql.connector.connect(
     host="localhost",
     user="frugally",
-    password="Shoelas",
+    password="Shoelas20",
     database="Frugally"
 )
 cursor = conn.cursor()
-
+'''
 # Root of the filters tree
 # Makes a nested function call
 def getSQLsort(filters, gender):
@@ -35,7 +35,7 @@ def getSQLdiscount_steve(filters):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
 
@@ -149,12 +149,12 @@ def getSQLdiscount(filters):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
     cursor = conn.cursor()
 
-    errorlogger=""
+    errorlogger="filters"
 
     # Parse out the filters
     if(filters!=None):
@@ -249,7 +249,7 @@ def getSQLprice(filters, highlow):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
     cursor = conn.cursor()
@@ -346,7 +346,7 @@ def getMaxPriceMen():
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
     cursor = conn.cursor()
@@ -362,7 +362,7 @@ def getMaxPriceWomen():
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
     cursor = conn.cursor()
@@ -381,7 +381,7 @@ def getSQLNordstrom():
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
     cursor = conn.cursor()
@@ -410,7 +410,7 @@ def getSQLNike():
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="Frugally"
     )
     cursor = conn.cursor()
@@ -437,7 +437,7 @@ def collect(link, userid):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
-        password="Shoelas",
+        password="Shoelas20",
         database="BigData"
     )
     cursor = conn.cursor()

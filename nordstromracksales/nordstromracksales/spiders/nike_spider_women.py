@@ -23,7 +23,7 @@ class NikeWomenSpider(scrapy.Spider):
       conn = mysql.connector.connect(
           host="localhost",
           user="frugally",
-          password="Shoelas",
+          password="Shoelas20",
           database="Frugally"
       )
       cursor = conn.cursor()

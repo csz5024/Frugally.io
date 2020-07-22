@@ -1,4 +1,4 @@
-
+dir
 import scrapy
 from scrapy.selector import Selector
 from selenium import webdriver
@@ -22,7 +22,7 @@ class NikeMenSpider(scrapy.Spider):
         conn = mysql.connector.connect(
             host="localhost",
             user="frugally",
-            password="Shoelas",
+            password="Shoelas20",
             database="Frugally"
         )
         cursor = conn.cursor()

@@ -27,6 +27,15 @@
 
 			gtag('config', 'UA-169170066-1');
 		</script>
+		<script>
+			window.addEventListener("DOMContentLoaded", function () {	
+				var form = document.getElementById("form-id");
+				
+				document.getElementById("image-id").addEventListener("click", function () {
+					form.submit();
+				});
+			});
+		</script>
         </head>
 	<body>
 
@@ -73,10 +82,10 @@
 										<!--<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>-->
 										<div id="triangle-topright"></div>
 										<div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
-										<form method="post" action="#">
+										<!--<form method="post" action="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" id="form-id">
 										<input value="3" type="hidden" name="homepage">
-										<input name="btnlink" value="https://{{ objects[i*itemsinrow+j][8] }}" type="hidden">
-										<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" type="submit" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
+										<input name="btnlink" value="https://{{ objects[i*itemsinrow+j][8] }}" type="hidden">-->
+										<a href="https://{{ objects[i*itemsinrow+j][8] }}" id="image-id-" target="_blank" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
 										<div class="box">
 											<div class="boxp">
                                                                                         	<p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
@@ -84,7 +93,7 @@
 												<p>{{ objects[i*itemsinrow+j][2] }}</p>
 											</div>
 											<p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
-											<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank" type="submit" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
+											<a href="https://{{ objects[i*itemsinrow+j][8] }}" id="image-id-" target="_blank" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
 										</div>
 										</form>
 									</div>

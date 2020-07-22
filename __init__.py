@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, Response, url_for
 from flaskext.mysql import MySQL
+from flask_restful import Resource, Api
+import logging
 from PIL import Image
 import requests
 import json
@@ -19,8 +21,9 @@ import sys
 sys.path.append("..")
 from Frugally import DBqueries
 
-app = Flask(__name__)
 
+app = Flask(__name__)
+api = Api(app)
 
 '''
 
@@ -44,6 +47,7 @@ This file is organized into APP ROUTES, FILTERS, and MAIL SENDER subheadings
 
 '''
 
+#logging.basicConfig(filename='Flask.log', level=logging.INFO)
 
 
 # This section upgrades http requests to https
@@ -88,6 +92,7 @@ def feedback():
 
     formid = request.form.get("homepage","")
 
+    app.logger.info("Post received")
     # Send email
     if(formid == "2"):
 
@@ -97,15 +102,16 @@ def feedback():
 
         # sends to gmail
         sendMail(email, name, message)
-        return redirect('http://frugally.io/home', code=302)
+        return redirect('https://frugally.io/home', code=302)
     # collect data on product link
     elif(formid == "3"):
-        link = request.form.get("imglink", "")
+        link = request.form.get("btnlink","")
         userid = request.remote_addr
-        app.logger.info(link, userid)
-        DBqueries.collect(link, userid)
+        app.logger.info("%s %s %s" % formid, link, userid)
+        #DBqueries.collect(link, userid)
+        return redirect('https://frugally.io/home', code=302)
     else:
-    	return redirect("http://frugally.io/home", code=302)
+    	return redirect("https://frugally.io/home", code=302)
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -159,8 +165,9 @@ def men(filters):
     #GET
     else:
         options = parseFilter(filters)
+        app.logger.info(options)
         objects, errorlogger = DBqueries.getSQLsort(options, gender='men')
-        #app.logger.info(errorlogger)
+        app.logger.info(errorlogger)
         maxprice = round(DBqueries.getMaxPriceMen())
         itemsinrow = 3
         items = len(objects)
@@ -357,279 +364,6 @@ def getPrices(maxprice):
 
 '''
 
-
-'''
-# This function ultimatley gets the best discounts with the specified filters
-def getDiscount(products, filters):
-    #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]], [brand, [burberry, guess, ...]]]
-    objects = []
-    if(filters!=None):
-        gender = str(filters[0][1]).lower()
-        filtervendor = filters[1][1]
-        filterbrands = filters[2][1]
-    else:
-        gender = "all"
-        filtervendor = "all"
-        filterbrands = "all"
-
-    app.logger.info(gender+" "+filtervendor+" "+filterbrands)
-    counter=0 # used to keep track of the actual products to be displayed (dont use i)
-    for i in range(len(products)):
-        item = products[i].__dict__
-
-        # Filters out the undesired products
-        if(gender != "all"):
-            if((item["gender"]==None)or(item["gender"].lower()!=gender)):
-                continue
-        if(filtervendor != "all"):
-            if(item["vendor"] not in filtervendor):
-                continue
-        if(filterbrands != "all"):
-            if(item["brand"] not in filterbrands):
-                continue
-
-        # adds products to objects array
-        if(item["vendor"] == "Nike"):
-            #nike
-            objects.append(listing())
-            objects[counter].setVendor(item["vendor"])
-            objects[counter].setName(item["name"])
-            if(item["price"]!=None):
-                price=item["price"]
-            else:
-                price = "$0"
-            objects[counter].setPrice(price)
-            if((item["original"]!=None) and (item["price"]!=None)):
-                retail = float(item["original"][1:])
-                price = float(item["price"][1:])
-                discount = int(round((1-(price/retail))*100))
-            else:
-                discount = 0
-            objects[counter].setDiscount(discount)
-            objects[counter].setBrand(item["brand"])
-            objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"].strip('https://'))
-            objects[counter].setImg(item["img"])
-            objects[counter].setGender(item["gender"])
-            counter+=1
-        elif(item["vendor"] == "Nordstrom Rack"):
-            #nordstrom
-            objects.append(listing())
-            objects[counter].setVendor("Nordstrom Rack")
-            objects[counter].setName(item["name"])
-            objects[counter].setPrice(item["price"])
-            if(item["discount"] != None):
-                dis = item["discount"].split("%")
-                dis = int(dis[0])
-            else:
-                dis = 0
-            objects[counter].setDiscount(dis)
-            objects[counter].setBrand(item["brand"])
-            objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"])
-            objects[counter].setImg(item["img"])
-            objects[counter].setGender(item["gender"])
-            counter+=1
-
-    # sort by best discount
-    objects.sort(key=operator.attrgetter('discount'), reverse=True)
-    for i in objects:
-        i.setDiscount(str(i.discount) + "%")
-
-    return objects
-
-
-def getPrice(products, filters, highlow):
-    #filters is now an array [[gender, m/f], [vendor, [nike, nordstrom]]]
-    #highlow is a boolean that determines the sort order
-    objects = []
-    if(filters!=None):
-        gender = str(filters[0][1])
-        filtervendor = filters[1][1]
-        filterbrands = filters[2][1]
-    else:
-        gender = "all"
-        filtervendor = "all"
-        filterbrands = "all"
-
-    counter=0
-    for i in range(len(products)):
-        item = products[i].__dict__
-
-        if(gender != "all"):
-            if((item["gender"]==None)or(item["gender"].lower()!=gender)):
-                continue
-        if(filtervendor != "all"):
-            if(item["vendor"] not in filtervendor):
-                continue
-        if(filterbrands != "all"):
-            if(item["brand"] not in filterbrands):
-                continue
-
-        if(item["vendor"] == "Nike"):
-            #nike
-            objects.append(listing())
-            objects[counter].setVendor(item["vendor"])
-            objects[counter].setName(item["name"])
-            if(item["price"]!=None):
-                if(len(item["price"][1:]) > 6):
-                    price = float(item["price"][1:].replace(',',''))
-                else:
-                    price = float(item["price"][1:])
-            else:
-                price = 0
-            objects[counter].setPrice(price)
-            if((item["original"]!=None) and (item["price"]!=None)):
-                retail = float(item["original"][1:])
-                price = float(item["price"][1:])
-                discount = int(round((1-(price/retail))*100))
-            else:
-                discount = 0
-            objects[counter].setDiscount(str(discount))
-            objects[counter].setBrand(item["brand"])
-            objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"].strip('https://'))
-            objects[counter].setImg(item["img"])
-            objects[counter].setGender(item["gender"])
-            counter+=1
-        elif(item["vendor"] == "Nordstrom Rack"):
-            #nordstrom
-            objects.append(listing())
-            objects[counter].setVendor("Nordstrom Rack")
-            objects[counter].setName(item["name"])
-            if(item["price"] != None):
-                if(len(item["price"][1:]) > 6):
-                    price = float(item["price"][1:].replace(',',''))
-                else:
-                    price = float(item["price"][1:])
-            else:
-                price = 0
-            objects[counter].setPrice(price)
-            if(item['discount'] != None):
-                disc = item["discount"]
-            else:
-                disc = "-0%"
-            objects[counter].setDiscount(disc)
-            objects[counter].setBrand(item["brand"])
-            objects[counter].setOriginal(item["original"])
-            objects[counter].setLink(item["link"])
-            objects[counter].setImg(item["img"])
-            objects[counter].setGender(item["gender"])
-            counter+=1
-
-    objects.sort(key=operator.attrgetter('price'), reverse=highlow)
-    for i in objects:
-        if(i.price == 0):
-            i.setPrice("See Price in Cart")
-        else:
-            i.setPrice("$"+str(i.price))
-
-    return objects
-'''
-
-'''
-# Populates product listings
-def getNordstromContent():
-    objects = []
-    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRackMen.json') as f:
-        data = json.load(f)
-
-    counter = 0
-    for count, item in enumerate(data):
-        objects.append(listing())
-        objects[count].setName(item["title"])
-        objects[count].setPrice(item["price"])
-        if(item['discount'] != None):
-            disc = item["discount"].split()
-        else:
-            disc = "-0%"
-        objects[count].setDiscount(disc[0])
-        objects[count].setBrand(item["brand"])
-        objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink("nordstromrack.com"+item["link"])
-        objects[count].setImg(item["image-link"])
-        objects[count].setVendor("Nordstrom Rack")
-        objects[count].setGender(item["gender"])
-        counter+=1
-
-    f.close()
-    with open('/var/www/Frugally/Frugally/nordstromracksales/NordstromRackWomen.json') as f:
-        data = json.load(f)
-
-    for count, item in enumerate(data):
-        objects.append(listing())
-        objects[counter].setName(item["title"])
-        objects[counter].setPrice(item["price"])
-        if(item['discount'] != None):
-            disc = item["discount"].split()
-        else:
-            disc = "-0%"
-        objects[counter].setDiscount(disc[0])
-        objects[counter].setBrand(item["brand"])
-        objects[counter].setOriginal(item["retail-price"])
-        objects[counter].setLink("nordstromrack.com"+item["link"])
-        objects[counter].setImg(item["image-link"])
-        objects[counter].setVendor("Nordstrom Rack")
-        objects[counter].setGender(item["gender"])
-        counter+=1
-
-    app.logger.info("Nordstrom objects loaded: "+str(len(objects)))
-    f.close()
-    return objects
-
-def getNikeContent():
-    objects = []
-    with open('/var/www/Frugally/Frugally/nordstromracksales/NikeMen.json') as f:
-        data = json.load(f)
-
-    counter = 0
-    for count, item in enumerate(data):
-        objects.append(listing())
-        objects[count].setName(item["title"])
-        objects[count].setPrice(item["price"])
-        if((item["retail-price"]!=None) and (item["price"]!=None)):
-            retail = float(item["retail-price"].strip("$"))
-            price = float(item["price"].strip("$"))
-            discount = round((1-(price/retail))*100)
-        else:
-            discount = 0
-        objects[count].setDiscount(str(discount))
-        objects[count].setBrand(item["brand"])
-        objects[count].setOriginal(item["retail-price"])
-        objects[count].setLink(item["link"].strip('https://'))
-        objects[count].setImg(item["image-link"])
-        objects[count].setVendor(item["vendor"])
-        objects[count].setGender(item["gender"])
-        counter+=1
-
-    f.close()
-    with open('/var/www/Frugally/Frugally/nordstromracksales/NikeWomen.json') as f:
-        data = json.load(f)
-
-    for count, item in enumerate(data):
-        objects.append(listing())
-        objects[counter].setName(item["title"])
-        objects[counter].setPrice(item["price"])
-        if((item["retail-price"]!=None) and (item["price"]!=None)):
-            retail = float(item["retail-price"].strip("$"))
-            price = float(item["price"].strip("$"))
-            discount = round((1-(price/retail))*100)
-        else:
-            discount = 0
-        objects[counter].setDiscount(str(discount))
-        objects[counter].setBrand(item["brand"])
-        objects[counter].setOriginal(item["retail-price"])
-        objects[counter].setLink(item["link"].strip('https://'))
-        objects[counter].setImg(item["image-link"])
-        objects[counter].setVendor(item["vendor"])
-        objects[counter].setGender(item["gender"])
-        counter+=1
-
-    app.logger.info('Nike objects loaded: '+str(len(objects)))
-    f.close()
-    return objects
-'''
-
 # Sends email from burner gmail to frugally gmail
 def sendMail(customer, name, message):
     user = 'frugallyserver@gmail.com'
@@ -651,47 +385,6 @@ def sendMail(customer, name, message):
     server.quit()
     return 'success'
 
-'''
-# Product listing object
-class listing:
-    def __init__(self):
-        self.img = None
-        self.name = None
-        self.brand = None
-        self.price = None
-        self.original = None
-        self.discount = None
-        self.link = None
-        self.vendor = None
-        self.gender = None
-
-    def setImg(self, img):
-        self.img = img
-
-    def setName(self, name):
-        self.name = name
-
-    def setBrand(self, brand):
-        self.brand = brand
-
-    def setPrice(self, price):
-        self.price = price
-
-    def setOriginal(self, original):
-        self.original = original
-
-    def setDiscount(self, discount):
-        self.discount = discount
-
-    def setLink(self, link):
-        self.link = link
-
-    def setVendor(self, vendor):
-        self.vendor = vendor
-`
-    def setGender(self, gender):
-        self.gender = gender
-'''
 
 if __name__ == '__main__':
     app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'))
