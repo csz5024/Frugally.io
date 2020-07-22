@@ -65,6 +65,15 @@ def InternalError(e):
     return render_template('500.html'), 500
 
 
+# Lets us know which product the user clicked on, then redirects them to the site
+@app.route('/redirect/<path:plink>')
+def perm_redirect(plink):
+    product = plink
+
+    #app.logger.info(product)
+    return redirect("https://"+plink, code=301)
+
+
 # landing page
 @app.route('/home', methods=['GET'])
 def index():
@@ -102,13 +111,6 @@ def feedback():
 
         # sends to gmail
         sendMail(email, name, message)
-        return redirect('https://frugally.io/home', code=302)
-    # collect data on product link
-    elif(formid == "3"):
-        link = request.form.get("btnlink","")
-        userid = request.remote_addr
-        app.logger.info("%s %s %s" % formid, link, userid)
-        #DBqueries.collect(link, userid)
         return redirect('https://frugally.io/home', code=302)
     else:
     	return redirect("https://frugally.io/home", code=302)
@@ -165,9 +167,9 @@ def men(filters):
     #GET
     else:
         options = parseFilter(filters)
-        app.logger.info(options)
+        #app.logger.info(options)
         objects, errorlogger = DBqueries.getSQLsort(options, gender='men')
-        app.logger.info(errorlogger)
+        #app.logger.info(errorlogger)
         maxprice = round(DBqueries.getMaxPriceMen())
         itemsinrow = 3
         items = len(objects)
