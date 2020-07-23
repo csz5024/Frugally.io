@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-        $output=exec("cd /var/www/Frugally/Frugally/nordstromracksales && sudo scrapy crawl NordstromRackMen");
+        $output=shell_exec("cd /var/www/Frugally/Frugally/nordstromracksales && scrapy crawl NordstromRackMen");
 
         echo "<pre>$output</pre>";
 ?>

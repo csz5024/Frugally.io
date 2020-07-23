@@ -69,6 +69,9 @@ def InternalError(e):
 @app.route('/redirect/<path:plink>')
 def perm_redirect(plink):
     product = plink
+    ipaddr = request.remore_addr
+    # use product link as primary key (should we switch to product IDs?)
+    # associate the IP address with the product link
 
     #app.logger.info(product)
     return redirect("https://"+plink, code=301)
