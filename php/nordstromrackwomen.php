@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
-        $output=exec("cd /var/www/Frugally/Frugally/nordstromracksales && sudo scrapy crawl NordstromRackWomen");
+        putenv('PYTHONPATH=/home/frugally/.local/lib/python3.6/site-packages');
+        $output=exec("cd /var/www/Frugally/Frugally/nordstromracksales && scrapy crawl NordstromRackWomen");
 
         echo "<pre>$output</pre>";
 ?>
