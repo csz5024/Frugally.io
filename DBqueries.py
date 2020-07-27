@@ -1,14 +1,10 @@
 # This file will be used as an import for __init__.py containing all of the SQL queries
 import mysql.connector
-'''
-conn = mysql.connector.connect(
-    host="localhost",
-    user="frugally",
-    password="Shoelas20",
-    database="Frugally"
-)
-cursor = conn.cursor()
-'''
+import sys
+import re
+import json
+import urllib.request
+
 # Root of the filters tree
 # Makes a nested function call
 def getSQLsort(filters, gender):
@@ -341,7 +337,7 @@ def getSQLprice(filters, highlow):
     conn.close()
     return item, errorlogger
 
-
+#these are used for the filtermenu
 def getMaxPriceMen():
     conn = mysql.connector.connect(
         host="localhost",
@@ -432,20 +428,51 @@ def getSQLNike():
     conn.close()
     return item
 
-
-def collect(link, userid):
+#collect user data
+def Collect(link, userid):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
         password="Shoelas20",
-        database="BigData"
+        database="BigDataDave"
     )
     cursor = conn.cursor()
 
-    cursor.execute('INSERT INTO LinksClicked(PID, UserID, url) VALUES(%s, %s, %s);', (NULL, str(userid), link))
+    url = "https://freegeoip.app/json/"+str(userid)
+    with urllib.request.urlopen(url) as response:
+        data = json.load(response)
 
+    ip=data['ip']
+    country=data['country_name']
+    region=data['region_name']
+    city=data['city']
+    zipcode=data['zip_code']
+    timezone=data['time_zone']
+
+    errorval = "Error: "
+
+    sql = "SELECT EXISTS(SELECT * FROM Users WHERE addr=%s)"
+    vals = (str(ip),)
+    cursor.execute(sql, vals)
     item = cursor.fetchall()
+    #errorval = errorval + str(item) + " * "
+    if(item[0][0]!=0):
+        sql = "SELECT linksclicked FROM Users WHERE addr=%s"
+        vals = (str(ip),)
+        cursor.execute(sql, vals)
+        item = cursor.fetchone()
+        #errorval = errorval + str(item)
+        item = int(item[0])
+        item += 1
+        sql = "UPDATE Users SET linksclicked="+str(item)+" WHERE addr=%s"
+        vals = (str(ip),)
+        cursor.execute(sql, vals)
+    else:
+        sql = "INSERT INTO Users(addr, city, state, country, zipcode, timezone, linksclicked) VALUES(%s, %s, %s, %s, %s, %s, %s);"
+        vals = (ip, city, region, country, zipcode, timezone, 1,)
+        cursor.execute(sql, vals)
 
     cursor.close()
+    conn.commit()
     conn.close()
-    return item
+    return "Success"
