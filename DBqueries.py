@@ -428,7 +428,50 @@ def getSQLNike():
     conn.close()
     return item
 
-#collect user data
+
+# Used to search Frugally DB for product info by product link
+# Used exclusively to update the product history table
+def findByLink(link):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas20",
+        database="Frugally"
+    )
+    cursor = conn.cursor()
+
+    sql = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE link=%s)"
+    sql2 = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE link=%s)"
+    vals = (str(link),)
+    cursor.execute(sql, vals)
+    item = cursor.fetchall()
+    cursor.execute(sql2, vals)
+    item2 = cursor.fetchall()
+
+    if(item[0][0]!=0):
+        sql = "SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE link=%s"
+        vals = (str(link),)
+        cursor.execute(sql, vals)
+        item = cursor.fetchall()
+    elif(item2[0][0]!=0):
+        sql = "SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE link=%s"
+        vals = (str(link),)
+        cursor.execute(sql, vals)
+        item = cursor.fetchall()
+    else:
+        return "Big problem, not found in databases"
+    return item
+
+
+
+# gathers data on user once product link is clicked
+'''
+Data Gathered:
+
+Product History - An all-time list of products clicked, identified by link
+Links Clicked - Who clicked what and how many times for each product
+Users - A list of Users identified by IP address who clicked on at least 1 product
+'''
 def Collect(link, userid):
     conn = mysql.connector.connect(
         host="localhost",
@@ -438,6 +481,7 @@ def Collect(link, userid):
     )
     cursor = conn.cursor()
 
+    #this gets geographic information on the IP address
     url = "https://freegeoip.app/json/"+str(userid)
     with urllib.request.urlopen(url) as response:
         data = json.load(response)
@@ -449,27 +493,45 @@ def Collect(link, userid):
     zipcode=data['zip_code']
     timezone=data['time_zone']
 
-    errorval = "Error: "
+    errorval = "Error on link %s: " % link
 
+    #updates the Users Table
     sql = "SELECT EXISTS(SELECT * FROM Users WHERE addr=%s)"
     vals = (str(ip),)
     cursor.execute(sql, vals)
     item = cursor.fetchall()
-    #errorval = errorval + str(item) + " * "
     if(item[0][0]!=0):
-        sql = "SELECT linksclicked FROM Users WHERE addr=%s"
-        vals = (str(ip),)
-        cursor.execute(sql, vals)
-        item = cursor.fetchone()
-        #errorval = errorval + str(item)
-        item = int(item[0])
-        item += 1
-        sql = "UPDATE Users SET linksclicked="+str(item)+" WHERE addr=%s"
+        sql = "UPDATE Users SET linksclicked=linksclicked+1 WHERE addr=%s"
         vals = (str(ip),)
         cursor.execute(sql, vals)
     else:
         sql = "INSERT INTO Users(addr, city, state, country, zipcode, timezone, linksclicked) VALUES(%s, %s, %s, %s, %s, %s, %s);"
         vals = (ip, city, region, country, zipcode, timezone, 1,)
+        cursor.execute(sql, vals)
+
+    #updates the product history table
+    sql = "SELECT EXISTS(SELECT * FROM ProductHistory WHERE link=%s)"
+    vals = (str(link),)
+    cursor.execute(sql, vals)
+    item = cursor.fetchall()
+    if(item[0][0]==0):
+        items = findByLink(link)
+        #return errorval + str(items)
+        sql = "INSERT INTO ProductHistory(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        vals = (items[0][0], items[0][1], items[0][2], items[0][3], items[0][4], items[0][5], items[0][6], items[0][7], items[0][8],)
+        cursor.execute(sql, vals)
+
+    #updates the links clicked table
+    sql = "SELECT EXISTS(SELECT * FROM LinksClicked WHERE addr=%s AND link=%s)"
+    vals = (str(ip), str(link),)
+    cursor.execute(sql, vals)
+    item = cursor.fetchall()
+    if(item[0][0]!=0):
+        sql = "UPDATE LinksClicked SET clicked=clicked+1 WHERE link='%s' and addr='%s'" % (str(link), str(ip))
+        cursor.execute(sql)
+    else:
+        sql = "INSERT INTO LinksClicked(link, addr, clicked) VALUES(%s, %s, %s)"
+        vals = (str(link), str(ip), 1,)
         cursor.execute(sql, vals)
 
     cursor.close()

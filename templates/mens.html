@@ -139,7 +139,8 @@
                                                                                 <!--<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>-->
                                                                                 <div id="triangle-topright"></div>
                                                                                 <div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
-                                                                                <a href="/redirect/{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
+										{% set list1 = (objects[i*itemsinrow+j][8]).split('?') %}
+										<a href="/redirect/{{ list1[1] }}/{{ list1[0] }}" target="_blank" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
                                                                                 <div class="box">
                                                                                         <div class="boxp">
                                                                                                 <p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
@@ -148,7 +149,7 @@
                                                                                         </div>
                                                                                         <p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
                                                                                         <!--<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank"<p><strong>${{ objects[i*itemsinrow+j][5] }}</strong></p></a>-->
-                                                                                        <a href="/redirect/{{ objects[i*itemsinrow+j][8] }}" target="_blank" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
+                                                                                        <a href="/redirect/{{ list1[1] }}/{{ list1[0] }}" target="_blank" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
                                                                                 </div>
                                                                         </div>
 

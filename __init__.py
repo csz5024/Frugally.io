@@ -66,16 +66,22 @@ def InternalError(e):
 
 
 # Lets us know which product the user clicked on, then redirects them to the site
-@app.route('/redirect/<path:plink>')
-def perm_redirect(plink):
-    product = plink
+@app.route('/redirect/<path:possibleArgs>/<path:plink>')
+def perm_redirect(possibleArgs, plink):
+    if(possibleArgs == "www.nike.com" or possibleArgs == "nordstromrack.com"):
+        product = possibleArgs+'/'+plink
+    else:
+        possibleArgs = possibleArgs.replace(" ","%20")
+        product = plink+"?"+possibleArgs
     ipaddr = request.remote_addr
     # use product link as primary key (should we switch to product IDs?)
     # associate the IP address with the product link
 
+    app.logger.info("Link Clicked: %s | %s" % (ipaddr,product))
+    #app.logger.info(possibleArgs)
     errorval = DBqueries.Collect(product, ipaddr)
     app.logger.info(errorval)
-    return redirect("https://"+plink, code=301)
+    return redirect("https://"+product, code=301)
 
 
 # landing page
