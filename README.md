@@ -113,6 +113,7 @@ This section details the MySQL Database used to hold all of our scraped product 
   - **MySQL Config:** `sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf`
   - **MySQL Login Command:** `/usr/bin/mysql -u frugally -p`
   - **MySQL Data Directory Command:** `select @@datadir;` - Shows where the Databases are located
+  - **MySQL Database Status Command:** `SHOW ENGINE INNODB STATUS\G`
 
 <a name="Scraping"/>
 
