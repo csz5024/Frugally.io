@@ -20,9 +20,8 @@ Frugally is an entirely free service to the user, however feel free to buy your 
  2. [Frugally Database](#Database)
  3. [Scraping](#Scraping)
  4. [Server Configurations](#ServerConfigurations)
- 5. [Porkbun Login Information](#Porkbun)
- 6. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
- 7. [Guide for Steve](#Guide)
+ 5. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
+ 6. [Guide for Steve](#Guide)
 
 <a name="WebServer"/>
 
@@ -31,17 +30,13 @@ This section details the code that can be found on the Github Repository, as wel
 ### File Structure
 ```
 Frugally/
-├── PopulateDB.py
+├── DBqueries.py
 ├── README.md
 ├── __init__.py
-├── chromedriver.exe
-├── flask.log
+├── chromedriver
+├── uniqueIPs.c
+├── php
 ├── nordstromracksales/
-│   ├── NikeMen.json
-│   ├── NikeWomen.json
-│   ├── NordstromRackMen.json
-│   ├── NordstromRackWomen.json
-│   ├── scrapy.cfg
 │   └── nordstromracksales/
 |       ├── items.py
 |       ├── middlewares.py
@@ -69,9 +64,6 @@ Frugally/
 │           └── urbanoutfitters_spider.py 
 ├── static/
 │   ├── css/
-|   │   ├── font-awesome.min.css
-|   │   ├── skel.css
-|   │   ├── style-mobile.css
 |   │   ├── font-awesome.min.css
 |   │   ├── skel.css
 |   │   ├── style-mobile.css
@@ -103,23 +95,70 @@ Frugally/
     ├── 500.html
     ├── robots.txt
     ├── sitemap.xml
-    └── template.html
+    └── about.html
 ```
 
 <a name="Database"/>
 
-## Frugally Database
+## Database
 This section details the MySQL Database used to hold all of our scraped product listings on the site
   - **MySQL Config:** `sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf`
   - **MySQL Login Command:** `/usr/bin/mysql -u frugally -p`
   - **MySQL Data Directory Command:** `select @@datadir;` - Shows where the Databases are located
   - **MySQL Database Status Command:** `SHOW ENGINE INNODB STATUS\G`
+### Frugally
+This database is transient and is only meant to hold the latest scraped products
+```
+show tables;
++------------------------+
+| Tables_in_Frugally     |
++------------------------+
+| NikeMen                |
+| NikeMenTemp            |
+| NikeWomen              |
+| NikeWomenTemp          |
+| NordstromRackMen       |
+| NordstromRackMenTemp   |
+| NordstromRackWomen     |
+| NordstromRackWomenTemp |
++------------------------+
+```
+Temp tables are filled while scrapers are running, then swapped in for original tables once scrapers are done. The old original tables are then dropped. 
+```
+describe NikeMen;
++-------------+----------------+------+-----+---------+-------+
+| Field       | Type           | Null | Key | Default | Extra |
++-------------+----------------+------+-----+---------+-------+
+| vendor      | varchar(20)    | YES  |     | NULL    |       |
+| gender      | varchar(5)     | YES  |     | NULL    |       |
+| title       | varchar(1000)  | YES  |     | NULL    |       |
+| brand       | varchar(100)   | YES  |     | NULL    |       |
+| retailprice | float          | YES  |     | NULL    |       |
+| price       | float          | YES  |     | NULL    |       |
+| discount    | int(11)        | YES  |     | NULL    |       |
+| imagelink   | varchar(10000) | YES  |     | NULL    |       |
+| link        | varchar(10000) | YES  |     | NULL    |       |
++-------------+----------------+------+-----+---------+-------+
+```
+### BigDataDave
+These tables are persistent and are meant to power the recommendations algorithms
+```
+show tables;
++-----------------------+
+| Tables_in_BigDataDave |
++-----------------------+
+| LinksClicked          |
+| ProductHistory        |
+| Users                 |
++-----------------------+
+```
 
 <a name="Scraping"/>
 
 ## Scraping
 This section details the web scraping.
 
+The Scraping spiders are run via PHP scripts found in the /php directory of the github repo. Each PHP script is placed inside of a crontab and run every 2h. The Frugally tables are flushed each time a spider finishes scraping.
 
 
 <a name="ServerConfigurations"/>
@@ -201,13 +240,6 @@ from Frugally import app as application
 </VirtualHost>
 
 ```
-
-
-<a name="Porkbun"/>
-
-## Porkbun
-Login: jadblaik
-pw: tJgxbMgsdG@!!M%P5n6s
 
 <a name="UnixCommands"/>
 
