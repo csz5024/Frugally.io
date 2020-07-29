@@ -77,7 +77,7 @@ def perm_redirect(possibleArgs, plink):
     # use product link as primary key (should we switch to product IDs?)
     # associate the IP address with the product link
 
-    app.logger.info("Link Clicked: %s | %s" % (ipaddr,product))
+    app.logger.info("%s: Link Clicked: %s | %s" % (datetime.now(),ipaddr,product))
     #app.logger.info(possibleArgs)
     errorval = DBqueries.Collect(product, ipaddr)
     app.logger.info(errorval)

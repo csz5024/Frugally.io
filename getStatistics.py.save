@@ -1,0 +1,41 @@
+import mysql.connector
+
+# Data collected since July 28th
+if __name__ == '__main__':
+	conn = mysql.connector.connect(
+		host="localhost",
+		user="frugally",
+		password="Shoelas20",
+		database="BigDataDave"
+	)
+	cursor = conn.cursor()
+
+        # All of the Users
+	sql = "SELECT * FROM Users ORDER BY timezone"
+        cursor.execute(sql)
+	results = cursor.fetchall()
+
+        # All of the Products Clicked
+        sql = "SELECT * FROM ProductHistory ORDER BY price"
+        cursor.execute(sql)
+        results = cursor.fetchall()
+
+	# Number of total products clicked
+ 	sql = "SELECT DISTINCT SUM(clicked) as Total FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link;"
+
+	# Number of each vendor clicked
+	sql = "SELECT DISTINCT SUM(clicked) as NordstromRack FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link WHERE vendor='Nordstrom Rack';"
+	sql = "SELECT DISTINCT SUM(clicked) as Nike FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link WHERE vendor='Nike';"
+
+        # Number of each brand clicked
+	sql = "SELECT DISTINCT brand, SUM(clicked), SUM(clicked*price) as Sales FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link GROUP BY brand ORDER BY Sales DESC;"
+
+        # Total amount of sales
+	sql = "SELECT DISTINCT SUM(clicked*price) as Total FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link;"
+
+        # Amount of sales for each vendor
+	sql = "SELECT DISTINCT SUM(clicked*price) as NordstromRack FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link WHERE vendor='Nordstrom Rack';"
+	sql = "SELECT DISTINCT SUM(clicked*price) as Nike FROM LinksClicked l RIGHT JOIN ProductHistory p ON l.link=p.link WHERE vendor='Nike';"
+	# Average Discount per vendor
+
+        # Amount of money saved

@@ -1,3 +1,4 @@
+
 # This file will be used as an import for __init__.py containing all of the SQL queries
 import mysql.connector
 import sys
@@ -481,20 +482,33 @@ def Collect(link, userid):
     )
     cursor = conn.cursor()
 
+
     #this gets geographic information on the IP address
-    url = "https://freegeoip.app/json/"+str(userid)
+    url = "https://ipinfo.io/"+str(userid)+"/json"
     with urllib.request.urlopen(url) as response:
         data = json.load(response)
 
+    #return data
     ip=data['ip']
-    country=data['country_name']
-    region=data['region_name']
+    country=data['country']
+    region=data['region']
     city=data['city']
-    zipcode=data['zip_code']
-    timezone=data['time_zone']
+    zipcode=data['postal']
+    timezone=data['timezone']
+    if('org' in data):
+        org = data['org']
+    else:
+        org = NULL
+    if('hostname' in data):
+        hostname = data['hostname']
+        hostname = hostname.split(".")
+    else:
+        hostname = ["No Hostname"]
 
     errorval = "Error on link %s: " % link
-
+# if "googlebot" in hostname: end function  else:continue
+    if "googlebot" in hostname:
+        return "Google Bot"
     try:
         #updates the Users Table
         sql = "SELECT EXISTS(SELECT * FROM Users WHERE addr=%s)"
@@ -506,8 +520,8 @@ def Collect(link, userid):
             vals = (str(ip),)
             cursor.execute(sql, vals)
         else:
-            sql = "INSERT INTO Users(addr, city, state, country, zipcode, timezone, linksclicked) VALUES(%s, %s, %s, %s, %s, %s, %s);"
-            vals = (ip, city, region, country, zipcode, timezone, 1,)
+            sql = "INSERT INTO Users(addr, city, state, country, zipcode, timezone, linksclicked, org) VALUES(%s, %s, %s, %s, %s, %s, %s, %s);"
+            vals = (ip, city, region, country, zipcode, timezone, 1, org,)
             cursor.execute(sql, vals)
 
         #updates the product history table
