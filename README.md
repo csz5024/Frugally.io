@@ -16,16 +16,23 @@ Frugally is an entirely free service to the user, however feel free to buy your 
 > *The Orphan Master's Son by Adam Johnson*
 
 ## Table of Contents
- 1. [Frugally Web Server](#WebServer)
- 2. [Frugally Database](#Database)
- 3. [Scraping](#Scraping)
- 4. [Server Configurations](#ServerConfigurations)
- 5. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
- 6. [Guide for Steve](#Guide)
+ 1. [Frontend](#Frontend)
+ 2. [Backend](#Backend)
+ 3. [Database](#Database)
+ 4. [Scraping](#Scraping)
+ 5. [Logs](#Logs)
+ 6. [Linux Server Configurations](#ServerConfigurations)
+ 7. [UNIX Basics for Navigating the Server over SSH](#UnixCommands)
+ 8. [Guide for Steve](#Guide)
 
-<a name="WebServer"/>
+<a name="Frontend"/>
 
-## Frugally Web Server
+## Frontend
+All frontend code is kept under the /static and /templates directories of the github repository, and is managed by the Flask framework. All code is written in HTML/CSS/JS and Jinja2 injection. Template courtesy of Templated Co.
+
+<a name="Backend"/>
+
+## Backend
 This section details the code that can be found on the Github Repository, as well as under the `/var/www/Frugally/Frugally` directory on the server
 ### File Structure
 ```
@@ -160,15 +167,36 @@ This section details the web scraping.
 
 The Scraping spiders are run via PHP scripts found in the /php directory of the github repo. Each PHP script is placed inside of a crontab and run every 2h. The Frugally tables are flushed each time a spider finishes scraping.
 
+<a name="Logs"/>
+
+## Logs
+all logs are stored under `/var/www/Frugally/logs`
+ - Apache2 logs: `error.log`,`access.log`,`ssl_error.log`,`ssl_access.log`
+ - Crontab PHP Scraping logs: `crontab_*.log` where * is an abbreviation for the spider
+ - Flask log: `flask.log`
+   - Information can be logged using `app.logger.info()` in the `__init__.py` file 
+
 
 <a name="ServerConfigurations"/>
 
-## Server Configurations
+## Linux Server Configurations
 
 list crontab configurations ```sudo crontab -e```
 ``` grep CRON /var/log/syslog```
 
 Need to update SSL certificates every 60 days
+
+### Resetting iptables
+For some reason, when the server undergoes a hard restart, the firewall of the physical server resets. Below are the necessary commands to get back up and running. Don't mess with this unless you know what you are doing. These are now managed automatically by crontabs
+```
+iptables-save > iptables.dump
+iptables-restore < iptables.dump
+
+iptables -L
+iptables -D INPUT <index of the REJECT rule to delete.>
+sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+```
 
 This whole process is the biggest pain. be patient and methodical when configuring apache settings, debugging is limited.
 make sure the development server is ready for production first, then place the whole thing ontop of apache to minimize the possible number of errors going forward. good luck.
@@ -249,17 +277,6 @@ This section lists a few essential unix commands needed for navigating through t
 **WARNING** This command will restart the physical hardware server, so make sure you save any work and that you know what you are doing when you run this command. You will lose SSH connection upon execution, and will have to wait a few minutes before it fully boots back up.
 
 `sudo restart`
-### Resetting iptables
-For some reason, when the server undergoes a hard restart, the firewall of the physical server resets. Below are the necessary commands to get back up and running. Don't mess with this unless you know what you are doing.
-```
-iptables-save > iptables.dump
-iptables-restore < iptables.dump
-
-iptables -L
-iptables -D INPUT <index of the REJECT rule to delete.>
-sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-```
 
 ### Restarting Software Components
 `sudo systemctl restart <component name>`
