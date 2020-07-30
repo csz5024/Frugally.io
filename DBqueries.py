@@ -429,6 +429,37 @@ def getSQLNike():
     conn.close()
     return item
 
+def deleteSoldOut(link):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="frugally",
+        password="Shoelas20",
+        database="Frugally"
+    )
+    cursor = conn.cursor()
+
+    item = findByLink(link)
+
+    #return item
+    if(item[0][0] == "Nike"):
+        if(item[0][1] == "Women"):
+            sql = "DELETE FROM NikeWomen WHERE link='%s'" % link
+        else:
+            sql = "DELETE FROM NikeMen WHERE link='%s'" % link
+    elif(item[0][0] == "Nordstrom Rack"):
+        if(item[0][1] == "Women"):
+            sql = "DELETE FROM NordstromRackWomen WHERE link='%s'" % link
+        else:
+            sql = "DELETE FROM NordstromRackMen WHERE link='%s'" % link
+    else:
+        return "Big problem not found"
+
+    cursor.execute(sql)
+    cursor.close()
+    conn.commit()
+    conn.close()
+    return "Success"
+
 
 # Used to search Frugally DB for product info by product link
 # Used exclusively to update the product history table
@@ -443,7 +474,8 @@ def findByLink(link):
 
     sql = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE link=%s)"
     sql2 = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE link=%s)"
-    vals = (str(link),)
+    vals = (link,)
+    #return vals
     cursor.execute(sql, vals)
     item = cursor.fetchall()
     cursor.execute(sql2, vals)
@@ -461,6 +493,8 @@ def findByLink(link):
         item = cursor.fetchall()
     else:
         return "Big problem, not found in databases"
+    cursor.close()
+    conn.close()
     return item
 
 

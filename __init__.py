@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, redirect, Response, url_for
+from flask import Flask, session, render_template, request, redirect, Response, url_for
 from flaskext.mysql import MySQL
 from flask_restful import Resource, Api
 import logging
+import html
 from PIL import Image
 import requests
+from bs4 import BeautifulSoup
 import json
 from io import BytesIO
 import os
@@ -66,22 +68,33 @@ def InternalError(e):
 
 
 # Lets us know which product the user clicked on, then redirects them to the site
-@app.route('/redirect/<path:possibleArgs>/<path:plink>')
+@app.route('/redirect/<possibleArgs>/<path:plink>')
 def perm_redirect(possibleArgs, plink):
     if(possibleArgs == "www.nike.com" or possibleArgs == "nordstromrack.com"):
         product = possibleArgs+'/'+plink
     else:
-        possibleArgs = possibleArgs.replace(" ","%20")
+        app.logger.info(possibleArgs)
+        possibleArgs = possibleArgs.replace("-","%2F")
+        #possibleArgs = html.escape(possibleArgs)
         product = plink+"?"+possibleArgs
     ipaddr = request.remote_addr
     # use product link as primary key (should we switch to product IDs?)
     # associate the IP address with the product link
 
-    app.logger.info("%s: Link Clicked: %s | %s" % (datetime.now(),ipaddr,product))
-    #app.logger.info(possibleArgs)
-    errorval = DBqueries.Collect(product, ipaddr)
-    app.logger.info(errorval)
-    return redirect("https://"+product, code=301)
+    # check if item is sold out
+    page = requests.get("https://"+product)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    if(len(soup.find_all("div", class_="status-badge--sold-out"))>=1):
+        #this item is sold out
+        #delete it from the Frugally DB
+        errorval = DBqueries.deleteSoldOut(str(product).strip())
+        app.logger.info("Sold Out error: %s" % errorval)
+        return redirect(session['prevLink'], code=301)
+    else:
+        app.logger.info("%s: Link Clicked: %s | %s" % (datetime.now(),ipaddr,product))
+        errorval = DBqueries.Collect(product, ipaddr)
+        app.logger.info(errorval)
+        return redirect("https://"+product, code=301)
 
 
 # landing page
@@ -102,6 +115,7 @@ def index():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=itemsperpage, total=items//itemsinrow+1, css_framework='bootstrap3')
 
+    session['prevLink'] = "https://frugally.io/home"
     return render_template('index.html', objects=fullList, itemsinrow=itemsinrow, items=items, pagination=pagination, brands=brands, vendors=vendors)
 
 
@@ -143,6 +157,7 @@ def about():
             # sends to gmail
             sendMail(email, name, message)
 
+    session['prevLink'] = "https://frugally.io/"
     return render_template('about.html')
 
 
@@ -176,6 +191,7 @@ def men(filters):
             return returnFilter(radio, vendorfilter, brands, prange, "men")
     #GET
     else:
+        session['prevLink'] = "https://frugally.io/men/"+filters
         options = parseFilter(filters)
         #app.logger.info(options)
         objects, errorlogger = DBqueries.getSQLsort(options, gender='men')
@@ -220,6 +236,7 @@ def women(filters):
             prange = request.form.getlist('rangeBox')
             return returnFilter(radio, vendorfilter, brands, prange, "women")
     else:
+        session['prevLink'] = "https://frugally.io/women/"+filters
         options = parseFilter(filters)
         objects, errorlogger = DBqueries.getSQLsort(options, gender='women')
         #app.logger.info(errorlogger)
@@ -310,9 +327,9 @@ def returnFilter(radio, vendors, brands, prange, gender):
            filterstring = filterstring+str(i)+"_"
         if(filterstring[-1] != "="):
             filterstring = filterstring[:-1]
-        return redirect(("http://frugally.io/"+gender+"/"+filterstring), code=302)
+        return redirect(("https://frugally.io/"+gender+"/"+filterstring), code=302)
     except:
-        return redirect("http://frugally.io", code=302)
+        return redirect("https://frugally.io", code=302)
 
 
 def parseFilter(filter):
@@ -397,6 +414,18 @@ def sendMail(customer, name, message):
     server.quit()
     return 'success'
 
+# Setter and Getter class object used as a pseudo global variable
+class previousPage:
+    def __init__(self, link=None):
+        self._link = link
+
+    def get_Link(self):
+        return self._link
+
+    def set_Link(self, x):
+        self._link = x
+
 
 if __name__ == '__main__':
+    prevLink = previousPage()
     app.run(ssl_context=('/var/www/Frugally/frugally.io-ssl-bundle/domain.cert.pem', '/var/www/Frugally/frugally.io-ssl-bundle/private.key.pem'))
