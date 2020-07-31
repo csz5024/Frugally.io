@@ -68,33 +68,29 @@ def InternalError(e):
 
 
 # Lets us know which product the user clicked on, then redirects them to the site
-@app.route('/redirect/<possibleArgs>/<path:plink>')
-def perm_redirect(possibleArgs, plink):
-    if(possibleArgs == "www.nike.com" or possibleArgs == "nordstromrack.com"):
-        product = possibleArgs+'/'+plink
-    else:
-        app.logger.info(possibleArgs)
-        possibleArgs = possibleArgs.replace("-","%2F")
-        #possibleArgs = html.escape(possibleArgs)
-        product = plink+"?"+possibleArgs
+@app.route('/redirect/<pid>')
+def perm_redirect(pid):
+    item = DBqueries.findByPID(pid)
+
     ipaddr = request.remote_addr
     # use product link as primary key (should we switch to product IDs?)
     # associate the IP address with the product link
 
     # check if item is sold out
-    page = requests.get("https://"+product)
-    soup = BeautifulSoup(page.content, 'html.parser')
-    if(len(soup.find_all("div", class_="status-badge--sold-out"))>=1):
-        #this item is sold out
-        #delete it from the Frugally DB
-        errorval = DBqueries.deleteSoldOut(str(product).strip())
-        app.logger.info("Sold Out error: %s" % errorval)
-        return redirect(session['prevLink'], code=301)
-    else:
-        app.logger.info("%s: Link Clicked: %s | %s" % (datetime.now(),ipaddr,product))
-        errorval = DBqueries.Collect(product, ipaddr)
-        app.logger.info(errorval)
-        return redirect("https://"+product, code=301)
+    if(item[0][1] == "Nordstrom Rack"):
+        page = requests.get("https://"+item[0][9])
+        soup = BeautifulSoup(page.content, 'html.parser')
+        if(len(soup.find_all("div", class_="status-badge--sold-out"))>=1):
+            #this item is sold out
+            #delete it from the Frugally DB
+            errorval = DBqueries.deleteSoldOut(item)
+            app.logger.info("Sold Out Status: %s" % errorval)
+            return redirect(session['prevLink'], code=301)
+
+    app.logger.info("%s: Link Clicked: %s | %s" % (datetime.now(),ipaddr,item))
+    errorval = DBqueries.Collect(item, ipaddr)
+    app.logger.info(errorval)
+    return redirect("https://"+item[0][9], code=301)
 
 
 # landing page

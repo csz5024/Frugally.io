@@ -429,7 +429,7 @@ def getSQLNike():
     conn.close()
     return item
 
-def deleteSoldOut(link):
+def deleteSoldOut(item):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
@@ -438,19 +438,16 @@ def deleteSoldOut(link):
     )
     cursor = conn.cursor()
 
-    item = findByLink(link)
-
-    #return item
-    if(item[0][0] == "Nike"):
-        if(item[0][1] == "Women"):
-            sql = "DELETE FROM NikeWomen WHERE link='%s'" % link
+    if(item[0][1] == "Nike"):
+        if(item[0][2] == "Women"):
+            sql = "DELETE FROM NikeWomen WHERE PID=%s" % item[0][0]
         else:
-            sql = "DELETE FROM NikeMen WHERE link='%s'" % link
-    elif(item[0][0] == "Nordstrom Rack"):
-        if(item[0][1] == "Women"):
-            sql = "DELETE FROM NordstromRackWomen WHERE link='%s'" % link
+            sql = "DELETE FROM NikeMen WHERE PID=%s" % item[0][0]
+    elif(item[0][1] == "Nordstrom Rack"):
+        if(item[0][2] == "Women"):
+            sql = "DELETE FROM NordstromRackWomen WHERE PID=%s" % item[0][0]
         else:
-            sql = "DELETE FROM NordstromRackMen WHERE link='%s'" % link
+            sql = "DELETE FROM NordstromRackMen WHERE PID=%s" % item[0][0]
     else:
         return "Big problem not found"
 
@@ -463,7 +460,7 @@ def deleteSoldOut(link):
 
 # Used to search Frugally DB for product info by product link
 # Used exclusively to update the product history table
-def findByLink(link):
+def findByPID(pid):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
@@ -472,9 +469,9 @@ def findByLink(link):
     )
     cursor = conn.cursor()
 
-    sql = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE link=%s)"
-    sql2 = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE link=%s)"
-    vals = (link,)
+    sql = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE PID=%s)"
+    sql2 = "SELECT EXISTS(SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE PID=%s)"
+    vals = (pid,)
     #return vals
     cursor.execute(sql, vals)
     item = cursor.fetchall()
@@ -482,13 +479,13 @@ def findByLink(link):
     item2 = cursor.fetchall()
 
     if(item[0][0]!=0):
-        sql = "SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE link=%s"
-        vals = (str(link),)
+        sql = "SELECT * FROM(SELECT * FROM NordstromRackMen as N UNION ALL SELECT * FROM NikeMen as M) as X WHERE PID=%s"
+        vals = (pid,)
         cursor.execute(sql, vals)
         item = cursor.fetchall()
     elif(item2[0][0]!=0):
-        sql = "SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE link=%s"
-        vals = (str(link),)
+        sql = "SELECT * FROM(SELECT * FROM NordstromRackWomen as N UNION ALL SELECT * FROM NikeWomen as M) as X WHERE PID=%s"
+        vals = (pid,)
         cursor.execute(sql, vals)
         item = cursor.fetchall()
     else:
@@ -507,7 +504,7 @@ Product History - An all-time list of products clicked, identified by link
 Links Clicked - Who clicked what and how many times for each product
 Users - A list of Users identified by IP address who clicked on at least 1 product
 '''
-def Collect(link, userid):
+def Collect(clickeditem, userid):
     conn = mysql.connector.connect(
         host="localhost",
         user="frugally",
@@ -532,14 +529,14 @@ def Collect(link, userid):
     if('org' in data):
         org = data['org']
     else:
-        org = NULL
+        org = None
     if('hostname' in data):
         hostname = data['hostname']
         hostname = hostname.split(".")
     else:
         hostname = ["No Hostname"]
 
-    errorval = "Error on link %s: " % link
+    errorval = "Error on item %s: " % clickeditem[0][9]
 # if "googlebot" in hostname: end function  else:continue
     if "googlebot" in hostname:
         return "Google Bot"
@@ -559,35 +556,46 @@ def Collect(link, userid):
             cursor.execute(sql, vals)
 
         #updates the product history table
-        sql = "SELECT EXISTS(SELECT * FROM ProductHistory WHERE link=%s)"
-        vals = (str(link),)
-        cursor.execute(sql, vals)
+        sql = "SELECT EXISTS(SELECT * FROM ProductHistory WHERE link='%s')" % clickeditem[0][9]
+        cursor.execute(sql)
         item = cursor.fetchall()
+        #if the product is not found in the table
         if(item[0][0]==0):
-            items = findByLink(link)
-            #return errorval + str(items)
-            sql = "INSERT INTO ProductHistory(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            vals = (items[0][0], items[0][1], items[0][2], items[0][3], items[0][4], items[0][5], items[0][6], items[0][7], items[0][8],)
+            maxpid = "SELECT MAX(PID) FROM ProductHistory"
+            cursor.execute(maxpid)
+            maxpid = cursor.fetchall()
+            if(maxpid[0][0] != None):
+                maxpid = maxpid[0][0] + 1
+            else:
+                maxpid = 0
+            sql = "INSERT INTO ProductHistory(PID, vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            vals = (maxpid, clickeditem[0][1], clickeditem[0][2], clickeditem[0][3], clickeditem[0][4], clickeditem[0][5], clickeditem[0][6], clickeditem[0][7], clickeditem[0][8], clickeditem[0][9],)
             cursor.execute(sql, vals)
+        else:
+            maxpid = "SELECT PID FROM ProductHistory WHERE link='%s'" % clickeditem[0][9]
+            cursor.execute(maxpid)
+            maxpid = cursor.fetchall()
+            maxpid = maxpid[0][0]
 
         #updates the links clicked table
-        sql = "SELECT EXISTS(SELECT * FROM LinksClicked WHERE addr=%s AND link=%s)"
-        vals = (str(ip), str(link),)
+        sql = "SELECT EXISTS(SELECT * FROM LinksClicked WHERE PID=%s)"
+        vals = (maxpid,)
         cursor.execute(sql, vals)
         item = cursor.fetchall()
+        #if item is found in links clicked table
         if(item[0][0]!=0):
-            sql = "UPDATE LinksClicked SET clicked=clicked+1 WHERE link='%s' and addr='%s'" % (str(link), str(ip))
+            sql = "UPDATE LinksClicked SET clicked=clicked+1 WHERE PID=%s" % (maxpid)
             cursor.execute(sql)
         else:
-            sql = "INSERT INTO LinksClicked(link, addr, clicked) VALUES(%s, %s, %s)"
-            vals = (str(link), str(ip), 1,)
+            sql = "INSERT INTO LinksClicked(PID, addr, clicked) VALUES(%s, %s, %s)"
+            vals = (maxpid, str(ip), 1,)
             cursor.execute(sql, vals)
 
         cursor.close()
         conn.commit()
         conn.close()
         return "Success"
-    except:
+    except Exception as e:
         cursor.close()
         conn.close()
-        return "FAILED"
+        return "FAILED: %s %s" % (str(sys.exc_info()[2].tb_lineno), str(sys.exc_info()))

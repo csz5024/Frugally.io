@@ -16,7 +16,6 @@ class NordstromRackMenSpider(scrapy.Spider):
     name = "NordstromRackMen"
     start_urls = ["https://www.nordstromrack.com/shop/Men/Clothing"]
 
-
     def parse(self, response):
 
         conn = mysql.connector.connect(
@@ -26,6 +25,7 @@ class NordstromRackMenSpider(scrapy.Spider):
             database="Frugally"
         )
         cursor = conn.cursor()
+        pid = 0
 
         #Loading a chrome window with specific settings
 
@@ -105,20 +105,21 @@ class NordstromRackMenSpider(scrapy.Spider):
                         else:
                             price = float(0)
                         vendor = "Nordstrom Rack"
-                        sql = 'INSERT INTO NordstromRackMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
-                        val = (vendor, str(gender), str(title), str(brand), rprice, price, disc,
+                        sql = 'INSERT INTO NordstromRackMenTemp(PID, vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'
+                        val = (pid, vendor, str(gender), str(title), str(brand), rprice, price, disc,
                                str(imagelink), str(link))
 
                         # print("NordstromRackMen item number "+str(count))
                         cursor.execute(sql, val)
                         conn.commit()
+                        pid = pid + 1
                 iter += 1
 
                 if element is None:
                     break
         finally:
             # Removes Duplicate Rows
-            cursor.execute("CREATE TABLE tempNRM SELECT DISTINCT * FROM NordstromRackMenTemp;")
+            cursor.execute("CREATE TABLE tempNRM (SELECT * FROM NordstromRackMenTemp GROUP BY link);")
             cursor.execute("ALTER TABLE NordstromRackMenTemp RENAME junk;")
             cursor.execute("ALTER TABLE tempNRM RENAME NordstromRackMenTemp;")
             cursor.execute("DROP TABLE junk;")

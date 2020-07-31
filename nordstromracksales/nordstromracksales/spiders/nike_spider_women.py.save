@@ -17,6 +17,7 @@ import sys
 class NikeWomenSpider(scrapy.Spider):
   name = "NikeWomen"
   start_urls = ["https://www.nike.com/w/womens-sale-3yaepz5e1x6"]
+  pid = 0
 
   def parse(self, response):
 
@@ -27,7 +28,6 @@ class NikeWomenSpider(scrapy.Spider):
           database="Frugally"
       )
       cursor = conn.cursor()
-      pid = 0
 
       options = webdriver.ChromeOptions()
       options.add_argument('headless')
@@ -73,7 +73,7 @@ class NikeWomenSpider(scrapy.Spider):
               gender = 'Women'
               title = article.css('div.product-card__title ::text').get()
               brand = 'Nike'
-              retailprice = article.css('div.css-1h0t5hy ::text').get()
+              retailprice = article.css('div.css-31z3ik ::text').get()
               price = article.css('div.css-s56yt7 ::text').get()
               discount = None
               imagelink = image
@@ -93,12 +93,12 @@ class NikeWomenSpider(scrapy.Spider):
                       price = float(price.strip("$").replace(',', ''))
                   else:
                       price = float(price.strip("$"))
-                  discount = round((1 - (price / retailprice)) * 100)
+                  discount = round((1 - (price / retail)) * 100)
               else:
                   discount = 0
                   retailprice = 0
                   price = 0
-                  #continue
+                  continue
               title = str(title.strip("Nike "))
               sql = 'INSERT INTO NikeWomenTemp(PID, vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'
               link = link.strip("https://")
@@ -111,7 +111,7 @@ class NikeWomenSpider(scrapy.Spider):
 
       finally:
           # Removes Duplicate Rows
-          cursor.execute("CREATE TABLE tempNW SELECT * FROM NikeWomenTemp GROUP BY link;")
+          cursor.execute("CREATE TABLE tempNW SELECT DISTINCT * FROM NikeWomenTemp;")
           cursor.execute("ALTER TABLE NikeWomenTemp RENAME junk;")
           cursor.execute("ALTER TABLE tempNW RENAME NikeWomenTemp;")
           cursor.execute("DROP TABLE junk;")

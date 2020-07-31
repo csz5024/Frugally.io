@@ -1,4 +1,3 @@
-dir
 import scrapy
 from scrapy.selector import Selector
 from selenium import webdriver
@@ -26,6 +25,7 @@ class NikeMenSpider(scrapy.Spider):
             database="Frugally"
         )
         cursor = conn.cursor()
+        pid = 0
 
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
@@ -71,7 +71,7 @@ class NikeMenSpider(scrapy.Spider):
                 gender = 'Men'
                 title = article.css('div.product-card__title ::text').get()
                 brand = 'Nike'
-                retailprice = article.css('div.css-31z3ik ::text').get()
+                retailprice = article.css('div.css-1h0t5hy ::text').get()
                 price = article.css('div.css-s56yt7 ::text').get()
                 discount = None
                 imagelink = image
@@ -81,32 +81,36 @@ class NikeMenSpider(scrapy.Spider):
                 #Now supports multiple processes
 
 
-                print('Adding NikeMens Content to Database, please wait...')
+                #print('Adding NikeMens Content to Database, please wait...')
 
                 if((retailprice!=None) and (price!=None)):
                   if(len(retailprice)>4):
-                      retail = float(retailprice.strip("$").replace(',',''))
+                      retailprice = float(retailprice.strip("$").replace(',',''))
                   else:
-                      retail = float(retailprice.strip("$"))
+                      retailprice = float(retailprice.strip("$"))
                   if(len(price)>4):
                       price = float(price.strip("$").replace(',',''))
                   else:
                       price = float(price.strip("$"))
-                  discount = round((1-(price/retail))*100)
+                  discount = round((1-(price/retailprice))*100)
                 else:
                   discount = 0
+                  retailprice = 0
+                  price = 0
+                  #continue
                 title = str(title.strip("Nike "))
-                sql = 'INSERT INTO NikeMenTemp(vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);'
+                sql = 'INSERT INTO NikeMenTemp(PID, vendor, gender, title, brand, retailprice, price, discount, imagelink, link) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'
                 link = link.strip("https://")
-                val =  (str(vendor), str(gender), title, str(brand), retail, price, discount, str(imagelink), link)
+                val =  (pid, str(vendor), str(gender), title, str(brand), retailprice, price, discount, str(imagelink), link)
 
                 #print("NikeMen item number "+str(count))
                 cursor.execute(sql, val)
                 conn.commit()
+                pid = pid+1
 
         finally:
             # Removes Duplicate Rows
-            cursor.execute("CREATE TABLE tempNM SELECT DISTINCT * FROM NikeMenTemp;")
+            cursor.execute("CREATE TABLE tempNM (SELECT * FROM NikeMenTemp GROUP BY link);")
             cursor.execute("ALTER TABLE NikeMenTemp RENAME junk;")
             cursor.execute("ALTER TABLE tempNM RENAME NikeMenTemp;")
             cursor.execute("DROP TABLE junk;")

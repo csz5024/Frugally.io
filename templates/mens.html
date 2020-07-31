@@ -138,18 +138,19 @@
 									<div id="cardcontainer">
                                                                                 <!--<div class="img-top-left"><h1>{{ objects[i*itemsinrow+j][0] }}</h1></div>-->
                                                                                 <div id="triangle-topright"></div>
-                                                                                <div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][6] }}%</h1></div>
-										{% set list1 = (objects[i*itemsinrow+j][8]).split('?') %}
-										<a href="/redirect/{{ list1[1] | replace("%2F","-") }}/{{ list1[0] }}" target="_blank" class="image featured"><img src="{{ objects[i*itemsinrow+j][7] }}" alt=""></a>
+                                                                                <div class="img-top-right"><h1>-{{ objects[i*itemsinrow+j][7] }}%</h1></div>
+										<!--{% set list1 = (objects[i*itemsinrow+j][8]).split('?') %}-->
+										{% set pid = objects[i*itemsinrow+j][0] %}
+										<a href="/redirect/{{ pid }}" target="_blank" class="image featured"><img src="{{ objects[i*itemsinrow+j][8] }}" alt=""></a>
                                                                                 <div class="box">
                                                                                         <div class="boxp">
-                                                                                                <p><strong>{{ objects[i*itemsinrow+j][0] }}</strong></p>
-                                                                                                <p><strong>{{ objects[i*itemsinrow+j][3] }}</strong></p>
-                                                                                                <p>{{ objects[i*itemsinrow+j][2] }}</p>
+                                                                                                <p><strong>{{ objects[i*itemsinrow+j][1] }}</strong></p>
+                                                                                                <p><strong>{{ objects[i*itemsinrow+j][4] }}</strong></p>
+                                                                                                <p>{{ objects[i*itemsinrow+j][3] }}</p>
                                                                                         </div>
-                                                                                        <p><del>${{objects[i*itemsinrow+j][4]}}</del></p>
+                                                                                        <p><del>${{objects[i*itemsinrow+j][5]}}</del></p>
                                                                                         <!--<a href="https://{{ objects[i*itemsinrow+j][8] }}" target="_blank"<p><strong>${{ objects[i*itemsinrow+j][5] }}</strong></p></a>-->
-                                                                                        <a href="/redirect/{{ list1[1] | replace("%2F","-") }}/{{ list1[0] }}" target="_blank" class="button small">${{ objects[i*itemsinrow+j][5] }}</a>
+                                                                                        <a href="/redirect/{{ pid }}" target="_blank" class="button small">${{ objects[i*itemsinrow+j][6] }}</a>
                                                                                 </div>
                                                                         </div>
 
