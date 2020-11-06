@@ -362,9 +362,9 @@ def parseFilter(filter):
 def getBrands(objects):
     brands = []
     for i in objects:
-        if(i[3] not in brands):
-            if(i[3] != None):
-                brands.append(i[3])
+        if(i[4] not in brands):
+            if(i[4] != None):
+                brands.append(i[4])
     brands.sort()
     return brands
 
