@@ -521,6 +521,8 @@ def Collect(clickeditem, userid):
 
     #return data
     ip=data['ip']
+    if(ip == '192.168.1.1'):
+        return "Success"
     country=data['country']
     region=data['region']
     city=data['city']

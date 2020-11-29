@@ -86,6 +86,14 @@ def perm_redirect(pid):
             errorval = DBqueries.deleteSoldOut(item)
             app.logger.info("Sold Out Status: %s" % errorval)
             return redirect(session['prevLink'], code=301)
+    elif(item[0][1] == "Nike"):
+        page = requests.get("https://"+item[0][9])
+        soup = BeautifulSoup(page.content, 'html.parser')
+        if(len(soup.find_all("div", class_="sold-out"))>=1):
+            #this item is sold out
+            errorval = DBqueries.deleteSoldOut(item)
+            app.logger.info("Sold Out Status: %s" % errorval)
+            return redirect(session['prevLink'], code=301)
 
     app.logger.info("%s: Link Clicked: %s | %s" % (datetime.now(),ipaddr,item))
     errorval = DBqueries.Collect(item, ipaddr)
